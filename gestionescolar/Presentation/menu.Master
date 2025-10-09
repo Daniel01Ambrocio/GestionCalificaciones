@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="menu.master.cs" Inherits="gestionescolar.Presentation.menu" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>Gestión Escolar</title>
+
+    <link href="<%= ResolveUrl("~/Styles/menu.css") %>" rel="stylesheet" type="text/css" />
+    <link href="<%= ResolveUrl("~/Styles/global.css") %>" rel="stylesheet" type="text/css" />
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <!-- Sidebar -->
+        <div class="sidebar d-flex flex-column">
+
+            <!-- Logo -->
+            <img src="<%= ResolveUrl("~/Content/logo.png") %>" alt="Logo" class="logo" />
+
+            <!-- Usuario y rol -->
+            <div class="user-info">
+                <asp:Label ID="lbUsuario" runat="server" Text="Usuario: demoUser" /><br />
+                <asp:Label ID="lbRol" runat="server" Text="Rol: Admin" />
+            </div>
+
+            <!-- Navegación -->
+            <nav class="nav flex-column">
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="RegistroUsuarios.aspx" Text="👤 Registrar usuario" runat="server" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="Pagina2.aspx" Text="🎓 Alumnos" runat="server" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="Pagina3.aspx" Text="📋 Página 3" runat="server" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="Pagina4.aspx" Text="📁 Página 4" runat="server" />
+            </nav>
+
+            <!-- Configuración y cerrar sesión -->
+            <div class="sidebar-footer mt-auto">
+                <hr class="bg-light" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="CambiarContrasena.aspx" Text="⚙ Cambiar contraseña" runat="server" />
+                <asp:Button ID="btnCerrarSesion" runat="server" Text="⏻ Cerrar sesión" CssClass="btn btn-light w-100 mt-2" />
+            </div>
+        </div>
+
+
+        <!-- Contenido principal -->
+        <div class="main-content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+        </div>
+
+    </form>
+
+    <!-- Bootstrap JS (si usas componentes JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

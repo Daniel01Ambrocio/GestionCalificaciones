@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\danie\\source\\repos\\gestionescolar\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\danie\\source\\repos\\gestionescolar\\gestionescolar\\presentation\\menu.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\menu.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\danie\\source\\repos\\gestionescolar\\gestionescolar\\styles\\menu.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\styles\\menu.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\danie\\source\\repos\\gestionescolar\\gestionescolar\\presentation\\menu.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\menu.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "menu.css",
+              "DocumentMoniker": "C:\\Users\\danie\\source\\repos\\gestionescolar\\gestionescolar\\Styles\\menu.css",
+              "RelativeDocumentMoniker": "gestionescolar\\Styles\\menu.css",
+              "ToolTip": "C:\\Users\\danie\\source\\repos\\gestionescolar\\gestionescolar\\Styles\\menu.css",
+              "RelativeToolTip": "gestionescolar\\Styles\\menu.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-10-09T18:34:04.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "menu.Master.cs",
+              "DocumentMoniker": "C:\\Users\\danie\\source\\repos\\gestionescolar\\gestionescolar\\Presentation\\menu.Master.cs",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\menu.Master.cs",
+              "ToolTip": "C:\\Users\\danie\\source\\repos\\gestionescolar\\gestionescolar\\Presentation\\menu.Master.cs",
+              "RelativeToolTip": "gestionescolar\\Presentation\\menu.Master.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T18:23:13.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "menu.Master",
+              "DocumentMoniker": "C:\\Users\\danie\\source\\repos\\gestionescolar\\gestionescolar\\Presentation\\menu.Master",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\menu.Master",
+              "ToolTip": "C:\\Users\\danie\\source\\repos\\gestionescolar\\gestionescolar\\Presentation\\menu.Master",
+              "RelativeToolTip": "gestionescolar\\Presentation\\menu.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-09T17:54:57.068Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
