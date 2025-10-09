@@ -1,0 +1,17 @@
+﻿.Content-general {
+    max-width: 75%;
+    margin: 0 auto;
+}
+
+.textbox-delgado {
+    border: 1px solid #999; /* Borde negro clarito y delgado */
+    border-radius: 4px;
+    padding: 6px 10px;
+    outline: none;
+    box-shadow: none;
+    transition: border-color 0.2s ease-in-out;
+}
+
+    .textbox-delgado:focus {
+        border-color: #000; /* Borde más oscuro al enfocar */
+    }
