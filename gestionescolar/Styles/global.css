@@ -15,3 +15,30 @@
     .textbox-delgado:focus {
         border-color: #000; /* Borde más oscuro al enfocar */
     }
+.btn-primary {
+    background-color: #FFD000;
+    border-color: #FFD000;
+    color: #333;
+}
+
+    .btn-primary:hover {
+        background-color: #e6bd00;
+        border-color: #e6bd00;
+    }
+
+.section-header {
+    background-color: #007BFF;
+    color: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: .25rem;
+}
+
+/* Estilo exclusivo para contform */
+#contform {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    border-radius: .5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}

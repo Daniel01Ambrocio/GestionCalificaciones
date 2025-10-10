@@ -2,6 +2,7 @@
 using gestionescolar.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -10,10 +11,33 @@ namespace gestionescolar.BLL
     public class AlumnoBLL
     {
         AlumnoDLL alumnoDLL = new AlumnoDLL();
-        public string RegistrarAlumno(Entalumno entalumno)
+        UsuarioBLL usuarioBLL = new UsuarioBLL();
+        public string RegistrarAlumno(EntUsuario entUsuario, Entalumno entalumno)
         {
 
-            return alumnoDLL.RegistrarAlumno(entalumno);
+            entUsuario.IdUsuario = usuarioBLL.RegistrarUsuario(entUsuario);
+            string msg = alumnoDLL.RegistrarAlumno(entUsuario, entalumno);
+            if (msg == "Error de registro")
+            {
+                return msg;
+            }
+            else
+            {
+                entUsuario.usuario = msg;
+                bool valida = usuarioBLL.ActualizaUser(entUsuario);
+                if (valida)
+                {
+                    return "Registro exitoso.";
+                }
+                else
+                {
+                    return "Error de registro";
+                }
+            }
+        }
+        public DataTable ObtenerAlumnos()
+        {
+            return alumnoDLL.ObtenerAlumnos();
         }
     }
 }

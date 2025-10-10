@@ -16,50 +16,70 @@ namespace gestionescolar.DLL
             {
                 conn.Open();
 
-                // Tabla, nombre del campo ID, nombre del campo de contraseña
-                var tablas = new[]
-                {
-            new { Tabla = "director", IdCampo = "IDdirector", CampoContrasena = "contrasena" },
-            new { Tabla = "Administrativo", IdCampo = "IDAdministrativo", CampoContrasena = "contrasenia" },
-            new { Tabla = "Maestro", IdCampo = "IDMaestro", CampoContrasena = "contrasenia" },
-            new { Tabla = "Alumno", IdCampo = "Matricula", CampoContrasena = "contrasenia" }
-        };
+                // Paso 1: Buscar en la tabla Usuario
+                string query = @"
+                    SELECT 
+                        u.IdUsuario,
+                        e.descripcion AS StatusDescripcion,
+                        r.nombreRol AS NombreRol
+                    FROM Usuario u
+                    INNER JOIN Estatus e ON u.IDStatus = e.IDStatus
+                    INNER JOIN Rol r ON u.IDROL = r.IDROL
+                    WHERE u.usuario = @usuario AND u.contrasena = @contrasena";
 
-                foreach (var t in tablas)
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    string query = $@"
-                SELECT 
-                    u.{t.IdCampo} AS ID,
-                    e.descrípcion AS StatusDescripcion,
-                    r.nombreRol AS NombreRol
-                FROM {t.Tabla} u
-                INNER JOIN estatus e ON u.IDStatus = e.IDStatus
-                INNER JOIN rol r ON u.IDROL = r.IDROL
-                WHERE u.usuario = @usuario AND u.{t.CampoContrasena} = @contrasena";
+                    cmd.Parameters.AddWithValue("@usuario", user);
+                    cmd.Parameters.AddWithValue("@contrasena", pass);
 
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        cmd.Parameters.AddWithValue("@usuario", user);
-                        cmd.Parameters.AddWithValue("@contrasena", pass);
-
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        if (reader.Read())
                         {
-                            if (reader.Read())
-                            {
-                                int idUsuario = reader.GetInt32(0);
-                                string descripcionStatus = reader.GetString(1);
-                                string nombreRol = reader.GetString(2);
-                                string tipoUsuario = t.Tabla; // director, Administrativo, etc.
+                            int idUsuario = reader.GetInt32(0);
+                            string descripcionStatus = reader.GetString(1);
+                            string nombreRol = reader.GetString(2);
 
-                                return (idUsuario, descripcionStatus, nombreRol, tipoUsuario);
+                            reader.Close(); // Cerrar antes de la siguiente consulta
+
+                            // Paso 2: Determinar el tipo de usuario
+                            string tipoQuery = @"
+                SELECT TOP 1 TipoUsuario FROM (
+                    SELECT 'Director' AS TipoUsuario WHERE EXISTS (SELECT 1 FROM Director WHERE IDUsuario = @idUsuario)
+                    UNION
+                    SELECT 'Administrativo' WHERE EXISTS (SELECT 1 FROM Administrativo WHERE IDUsuario = @idUsuario)
+                    UNION
+                    SELECT 'Maestro' WHERE EXISTS (SELECT 1 FROM Maestro WHERE IDUsuario = @idUsuario)
+                    UNION
+                    SELECT 'Alumno' WHERE EXISTS (SELECT 1 FROM Alumno WHERE IDUsuario = @idUsuario)
+                ) AS Tipos";
+
+                            using (SqlCommand tipoCmd = new SqlCommand(tipoQuery, conn))
+                            {
+                                tipoCmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+
+                                using (SqlDataReader tipoReader = tipoCmd.ExecuteReader())
+                                {
+                                    if (tipoReader.Read())
+                                    {
+                                        string tipoUsuario = tipoReader.GetString(0);
+                                        return (idUsuario, descripcionStatus, nombreRol, tipoUsuario);
+                                    }
+                                    else
+                                    {
+                                        // No pertenece a ninguna tabla de tipo de usuario
+                                        return (idUsuario, descripcionStatus, nombreRol, "Desconocido");
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
 
-            // No se encontró el usuario en ninguna tabla
+            // Si no se encontró el usuario
             return null;
+
         }
 
     }
