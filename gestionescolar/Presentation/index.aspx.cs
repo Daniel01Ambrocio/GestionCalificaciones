@@ -15,7 +15,14 @@ namespace gestionescolar.Presentation
         loginBLL loginBLL = new loginBLL();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                Session["Usuario"] = 0;
+                Session["UsuarioID"] = 0;
+                Session["Rol"] = 0;
+                Session["TipoUsuario"] = 0;
+                Session["Status"] = 0;
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -45,8 +52,7 @@ namespace gestionescolar.Presentation
             }
             else
             {
-                // Mostrar mensaje de error (por ejemplo con un Label)
-                //lblMensaje.Text = "Usuario o contraseña incorrectos.";
+                MostrarAlerta("Usuario y/o contraseña incorrectos.", false);
                
             }
         }
@@ -68,6 +74,31 @@ namespace gestionescolar.Presentation
 
                 return sb.ToString();
             }
+        }
+        protected void MostrarAlerta(string mensaje, bool esExito)
+        {
+            // Color verde para éxito, rojo para error
+            string color = esExito ? "green" : "red";
+
+            // Script para mostrar una alerta centrada con estilos personalizados
+            string script = $@"
+                var alerta = document.createElement('div');
+                alerta.innerText = '{mensaje}';
+                alerta.style.position = 'fixed';
+                alerta.style.top = '50%';
+                alerta.style.left = '50%';
+                alerta.style.transform = 'translate(-50%, -50%)';
+                alerta.style.backgroundColor = '{color}';
+                alerta.style.color = 'white';
+                alerta.style.padding = '15px 30px';
+                alerta.style.borderRadius = '8px';
+                alerta.style.fontWeight = 'bold';
+                alerta.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                alerta.style.zIndex = '9999';
+                document.body.appendChild(alerta);
+                setTimeout(function() {{ alerta.remove(); }}, 6000);";
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarAlerta", script, true);
         }
     }
 }

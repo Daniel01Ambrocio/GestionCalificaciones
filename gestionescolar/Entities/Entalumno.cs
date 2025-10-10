@@ -8,15 +8,7 @@ namespace gestionescolar.Entities
     public class Entalumno
     {
         public int Matricula { get; set; }
-        public string Nombre { get; set; }
-        public string ApellidoPaterno { get; set; }
-        public string ApellidoMaterno { get; set; }
-        public int grupo { get; set; }
-        public string usuario { get; set; }
-        public string contrasena { get; set; }
-        public DateTime PeriodoIngreso { get; set; }
-        public DateTime PeriodoFin { get; set; }
-        public int IDStatus { get; set; }
-        public int IDRol { get; set; }
+        public int IDGrupo { get; set; }
+        public int IDUsuario { get; set; }
     }
 }

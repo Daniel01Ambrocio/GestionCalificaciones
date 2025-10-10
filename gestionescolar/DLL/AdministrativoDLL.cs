@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,31 @@ namespace gestionescolar.DLL
     public class AdministrativoDLL
     {
         string connectionString = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
-        public string RegistrarAdministrativo(Entadministrativo entadministrativo)
+        public DataTable ObtenerAdministrativos()
+        {
+            DataTable dtRoles = new DataTable();
+
+            string query = @"SELECT 
+                    u.Nombre, 
+                    u.ApellidoPaterno, 
+                    u.ApellidoMaterno, 
+                    e.descripcion as Estatus, 
+                    FORMAT(u.PeriodoIngreso, 'dd-MM-yyyy') AS PeriodoIngreso, 
+                    FORMAT(u.PeriodoFin, 'dd-MM-yyyy') AS PeriodoFin
+                FROM Administrativo a
+                INNER JOIN Usuario u ON a.IDUsuario = u.IDUsuario
+                INNER JOIN Estatus e ON u.IDStatus = e.IDStatus";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+            {
+                da.Fill(dtRoles);
+            }
+
+            return dtRoles;
+        }
+        public string RegistrarAdministrativo(EntUsuario entUsuario)
         {
             try
             {
@@ -21,20 +46,13 @@ namespace gestionescolar.DLL
                 {
                     string query = @"
                 INSERT INTO Administrativo 
-                (Nombre, ApellidoPaterno, ApellidoMaterno, contrasenia, PeriodoIngreso, PeriodoFin, IDStatus, IDRol) 
+                (IDUsuario) 
                 VALUES 
-                (@Nombre, @ApellidoPaterno, @ApellidoMaterno, @contrasenia, @PeriodoIngreso, @PeriodoFin, @status, @rol);
+                (@IDUsuario);
                 SELECT SCOPE_IDENTITY();";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@Nombre", entadministrativo.Nombre);
-                    cmd.Parameters.AddWithValue("@ApellidoPaterno", entadministrativo.ApellidoPaterno);
-                    cmd.Parameters.AddWithValue("@ApellidoMaterno", entadministrativo.ApellidoMaterno);
-                    cmd.Parameters.AddWithValue("@contrasenia", entadministrativo.contrasena);
-                    cmd.Parameters.AddWithValue("@PeriodoIngreso", entadministrativo.PeriodoIngreso);
-                    cmd.Parameters.AddWithValue("@PeriodoFin", entadministrativo.PeriodoFin);
-                    cmd.Parameters.AddWithValue("@status", entadministrativo.IDStatus);
-                    cmd.Parameters.AddWithValue("@rol", entadministrativo.IDRol);
+                    cmd.Parameters.AddWithValue("@IDUsuario", entUsuario.IdUsuario);
 
                     conn.Open();
                     object result = cmd.ExecuteScalar(); // Devuelve el ID insertado
@@ -42,41 +60,21 @@ namespace gestionescolar.DLL
                     if (result != null)
                     {
                         int.TryParse(result.ToString(), out idadmi);
+                        return "AD" + idadmi;
+                    }
+                    else
+                    {
+                        return "Error de registro";
                     }
                 }
 
-                if (idadmi > 0)
-                {
-                    ActualizaNombreAdmi(idadmi);
-                }
-
-                return "Registro exitoso.";
             }
             catch (SqlException ex)
             {
-                return $"Error al registrar administrativo (SQL): {ex.Message}";
-            }
-            catch (Exception ex)
-            {
-                return $"Error inesperado: {ex.Message}";
+                return "Error de registro";
             }
         }
 
-        private void ActualizaNombreAdmi(int idAdministrativo)
-        {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                string nuevoUsuario = "AD" + idAdministrativo;
-
-                string query = "UPDATE Administrativo SET usuario = @usuario WHERE IDAdministrativo = @id";
-
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@usuario", nuevoUsuario);
-                cmd.Parameters.AddWithValue("@id", idAdministrativo);
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-        }
+        
     }
 }

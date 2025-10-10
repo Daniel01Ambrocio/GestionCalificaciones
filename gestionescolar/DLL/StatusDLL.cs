@@ -16,7 +16,7 @@ namespace gestionescolar.DLL
         {
             DataTable dtRoles = new DataTable();
 
-            string query = "SELECT IDStatus, descrípcion FROM estatus";
+            string query = "SELECT IDStatus, descripcion FROM estatus";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
