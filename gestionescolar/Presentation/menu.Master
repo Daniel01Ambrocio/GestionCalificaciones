@@ -32,30 +32,30 @@
             <!-- Navegación -->
             <nav class="nav flex-column">
                 <!-- Común o Directivo/Admin -->
-                <asp:HyperLink CssClass="nav-link" NavigateUrl="RegistroUsuarios.aspx" Text="👤 Registrar usuario" runat="server" ID="registroUsuarios" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="RegistroUsuarios.aspx" Text="Registrar usuario" runat="server" ID="registroUsuarios" />
 
                 <!-- Alumno -->
-                <asp:HyperLink CssClass="nav-link" NavigateUrl="MisCalificaciones.aspx" Text="🎓 Mis calificaciones" runat="server" ID="misCalificaciones" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="MisCalificaciones.aspx" Text="Mis calificaciones" runat="server" ID="misCalificaciones" />
 
                 <!-- Maestro -->
-                <asp:HyperLink CssClass="nav-link" NavigateUrl="AsignarCalificacion.aspx" Text="✏️ Asignar/calificar alumno" runat="server" ID="asignarCalificacion" />
-                <asp:HyperLink CssClass="nav-link" NavigateUrl="ListaCalificaciones.aspx" Text="📚 Ver calificaciones por grupo" runat="server" ID="verCalificacionesGrupo" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="AsignarCalificacion.aspx" Text="Asignar/calificar alumno" runat="server" ID="asignarCalificacion" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="ListaCalificaciones.aspx" Text="Ver calificaciones por grupo" runat="server" ID="verCalificacionesGrupo" />
 
                 <!-- Administrativo -->
-                <asp:HyperLink CssClass="nav-link" NavigateUrl="AsignarGrupos.aspx" Text="📋 Asignar grupos a alumnos y maestros" runat="server" ID="asignarGrupos" />
-                <asp:HyperLink CssClass="nav-link" NavigateUrl="SolicitudBaja.aspx" Text="🗑️ Solicitar baja de alumno o maestro" runat="server" ID="solicitarBaja" />
-                <asp:HyperLink CssClass="nav-link" NavigateUrl="ImprimirBoleta.aspx" Text="🖨️ Imprimir boleta de calificaciones" runat="server" ID="imprimirBoleta" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="SolicitudBaja.aspx" Text="Solicitar baja de alumno o maestro" runat="server" ID="solicitarBaja" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="ImprimirBoleta.aspx" Text="Imprimir boleta de calificaciones" runat="server" ID="imprimirBoleta" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="RegistrarMateria.aspx" Text="Registrar materia" runat="server" ID="registrarMateria" />
 
                 <!-- Directivo -->
-                <asp:HyperLink CssClass="nav-link" NavigateUrl="AutorizarBajas.aspx" Text="✅ Autorizar bajas" runat="server" ID="autorizarBajas" />
-                <asp:HyperLink CssClass="nav-link" NavigateUrl="BajaAdministrativo.aspx" Text="🗑️ Dar de baja administrativos" runat="server" ID="bajaAdministrativos" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="AutorizarBajas.aspx" Text="Autorizar bajas" runat="server" ID="autorizarBajas" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="BajaAdministrativo.aspx" Text="Dar de baja administrativos" runat="server" ID="bajaAdministrativos" />
 
                 <!-- Información general -->
-                <asp:HyperLink CssClass="nav-link" NavigateUrl="RegistrarVerGrupos.aspx" Text="👥 Registrar/ver grupos" runat="server" ID="listaGrupos" />
-                <asp:HyperLink CssClass="nav-link" NavigateUrl="ListaEditAlumnos.aspx" Text="🎓 Lista de alumnos" runat="server" ID="listaAlumnos" />
-                <asp:HyperLink CssClass="nav-link" NavigateUrl="ListaMaestros.aspx" Text="👨‍🏫 Lista de maestros" runat="server" ID="listaMaestros" />
-                <asp:HyperLink CssClass="nav-link" NavigateUrl="ListaAdministrativos.aspx" Text="💼 Lista de administrativos" runat="server" ID="listaAdministrativos" />
-                <asp:HyperLink CssClass="nav-link" NavigateUrl="ListaDirectores.aspx" Text="💼 Lista de directores" runat="server" ID="ListaDirectores" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="RegistrarVerGrupos.aspx" Text="Registrar/ver grupos" runat="server" ID="listaGrupos" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="ListaEditAlumnos.aspx" Text="Lista de alumnos" runat="server" ID="listaAlumnos" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="ListaMaestros.aspx" Text="Lista de maestros" runat="server" ID="listaMaestros" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="ListaAdministrativos.aspx" Text="Lista de administrativos" runat="server" ID="listaAdministrativos" />
+                <asp:HyperLink CssClass="nav-link" NavigateUrl="ListaDirectores.aspx" Text="Lista de directores" runat="server" ID="ListaDirectores" />
             </nav>
 
 

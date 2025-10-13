@@ -164,4 +164,7 @@ WHERE u.usuario = 'AD1'
     INNER JOIN Grupo g ON m.IDGrupo = g.IDGrupo
     INNER JOIN Estatus e ON u.IDStatus = e.IDStatus
 
+	select*from Grupo
 
+
+	DELETE FROM Grupo WHERE IDGrupo = 16;

@@ -1,4 +1,5 @@
 ﻿using gestionescolar.BLL;
+using gestionescolar.DLL;
 using gestionescolar.Entities;
 using System;
 using System.Collections.Generic;
@@ -50,6 +51,47 @@ namespace gestionescolar.Presentation
             DataTable dataMaestros = new DataTable();
             dataMaestros = maestroBLL.ObtenerMaestros();
             gvMaestros.DataSource = dataMaestros;
+            gvMaestros.DataBind();
+        }
+
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            string textoBusqueda = txtFiltro.Text.Trim();
+
+            DataTable dtOriginal = maestroBLL.ObtenerMaestros(); //método para cargar los datos
+
+            if (!string.IsNullOrEmpty(textoBusqueda))
+            {
+                // Separar por palabras
+                string[] palabras = textoBusqueda.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                // Armar condiciones por cada palabra
+                List<string> condiciones = new List<string>();
+                foreach (string palabra in palabras)
+                {
+                    condiciones.Add($"Nombre LIKE '%{palabra}%' OR ApellidoPaterno LIKE '%{palabra}%' OR  ApellidoMaterno LIKE '%{palabra}%' OR ApellidoMaterno LIKE '%{palabra}%' OR Grupo LIKE '%{palabra}%' OR  cedulaprofesional LIKE '%{palabra}%' OR Estatus LIKE '%{palabra}%' OR PeriodoIngreso LIKE '%{palabra}%' OR PeriodoFin LIKE '%{palabra}%'");
+                }
+
+                string filtroFinal = string.Join(" AND ", condiciones);
+
+                // Filtrar el DataTable
+                DataRow[] filasFiltradas = dtOriginal.Select(filtroFinal);
+
+                if (filasFiltradas.Length > 0)
+                {
+                    DataTable dtFiltrado = filasFiltradas.CopyToDataTable();
+                    gvMaestros.DataSource = dtFiltrado;
+                }
+                else
+                {
+                    gvMaestros.DataSource = null;
+                }
+            }
+            else
+            {
+                gvMaestros.DataSource = dtOriginal; // Mostrar todo si no hay búsqueda
+            }
+
             gvMaestros.DataBind();
         }
     }

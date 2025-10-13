@@ -1,5 +1,4 @@
-﻿using gestionescolar.BLL;
-using gestionescolar.Entities;
+﻿using gestionescolar.Entities;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,15 +9,15 @@ using System.Web;
 
 namespace gestionescolar.DLL
 {
-    public class GrupoDLL
+    public class MateriaDLL
     {
         string connectionString = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
-         
-        public DataTable ObtenerGrupos()
+
+        public DataTable ObtenerMaterias()
         {
             DataTable dtRoles = new DataTable();
 
-            string query = "SELECT IDGrupo, grado, Grupo, anio FROM grupo";
+            string query = "SELECT * FROM Materia";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -29,11 +28,11 @@ namespace gestionescolar.DLL
 
             return dtRoles;
         }
-        public DataTable ObtenerGruposConID()
+        public DataTable ObtenerMateriasConID()
         {
             DataTable dtRoles = new DataTable();
 
-            string query = "SELECT * FROM grupo";
+            string query = "SELECT * FROM Materia";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -44,20 +43,19 @@ namespace gestionescolar.DLL
 
             return dtRoles;
         }
-        public string RegistrarGrupo(Entgrupo grupo)
+        public string RegistrarMateria(Entmateria Materia)
         {
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     string query = @"
-                INSERT INTO grupo (grado, Grupo, anio) 
-                VALUES (@grado, @Grupo, @anio);";
+                INSERT INTO Materia (Nombre, GradoEscolar) 
+                VALUES (@Nombre, @GradoEscolar);";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@grado", grupo.grado);
-                    cmd.Parameters.AddWithValue("@Grupo", grupo.grupo);
-                    cmd.Parameters.AddWithValue("@anio", grupo.anio);
+                    cmd.Parameters.AddWithValue("@Nombre", Materia.Nombre);
+                    cmd.Parameters.AddWithValue("@GradoEscolar", Materia.GradoEscolar);
 
                     conn.Open();
                     int filasAfectadas = cmd.ExecuteNonQuery();
@@ -68,30 +66,30 @@ namespace gestionescolar.DLL
                     }
                     else
                     {
-                        return "No se pudo registrar el grupo.";
+                        return "No se pudo registrar el Materia.";
                     }
                 }
             }
             catch (SqlException ex)
             {
-                return $"Error al registrar el grupo en la base de datos.";
+                return $"Error al registrar el Materia en la base de datos.";
             }
             catch (Exception ex)
             {
                 return $"Error inesperado: {ex.Message}";
             }
         }
-        public string EliminarGrupo(Entgrupo grupo)
+        public string EliminarMateria(Entmateria Materia)
         {
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    string query = @"DELETE FROM Grupo WHERE IDGrupo = @IdGrupo";
+                    string query = @"DELETE FROM Materia WHERE IDMateria = @IdMateria";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@IdGrupo", grupo.IDGrupo);
+                        cmd.Parameters.AddWithValue("@IdMateria", Materia.IDMateria);
 
                         conn.Open();
                         int filasAfectadas = cmd.ExecuteNonQuery();
@@ -102,20 +100,19 @@ namespace gestionescolar.DLL
                         }
                         else
                         {
-                            return "No se pudo eliminar el grupo. Puede estar referenciado en otra tabla.";
+                            return "No se pudo eliminar el Materia. Puede estar referenciado en otra tabla.";
                         }
                     }
                 }
             }
             catch (SqlException)
             {
-                return "Error al eliminar el grupo. Verifique si está relacionado con otros registros.";
+                return "Error al eliminar el Materia. Verifique si está relacionado con otros registros.";
             }
             catch (Exception ex)
             {
                 return $"Error inesperado: {ex.Message}";
             }
         }
-
     }
 }

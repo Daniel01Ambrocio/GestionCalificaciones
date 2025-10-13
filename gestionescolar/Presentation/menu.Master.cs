@@ -40,7 +40,6 @@ namespace gestionescolar.Presentation
                     misCalificaciones.Visible = false;
                     asignarCalificacion.Visible = false;
                     verCalificacionesGrupo.Visible = false;
-                    asignarGrupos.Visible = false;
                     solicitarBaja.Visible = false;
                     imprimirBoleta.Visible = false;
                     autorizarBajas.Visible = false;
@@ -49,6 +48,7 @@ namespace gestionescolar.Presentation
                     listaAlumnos.Visible = false;
                     listaMaestros.Visible = false;
                     listaAdministrativos.Visible = false;
+                    registrarMateria.Visible = false;
 
                     switch (rol)
                     {
@@ -65,7 +65,6 @@ namespace gestionescolar.Presentation
 
                         case "Administrativo":
                             registroUsuarios.Visible = true;
-                            asignarGrupos.Visible = true;
                             solicitarBaja.Visible = true;
                             imprimirBoleta.Visible = true;
                             listaGrupos.Visible = true;
@@ -73,6 +72,7 @@ namespace gestionescolar.Presentation
                             listaMaestros.Visible = true;
                             listaAdministrativos.Visible = true;
                             ListaDirectores.Visible = true;
+                            registrarMateria.Visible = true;
                             break;
 
                         case "Directivo":
@@ -80,8 +80,7 @@ namespace gestionescolar.Presentation
                             registroUsuarios.Visible = true;
                             misCalificaciones.Visible = true;
                             asignarCalificacion.Visible = true;
-                            verCalificacionesGrupo.Visible = true;
-                            asignarGrupos.Visible = true;
+                            verCalificacionesGrupo.Visible = true; 
                             solicitarBaja.Visible = true;
                             imprimirBoleta.Visible = true;
                             autorizarBajas.Visible = true;

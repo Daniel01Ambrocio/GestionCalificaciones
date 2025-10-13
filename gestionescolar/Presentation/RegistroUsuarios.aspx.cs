@@ -43,6 +43,12 @@ namespace gestionescolar.Presentation
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            string ms = Convert.ToString(Session["mensaje"]);
+            if (ms.Length > 0)
+            {
+                MostrarAlerta(ms, true);
+                Session["mensaje"] = "";
+            }
             if (!IsPostBack)
             {
                 string usuario = Convert.ToString(Session["Usuario"]);
@@ -208,8 +214,8 @@ namespace gestionescolar.Presentation
                         if (mensaje == "Registro exitoso.")
                         {
                             LimpiarFormulario();
-
-                            MostrarAlerta(mensaje, true);
+                            Session["mensaje"] = mensaje;
+                            Response.Redirect(Request.RawUrl);
                         }
                         else
                         {
