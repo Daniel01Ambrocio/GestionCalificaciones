@@ -29,6 +29,40 @@ namespace gestionescolar.DLL
 
             return dtRoles;
         }
+        public int ObtenerGradoPorIdGrupo(Entgrupo entgrupo)
+        {
+            try
+            {
+                int anio = 0;
+
+                string query = @"
+                SELECT grado 
+                FROM grupo 
+                WHERE IDGrupo = @idGrupo";
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@idGrupo", entgrupo.IDGrupo);
+
+                    conn.Open();
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null && int.TryParse(result.ToString(), out int parsedAnio))
+                    {
+                        anio = parsedAnio;
+                    }
+                }
+
+                return anio;
+            }
+            catch (SqlException ex)
+            {
+                // Puedes registrar el error aquí si tienes un sistema de logging
+                return 0;
+            }
+        }
+
         public DataTable ObtenerGruposConID()
         {
             DataTable dtRoles = new DataTable();

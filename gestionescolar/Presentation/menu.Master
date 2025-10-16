@@ -63,7 +63,7 @@
             <div class="sidebar-footer mt-auto">
                 <hr class="bg-light" />
                 <asp:HyperLink CssClass="nav-link" NavigateUrl="CambiarContrasena.aspx" Text="⚙ Cambiar contraseña" runat="server" />
-                <asp:Button ID="btnCerrarSesion" runat="server" Text="⏻ Cerrar sesión" CssClass="btn btn-light w-100 mt-2" />
+                <asp:Button ID="btnCerrarSesion" runat="server" Text="⏻ Cerrar sesión" CssClass="btn btn-light w-100 mt-2" OnClick="btnCerrarSesion_Click" />
             </div>
         </div>
 

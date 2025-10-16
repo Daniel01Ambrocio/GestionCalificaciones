@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\logo.png" />
+    <Content Include="Presentation\BienvenidaLogeado.aspx" />
     <Content Include="Presentation\index.aspx" />
     <Content Include="Presentation\ListaAdministrativos.aspx" />
     <Content Include="Presentation\ListaDirectores.aspx" />
@@ -84,6 +85,7 @@
   <ItemGroup>
     <Compile Include="BLL\AdministrativoBLL.cs" />
     <Compile Include="BLL\AlumnoBLL.cs" />
+    <Compile Include="BLL\alumnoMateriaBLL.cs" />
     <Compile Include="BLL\DirectorBLL.cs" />
     <Compile Include="BLL\GrupoBLL.cs" />
     <Compile Include="BLL\loginBLL.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="BLL\UsuarioBLL.cs" />
     <Compile Include="DLL\AdministrativoDLL.cs" />
     <Compile Include="DLL\AlumnoDLL.cs" />
+    <Compile Include="DLL\AlumnoMateriaDLL.cs" />
     <Compile Include="DLL\DirectorDLL.cs" />
     <Compile Include="DLL\GrupoDLL.cs" />
     <Compile Include="DLL\loginDLL.cs" />
@@ -104,6 +107,7 @@
     <Compile Include="DLL\UsuarioDLL.cs" />
     <Compile Include="Entities\Entadministrativo.cs" />
     <Compile Include="Entities\Entalumno.cs" />
+    <Compile Include="Entities\EntalumnoMateria.cs" />
     <Compile Include="Entities\Entdirector.cs" />
     <Compile Include="Entities\Entgrupo.cs" />
     <Compile Include="Entities\Entmaestro.cs" />
@@ -111,6 +115,13 @@
     <Compile Include="Entities\Entrol.cs" />
     <Compile Include="Entities\EntUsuario.cs" />
     <Compile Include="Entities\Estestatus.cs" />
+    <Compile Include="Presentation\BienvenidaLogeado.aspx.cs">
+      <DependentUpon>BienvenidaLogeado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentation\BienvenidaLogeado.aspx.designer.cs">
+      <DependentUpon>BienvenidaLogeado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

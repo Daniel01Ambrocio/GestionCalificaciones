@@ -27,5 +27,9 @@ namespace gestionescolar.BLL
         {
             return grupoDLL.ObtenerGruposConID();
         }
+        public int ObtenerGradoPorIdGrupo(Entgrupo entgrupo)
+        {
+            return grupoDLL.ObtenerGradoPorIdGrupo(entgrupo);
+        }
     }
 }

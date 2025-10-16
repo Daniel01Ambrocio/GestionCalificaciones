@@ -28,9 +28,12 @@ namespace gestionescolar.Presentation
         StatusBLL StatusBLL = new StatusBLL();
         GrupoBLL GrupoBLL = new GrupoBLL();
         EntUsuario entUsuario = new EntUsuario();
+        Entgrupo entgrupo = new Entgrupo();
+        MateriaBLL materiaBLL = new MateriaBLL();
+        alumnoMateriaBLL alumnoMateriaBLL = new alumnoMateriaBLL();
         private bool ValidarUsuario(string usuario, string status)
         {
-            if (usuario != "0" && status.Equals("Activo", StringComparison.OrdinalIgnoreCase))
+            if ((usuario != null && status.Equals("Activo", StringComparison.OrdinalIgnoreCase)) || status != null)
             {
                 return true;
             }
@@ -43,6 +46,14 @@ namespace gestionescolar.Presentation
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetNoStore();
+            Response.Expires = -1;
+            if (Session["Usuario"] == null)
+            {
+                // Redirigir al login si no hay sesión
+                Response.Redirect("index.aspx");
+            }
             string ms = Convert.ToString(Session["mensaje"]);
             if (ms.Length > 0)
             {
@@ -203,6 +214,39 @@ namespace gestionescolar.Presentation
                                 mensaje = "";
                                 entalumno.IDGrupo = Convert.ToInt16(ddlGrupo.SelectedValue);
                                 mensaje = alumnoBLL.RegistrarAlumno(entUsuario ,entalumno);
+                                if (mensaje == "Registro exitoso.")//Si fue exitoso, le asignamos las materias
+                                {
+                                    //Tenemos el usuario.usuario
+                                    //obtenemos la matricula del alumno
+                                    entalumno.Matricula =alumnoBLL.BuscarMatriculaByUsuario(entUsuario);
+                                    if(entalumno.Matricula != 0)
+                                    {
+                                        //Obtenemos el grado del grupo
+                                        entgrupo.IDGrupo = entalumno.IDGrupo;
+                                        entgrupo.grado = GrupoBLL.ObtenerGradoPorIdGrupo(entgrupo);
+                                        List<int> listaIdMateria = new List<int>();
+                                        listaIdMateria = materiaBLL.ObtenerMateriasPorGrado(entgrupo);
+                                        if(listaIdMateria.Count > 0)
+                                        {
+                                            //InsertamosAlumnoMateria
+                                            string validaInsert = alumnoMateriaBLL.RegistrarAlumnoMateria(listaIdMateria, entalumno);
+                                            if(validaInsert != "Registro exitoso.")
+                                            {
+                                                MostrarAlerta(validaInsert, false);
+                                            }
+                                            mensaje = validaInsert;
+
+                                        }
+                                        else
+                                        {
+                                            MostrarAlerta("No se encontraron materias.", false);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MostrarAlerta("Matricula no encontrada.", false);
+                                    }
+                                }
                             }
 
                         }

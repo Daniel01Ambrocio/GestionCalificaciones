@@ -27,5 +27,9 @@ namespace gestionescolar.BLL
         {
             return MateriaDLL.ObtenerMateriasConID();
         }
+        public List<int> ObtenerMateriasPorGrado(Entgrupo entgrupo)
+        {
+            return MateriaDLL.ObtenerMateriasPorGrado(entgrupo);
+        }
     }
 }

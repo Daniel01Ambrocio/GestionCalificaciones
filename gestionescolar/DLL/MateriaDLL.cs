@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Web;
 
@@ -28,6 +29,35 @@ namespace gestionescolar.DLL
 
             return dtRoles;
         }
+        public List<int> ObtenerMateriasPorGrado(Entgrupo entgrupo)
+        {
+            List<int> listaMaterias = new List<int>();
+            DataTable dtRoles = new DataTable();
+
+            string query = "SELECT IDMateria FROM Materia WHERE GradoEscolar = @grado";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@grado", entgrupo.grado);
+
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    da.Fill(dtRoles);
+                }
+            }
+
+            foreach (DataRow row in dtRoles.Rows)
+            {
+                if (row["IDMateria"] != DBNull.Value)
+                {
+                    listaMaterias.Add(Convert.ToInt32(row["IDMateria"]));
+                }
+            }
+
+            return listaMaterias;
+        }
+
         public DataTable ObtenerMateriasConID()
         {
             DataTable dtRoles = new DataTable();

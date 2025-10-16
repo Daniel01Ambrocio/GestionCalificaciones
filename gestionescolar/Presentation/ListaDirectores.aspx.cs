@@ -30,6 +30,14 @@ namespace gestionescolar.Presentation
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetNoStore();
+            Response.Expires = -1;
+            if (Session["Usuario"] == null)
+            {
+                // Redirigir al login si no hay sesión
+                Response.Redirect("index.aspx");
+            }
             if (!IsPostBack)
             {
                 string usuario = Convert.ToString(Session["Usuario"]);

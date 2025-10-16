@@ -71,7 +71,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Año</label>
-                                <asp:TextBox runat="server" CssClass="form-control" ID="txtAnio" />
+                                <asp:TextBox runat="server" CssClass="form-control" ID="txtAnio" TextMode="Number"/>
                             </div>
                             <asp:Button runat="server" Text="Registrar" CssClass="btn btn-primary btn-block" ID="btnRegistrar" OnClick="btnRegistrar_Click" />
                         </div>

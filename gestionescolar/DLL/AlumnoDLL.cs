@@ -77,5 +77,42 @@ namespace gestionescolar.DLL
                 return "Error de registro";
             }
         }
+        public int BuscarMatriculaByUsuario(EntUsuario entUsuario)
+        {
+            try
+            {
+                int matricula = 0;
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    string query = @"
+                SELECT a.matricula 
+                FROM Alumno AS a
+                INNER JOIN Usuario u ON u.IdUsuario = a.IDUsuario
+                WHERE u.usuario = @usuario";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@usuario", entUsuario.usuario);
+
+                        conn.Open();
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int parsedMatricula))
+                        {
+                            matricula = parsedMatricula;
+                        }
+                    }
+                }
+
+                return matricula;
+            }
+            catch (SqlException ex)
+            {
+                //error
+                return 0;
+            }
+        }
+
     }
 }

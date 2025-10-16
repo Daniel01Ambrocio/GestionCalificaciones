@@ -15,13 +15,16 @@ namespace gestionescolar.Presentation
         loginBLL loginBLL = new loginBLL();
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Evitar que el navegador almacene la página en caché
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetNoStore();
+            Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
+
             if (!IsPostBack)
             {
-                Session["Usuario"] = 0;
-                Session["UsuarioID"] = 0;
-                Session["Rol"] = 0;
-                Session["TipoUsuario"] = 0;
-                Session["Status"] = 0;
+                // Limpiar y abandonar la sesión al cargar el login
+                Session.Clear();
+                Session.Abandon();
             }
         }
 
@@ -46,9 +49,29 @@ namespace gestionescolar.Presentation
                 Session["Rol"] = rol;
                 Session["TipoUsuario"] = tipoUsuario;
                 Session["Status"] = status;
+                switch (rol)
+                {
+                    case "Alumno":
+                        // Redireccionar 
+                        Response.Redirect("BienvenidaLogeado.aspx");
+                        break;
+                    case "Maestro":
+                        // Redireccionar 
+                        Response.Redirect("BienvenidaLogeado.aspx");
+                        break;
+                    case "Administrativo":
+                        // Redireccionar 
+                        Response.Redirect("BienvenidaLogeado.aspx");
+                        break;
+                    case "Director":
+                        // Redireccionar 
+                        Response.Redirect("BienvenidaLogeado.aspx");
+                        break;
 
-                // Redireccionar 
-                Response.Redirect("RegistroUsuarios.aspx");
+
+
+                }
+                
             }
             else
             {

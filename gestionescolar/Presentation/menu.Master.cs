@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -11,7 +12,7 @@ namespace gestionescolar.Presentation
     {
         private bool ValidarUsuario(string usuario, string status)
         {
-            if (usuario != "0" && status.Equals("Activo", StringComparison.OrdinalIgnoreCase))
+            if ((usuario != null && status=="Activo")  || status != null)
             {
                 return true;
             }
@@ -24,6 +25,14 @@ namespace gestionescolar.Presentation
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetNoStore();
+            Response.Expires = -1;
+            if (Session["Usuario"] == null)
+            {
+                // Redirigir al login si no hay sesión
+                Response.Redirect("index.aspx");
+            }
             if (!IsPostBack)
             {
                 string usuario = Convert.ToString(Session["Usuario"]);
@@ -49,6 +58,7 @@ namespace gestionescolar.Presentation
                     listaMaestros.Visible = false;
                     listaAdministrativos.Visible = false;
                     registrarMateria.Visible = false;
+                    ListaDirectores.Visible = false;
 
                     switch (rol)
                     {
@@ -100,6 +110,22 @@ namespace gestionescolar.Presentation
 
             }
         }
-        
+
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            // Cierra la sesión del usuario autenticado
+            FormsAuthentication.SignOut();
+
+            Session.Clear();
+            Session.Abandon();
+
+            // Evita que se use el historial para volver
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetNoStore();
+            Response.Cache.SetExpires(DateTime.UtcNow.AddSeconds(-1));
+
+            HttpContext.Current.Response.Redirect("index.aspx", false);
+            HttpContext.Current.ApplicationInstance.CompleteRequest();
+        }
     }
 }
