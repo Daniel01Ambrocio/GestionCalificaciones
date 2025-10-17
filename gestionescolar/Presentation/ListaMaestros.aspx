@@ -13,11 +13,11 @@
         <div id="contform">
             <!-- Filtros -->
             <div class="row mb-3">
-                <div class="col-md-4">
-                    <asp:TextBox runat="server" CssClass="form-control" ID="txtFiltro" placeholder="Filtrar..." />
-                </div>
-                <div class="col-12 mt-2">
-                    <asp:Button runat="server" Text="Filtrar" CssClass="btn btn-primary" ID="btnFiltrar" />
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <asp:TextBox runat="server" CssClass="form-control" ID="txtFiltro" placeholder="Filtrar..." />
+                        <asp:Button runat="server" Text="Filtrar" CssClass="btn btn-primary" ID="btnFiltrar" OnClick="btnFiltrar_Click" />
+                    </div>
                 </div>
             </div>
 

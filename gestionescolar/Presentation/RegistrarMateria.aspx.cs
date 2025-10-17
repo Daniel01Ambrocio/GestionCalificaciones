@@ -1,21 +1,19 @@
 ﻿using gestionescolar.BLL;
-using gestionescolar.DLL;
 using gestionescolar.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
-using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace gestionescolar.Presentation
 {
-    public partial class RegistrarVerGrupos : System.Web.UI.Page
+    public partial class RegistrarMateria : System.Web.UI.Page
     {
-        GrupoBLL grupoBLL = new GrupoBLL();
-        Entgrupo entgrupo = new Entgrupo();
+        MateriaBLL materiaBLL = new MateriaBLL();
+        Entmateria entmateria = new Entmateria();
         private bool ValidarUsuario(string usuario, string status)
         {
             if (usuario != "0" && status.Equals("Activo", StringComparison.OrdinalIgnoreCase))
@@ -53,7 +51,7 @@ namespace gestionescolar.Presentation
                 if (v)
                 {
                     LimpiarFormulario();
-                    MostrarGrupos();
+                    MostrarMaterias();
                 }
                 else
                 {
@@ -61,13 +59,13 @@ namespace gestionescolar.Presentation
                 }
 
             }
-        } 
-        public void MostrarGrupos()
+        }
+        public void MostrarMaterias()
         {
-            DataTable dataGrupos = new DataTable();
-            dataGrupos = grupoBLL.ObtenerGrupos();
-            gvGrupos.DataSource = dataGrupos;
-            gvGrupos.DataBind();
+            DataTable dataMaterias = new DataTable();
+            dataMaterias = materiaBLL.ObtenerMaterias();
+            gvMaterias.DataSource = dataMaterias;
+            gvMaterias.DataBind();
         }
 
 
@@ -100,22 +98,20 @@ namespace gestionescolar.Presentation
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
             string mensaje = "";
-            if (string.IsNullOrWhiteSpace(txtAnio.Text) ||
-                string.IsNullOrWhiteSpace(txtGrado.Text) ||
-                string.IsNullOrWhiteSpace(txtGrupo.Text))
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                string.IsNullOrWhiteSpace(txtGradoEscolar.Text))
             {
                 MostrarAlerta("Todos los campos deben estar llenos.", false);
             }
             else
             {
-                entgrupo.grupo = txtGrupo.Text;
-                entgrupo.grado=Convert.ToInt16(txtGrado.Text);
-                entgrupo.anio = Convert.ToInt16(txtAnio.Text);
-                mensaje = grupoBLL.RegistrarGrupo(entgrupo);
+                entmateria.Nombre = txtNombre.Text;
+                entmateria.GradoEscolar = Convert.ToInt16(txtGradoEscolar.Text);
+                mensaje = materiaBLL.RegistrarMateria(entmateria);
                 if (mensaje == "Registro exitoso.")
                 {
                     LimpiarFormulario();
-                    MostrarGrupos();
+                    MostrarMaterias();
                     Session["mensaje"] = mensaje;
                     Response.Redirect(Request.RawUrl);
                 }
@@ -125,17 +121,17 @@ namespace gestionescolar.Presentation
                 }
             }
 
-            entgrupo = new Entgrupo();
+            entmateria = new Entmateria();
         }
-        protected void gvGrupos_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void gvMaterias_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             string mensaje = "";
-            entgrupo.IDGrupo = Convert.ToInt32(gvGrupos.DataKeys[e.RowIndex].Value);
-            mensaje = grupoBLL.EliminarGrupo(entgrupo);
+            entmateria.IDMateria = Convert.ToInt32(gvMaterias.DataKeys[e.RowIndex].Value);
+            mensaje = materiaBLL.EliminarMateria(entmateria);
             if (mensaje == "Eliminación exitosa.")
             {
                 LimpiarFormulario();
-                MostrarGrupos();
+                MostrarMaterias();
                 Session["mensaje"] = mensaje;
                 Response.Redirect(Request.RawUrl);
             }
@@ -147,16 +143,15 @@ namespace gestionescolar.Presentation
 
         private void LimpiarFormulario()
         {
-            txtGrado.Text = "";
-            txtGrupo.Text = "";
-            txtAnio.Text = "";
+            txtNombre.Text = "";
+            txtGradoEscolar.Text = "";
         }
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
             string textoBusqueda = txtFiltro.Text.Trim();
 
-            DataTable dtOriginal = grupoBLL.ObtenerGrupos(); // Tu método para cargar los grupos
+            DataTable dtOriginal = materiaBLL.ObtenerMaterias(); // Tu método para cargar los Materias
 
             if (!string.IsNullOrEmpty(textoBusqueda))
             {
@@ -167,7 +162,7 @@ namespace gestionescolar.Presentation
                 List<string> condiciones = new List<string>();
                 foreach (string palabra in palabras)
                 {
-                    condiciones.Add($"(CONVERT(Grado, System.String) LIKE '%{palabra}%' OR Grupo LIKE '%{palabra}%' OR CONVERT(anio, System.String) LIKE '%{palabra}%')");
+                    condiciones.Add($"(CONVERT(GradoEscolar, System.String) LIKE '%{palabra}%' OR Nombre LIKE '%{palabra}%')");
                 }
 
                 string filtroFinal = string.Join(" AND ", condiciones);
@@ -178,19 +173,19 @@ namespace gestionescolar.Presentation
                 if (filasFiltradas.Length > 0)
                 {
                     DataTable dtFiltrado = filasFiltradas.CopyToDataTable();
-                    gvGrupos.DataSource = dtFiltrado;
+                    gvMaterias.DataSource = dtFiltrado;
                 }
                 else
                 {
-                    gvGrupos.DataSource = null;
+                    gvMaterias.DataSource = null;
                 }
             }
             else
             {
-                gvGrupos.DataSource = dtOriginal; // Mostrar todo si no hay búsqueda
+                gvMaterias.DataSource = dtOriginal; // Mostrar todo si no hay búsqueda
             }
 
-            gvGrupos.DataBind();
+            gvMaterias.DataBind();
         }
     }
 }

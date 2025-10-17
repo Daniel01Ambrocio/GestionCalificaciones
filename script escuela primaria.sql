@@ -88,11 +88,17 @@ CREATE TABLE Calificacion (
     Parcial2 DECIMAL(5,2) CHECK (Parcial2 BETWEEN 0 AND 10),
     Parcial3 DECIMAL(5,2) CHECK (Parcial3 BETWEEN 0 AND 10),
     Parcial4 DECIMAL(5,2) CHECK (Parcial4 BETWEEN 0 AND 10),
-    Promedio AS ((Parcial1 + Parcial2 + Parcial3 + Parcial4) / 4.0) PERSISTED,
+    Promedio Decimal,
     FOREIGN KEY (IDAlumnoMateria) REFERENCES AlumnoMateria(IDAlumnoMateria)
 );
-
-
+  SELECT 
+        u.Nombre, 
+        al.matricula, 
+        m.Nombre as materia
+    FROM Usuario u
+    INNER JOIN alumno al ON al.IDUsuario = u.IdUsuario
+    INNER JOIN AlumnoMateria am ON am.Matricula = al.Matricula
+	inner join materia m on m.IDMateria = am.IDMateria
 
 
 -- Insertar roles: Alumno, Maestro, Administrativo, Director
@@ -164,4 +170,7 @@ WHERE u.usuario = 'AD1'
     INNER JOIN Grupo g ON m.IDGrupo = g.IDGrupo
     INNER JOIN Estatus e ON u.IDStatus = e.IDStatus
 
+	select*from Grupo
 
+
+	DELETE FROM Grupo WHERE IDGrupo = 16;

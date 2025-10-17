@@ -15,6 +15,10 @@ namespace gestionescolar.BLL
         {
             return grupoDLL.RegistrarGrupo(grupo);
         }
+        public string EliminarGrupo(Entgrupo grupo)
+        {
+            return grupoDLL.EliminarGrupo(grupo);
+        }
         public DataTable ObtenerGrupos()
         {
             return grupoDLL.ObtenerGrupos();
@@ -22,6 +26,10 @@ namespace gestionescolar.BLL
         public DataTable ObtenerGruposConID()
         {
             return grupoDLL.ObtenerGruposConID();
+        }
+        public int ObtenerGradoPorIdGrupo(Entgrupo entgrupo)
+        {
+            return grupoDLL.ObtenerGradoPorIdGrupo(entgrupo);
         }
     }
 }

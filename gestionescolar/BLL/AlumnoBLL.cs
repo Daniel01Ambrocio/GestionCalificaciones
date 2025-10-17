@@ -35,6 +35,10 @@ namespace gestionescolar.BLL
                 }
             }
         }
+        public int BuscarMatriculaByUsuario(EntUsuario entUsuario)
+        {
+            return alumnoDLL.BuscarMatriculaByUsuario(entUsuario);
+        }
         public DataTable ObtenerAlumnos()
         {
             return alumnoDLL.ObtenerAlumnos();

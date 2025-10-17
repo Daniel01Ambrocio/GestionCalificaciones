@@ -10,6 +10,6 @@ namespace gestionescolar.Entities
         public int IDGrupo { get; set; }
         public int grado { get; set; }
         public string grupo{ get; set; }
-        public string anio { get; set; }
+        public int anio { get; set; }
     }
 }
