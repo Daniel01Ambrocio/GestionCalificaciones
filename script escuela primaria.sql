@@ -91,14 +91,19 @@ CREATE TABLE Calificacion (
     Promedio Decimal,
     FOREIGN KEY (IDAlumnoMateria) REFERENCES AlumnoMateria(IDAlumnoMateria)
 );
+
+
   SELECT 
-        u.Nombre, 
-        al.matricula, 
-        m.Nombre as materia
-    FROM Usuario u
-    INNER JOIN alumno al ON al.IDUsuario = u.IdUsuario
-    INNER JOIN AlumnoMateria am ON am.Matricula = al.Matricula
+        m.Nombre, 
+        c.Parcial1,
+		c.Parcial2,
+		c.Parcial3,
+		c.Parcial4
+    FROM alumno al
+    INNER JOIN AlumnoMateria am ON al.Matricula = am.Matricula
+    INNER JOIN Calificacion c ON c.IDAlumnoMateria = am.IDAlumnoMateria
 	inner join materia m on m.IDMateria = am.IDMateria
+	where al.IDUsuario = 14
 
 
 -- Insertar roles: Alumno, Maestro, Administrativo, Director
@@ -140,7 +145,7 @@ INSERT INTO Administrativo (IDUsuario)
 VALUES (2);
 
 select*from Director
-select*from Maestro
+select*from materia
 select*from Usuario
 select*from Estatus
 
