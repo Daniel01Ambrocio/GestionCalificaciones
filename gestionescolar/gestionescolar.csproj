@@ -74,6 +74,7 @@
     <Content Include="Presentation\ListaDirectores.aspx" />
     <Content Include="Presentation\ListaEditAlumnos.aspx" />
     <Content Include="Presentation\ListaMaestros.aspx" />
+    <Content Include="Presentation\MisCalificaciones.aspx" />
     <Content Include="Presentation\RegistrarMateria.aspx" />
     <Content Include="Presentation\RegistrarVerGrupos.aspx" />
     <Content Include="Presentation\RegistroUsuarios.aspx" />
@@ -163,6 +164,13 @@
     </Compile>
     <Compile Include="Presentation\menu.Master.designer.cs">
       <DependentUpon>menu.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\MisCalificaciones.aspx.cs">
+      <DependentUpon>MisCalificaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentation\MisCalificaciones.aspx.designer.cs">
+      <DependentUpon>MisCalificaciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentation\RegistrarMateria.aspx.cs">
       <DependentUpon>RegistrarMateria.aspx</DependentUpon>

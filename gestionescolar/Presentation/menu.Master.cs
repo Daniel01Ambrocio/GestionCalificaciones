@@ -58,7 +58,7 @@ namespace gestionescolar.Presentation
                     listaMaestros.Visible = false;
                     listaAdministrativos.Visible = false;
                     registrarMateria.Visible = false;
-                    ListaDirectores.Visible = false;
+                    ListaDirectoresV.Visible = false;
 
                     switch (rol)
                     {
@@ -81,7 +81,7 @@ namespace gestionescolar.Presentation
                             listaAlumnos.Visible = true;
                             listaMaestros.Visible = true;
                             listaAdministrativos.Visible = true;
-                            ListaDirectores.Visible = true;
+                            ListaDirectoresV.Visible = true;
                             registrarMateria.Visible = true;
                             break;
 
@@ -99,7 +99,7 @@ namespace gestionescolar.Presentation
                             listaAlumnos.Visible = true;
                             listaMaestros.Visible = true;
                             listaAdministrativos.Visible = true;
-                            ListaDirectores.Visible = true;
+                            ListaDirectoresV.Visible = true;
                             break;
                     }
                 }

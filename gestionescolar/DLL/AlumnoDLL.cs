@@ -113,6 +113,37 @@ namespace gestionescolar.DLL
                 return 0;
             }
         }
+        public DataTable MostrarCalificaciones(Entalumno entalumno)
+        {
+            DataTable dtCalificaciones = new DataTable();
+
+            string query = @"
+        SELECT 
+            m.Nombre, 
+            c.Parcial1,
+            c.Parcial2,
+            c.Parcial3,
+            c.Parcial4,
+            c.Promedio
+        FROM alumno al
+        INNER JOIN AlumnoMateria am ON al.Matricula = am.Matricula
+        INNER JOIN Calificacion c ON c.IDAlumnoMateria = am.IDAlumnoMateria
+        INNER JOIN Materia m ON m.IDMateria = am.IDMateria
+        WHERE al.IDUsuario = @IDUsuario";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@IDUsuario", entalumno.IDUsuario);
+
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    da.Fill(dtCalificaciones);
+                }
+            }
+
+            return dtCalificaciones;
+        }
 
     }
 }

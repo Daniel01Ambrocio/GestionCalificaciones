@@ -168,13 +168,13 @@ namespace gestionescolar.Presentation
         protected global::System.Web.UI.WebControls.HyperLink listaAdministrativos;
 
         /// <summary>
-        /// Control ListaDirectores.
+        /// Control ListaDirectoresV.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink ListaDirectores;
+        protected global::System.Web.UI.WebControls.HyperLink ListaDirectoresV;
 
         /// <summary>
         /// Control btnCerrarSesion.
