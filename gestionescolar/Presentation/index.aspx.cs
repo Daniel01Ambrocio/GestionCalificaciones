@@ -31,7 +31,7 @@ namespace gestionescolar.Presentation
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             string usuario = txtUsuario.Text.Trim();
-            string pass = HashPassword(txtPassword.Text.Trim()); // Suponiendo que ya tienes hashing implementado
+            string pass = HashPassword(txtPassword.Text.Trim()); // Hasheamos la contraseña
 
             var resultado = loginBLL.InicioSesion(usuario, pass);
 

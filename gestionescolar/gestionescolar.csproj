@@ -106,6 +106,7 @@
     <Compile Include="DLL\RolDLL.cs" />
     <Compile Include="DLL\StatusDLL.cs" />
     <Compile Include="DLL\UsuarioDLL.cs" />
+    <Compile Include="Entities\Calificacion.cs" />
     <Compile Include="Entities\Entadministrativo.cs" />
     <Compile Include="Entities\Entalumno.cs" />
     <Compile Include="Entities\EntalumnoMateria.cs" />

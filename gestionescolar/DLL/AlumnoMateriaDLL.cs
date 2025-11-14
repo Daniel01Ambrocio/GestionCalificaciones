@@ -21,21 +21,32 @@ namespace gestionescolar.DLL
 
                     foreach (int idMateria in listaIdMateria)
                     {
-                        string query = @"
+                        // 1️⃣ Insertar AlumnoMateria
+                        string queryAlumnoMateria = @"
                     INSERT INTO AlumnoMateria (Matricula, IDMateria)
-                    VALUES (@Matricula, @IDMateria);";
+                    VALUES (@Matricula, @IDMateria);
+                    SELECT SCOPE_IDENTITY();"; // Obtener el ID generado
 
-                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        int nuevoIDAlumnoMateria;
+
+                        using (SqlCommand cmd = new SqlCommand(queryAlumnoMateria, conn))
                         {
                             cmd.Parameters.AddWithValue("@Matricula", entalumno.Matricula);
                             cmd.Parameters.AddWithValue("@IDMateria", idMateria);
 
-                            int filasAfectadas = cmd.ExecuteNonQuery();
+                            // Ejecutar y obtener el ID generado
+                            nuevoIDAlumnoMateria = Convert.ToInt32(cmd.ExecuteScalar());
+                        }
 
-                            if (filasAfectadas <= 0)
-                            {
-                                return $"No se pudo registrar la materia con ID {idMateria} para el alumno.";
-                            }
+                        // 2️⃣ Insertar calificaciones iniciales en 0
+                        string queryCalificacion = @"
+                    INSERT INTO Calificacion (IDAlumnoMateria, Parcial1, Parcial2, Parcial3, Parcial4, Promedio)
+                    VALUES (@IDAlumnoMateria, 0, 0, 0, 0, 0);";
+
+                        using (SqlCommand cmdCal = new SqlCommand(queryCalificacion, conn))
+                        {
+                            cmdCal.Parameters.AddWithValue("@IDAlumnoMateria", nuevoIDAlumnoMateria);
+                            cmdCal.ExecuteNonQuery();
                         }
                     }
 
@@ -44,13 +55,12 @@ namespace gestionescolar.DLL
             }
             catch (SqlException ex)
             {
-                return "Error al registrar el Materia en la base de datos.";
+                return "Error al registrar la materia en la base de datos: " + ex.Message;
             }
             catch (Exception ex)
             {
                 return $"Error inesperado: {ex.Message}";
             }
         }
-
     }
 }

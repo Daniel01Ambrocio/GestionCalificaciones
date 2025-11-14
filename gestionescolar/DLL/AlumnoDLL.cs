@@ -118,18 +118,19 @@ namespace gestionescolar.DLL
             DataTable dtCalificaciones = new DataTable();
 
             string query = @"
-        SELECT 
-            m.Nombre, 
-            c.Parcial1,
-            c.Parcial2,
-            c.Parcial3,
-            c.Parcial4,
-            c.Promedio
-        FROM alumno al
-        INNER JOIN AlumnoMateria am ON al.Matricula = am.Matricula
-        INNER JOIN Calificacion c ON c.IDAlumnoMateria = am.IDAlumnoMateria
-        INNER JOIN Materia m ON m.IDMateria = am.IDMateria
-        WHERE al.IDUsuario = @IDUsuario";
+                SELECT 
+                    m.Nombre + ' ' + CAST(m.GradoEscolar AS VARCHAR(10)) AS Nombre,
+                    c.Parcial1,
+                    c.Parcial2,
+                    c.Parcial3,
+                    c.Parcial4,
+                    c.Promedio
+                FROM Alumno al
+                INNER JOIN AlumnoMateria am ON al.Matricula = am.Matricula
+                INNER JOIN Calificacion c ON c.IDAlumnoMateria = am.IDAlumnoMateria
+                INNER JOIN Materia m ON m.IDMateria = am.IDMateria
+                WHERE al.IDUsuario = @IDUsuario;
+                ";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))

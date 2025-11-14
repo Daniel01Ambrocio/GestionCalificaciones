@@ -421,7 +421,7 @@ namespace gestionescolar.Presentation
                 return "La contraseña debe contener al menos un número.";
             }
 
-            // Validar al menos uno de los símbolos permitidos: _ @ 6
+            // Validar al menos uno de los símbolos permitidos: _ @ &
             if (!contra.Contains("_") && !contra.Contains("@") && !contra.Contains("&"))
             {
                 return "La contraseña debe contener al menos uno de los siguientes símbolos: _, @, &";

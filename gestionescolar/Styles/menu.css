@@ -1,93 +1,27 @@
-﻿/* menu.css */
-
-/* Estructura del layout */
-body, html {
-    height: 100%;
-    margin: 0;
-}
-.logo{
-    height: 40%;
-    width: auto;
-}
-form {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-}
-
-/* Sidebar (menú lateral) */
+﻿/* Solo colores y hover del menú */
 .sidebar {
-    width: 250px;
-    min-width: 250px;
     background-color: #0d6efd; /* Azul Bootstrap */
     color: white;
-    padding: 20px 15px;
-    height: 100vh;
-    position: fixed;
-    overflow-y: auto;
 }
-
-    .sidebar .logo {
-        max-width: 70%;
-        height: auto;
-        margin-bottom: 20px;
-    }
-
-    .sidebar .user-info {
-        margin-bottom: 20px;
-        font-size: 0.9rem;
-    }
 
     .sidebar .nav-link {
         color: white;
-        padding: 10px;
-        margin: 5px 0;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-        font-size: 0.95rem;
+        transition: all 0.2s ease;
     }
 
         .sidebar .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: #ffffff;
+            color: #0d6efd !important;
             text-decoration: none;
         }
 
-.sidebar-footer {
-    margin-top: auto;
-    font-size: 0.9rem;
+.sidebar-footer .btn {
+    background-color: white;
+    color: #0d6efd;
+    border: none;
+    transition: all 0.2s ease;
 }
 
-    /* Botón cerrar sesión */
-    .sidebar-footer .btn {
-        background-color: white;
-        color: #0d6efd;
-        border: none;
+    .sidebar-footer .btn:hover {
+        background-color: #e6e6e6;
     }
-
-        .sidebar-footer .btn:hover {
-            background-color: #e6e6e6;
-        }
-
-/* Contenido principal */
-.main-content {
-    margin-left: 250px;
-    padding: 20px;
-    width: 100%;
-}
-
-/* Responsivo para pantallas pequeñas */
-@media (max-width: 768px) {
-    form {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
-
-    .main-content {
-        margin-left: 0;
-    }
-}

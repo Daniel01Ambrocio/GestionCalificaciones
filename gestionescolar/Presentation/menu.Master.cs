@@ -69,7 +69,6 @@ namespace gestionescolar.Presentation
                         case "Maestro":
                             asignarCalificacion.Visible = true;
                             verCalificacionesGrupo.Visible = true;
-                            listaGrupos.Visible = true;
                             listaAlumnos.Visible = true;
                             break;
 

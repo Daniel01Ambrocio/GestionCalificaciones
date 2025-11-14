@@ -92,6 +92,27 @@ CREATE TABLE Calificacion (
     FOREIGN KEY (IDAlumnoMateria) REFERENCES AlumnoMateria(IDAlumnoMateria)
 );
 
+-- Trigger que inserta calificaciones en 0 al crear un nuevo AlumnoMateria
+CREATE TRIGGER trg_InsertCalificacion
+ON AlumnoMateria
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Insertar calificaciones en 0 para cada nuevo AlumnoMateria
+    INSERT INTO Calificacion (IDAlumnoMateria, Parcial1, Parcial2, Parcial3, Parcial4, Promedio)
+    SELECT 
+        IDAlumnoMateria,
+        0, -- Parcial1
+        0, -- Parcial2
+        0, -- Parcial3
+        0, -- Parcial4
+        0  -- Promedio
+    FROM INSERTED;
+END;
+GO
+
 
   SELECT 
         m.Nombre, 
@@ -175,7 +196,9 @@ WHERE u.usuario = 'AD1'
     INNER JOIN Grupo g ON m.IDGrupo = g.IDGrupo
     INNER JOIN Estatus e ON u.IDStatus = e.IDStatus
 
-	select*from Grupo
+	select*from Usuario
+	select*from Alumno
 
-
-	DELETE FROM Grupo WHERE IDGrupo = 16;
+--Aasdfg@1
+UPDATE Usuario
+SET Contrasena = '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce';
