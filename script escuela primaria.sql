@@ -2,6 +2,7 @@ create database escuelaBD
 
 use escuelaBD
 
+
 CREATE TABLE Rol (
     IDROL INT IDENTITY(1,1) PRIMARY KEY,
     nombreRol VARCHAR(15)
@@ -91,50 +92,12 @@ CREATE TABLE Calificacion (
     Promedio Decimal,
     FOREIGN KEY (IDAlumnoMateria) REFERENCES AlumnoMateria(IDAlumnoMateria)
 );
-
--- Trigger que inserta calificaciones en 0 al crear un nuevo AlumnoMateria
-CREATE TRIGGER trg_InsertCalificacion
-ON AlumnoMateria
-AFTER INSERT
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    -- Insertar calificaciones en 0 para cada nuevo AlumnoMateria
-    INSERT INTO Calificacion (IDAlumnoMateria, Parcial1, Parcial2, Parcial3, Parcial4, Promedio)
-    SELECT 
-        IDAlumnoMateria,
-        0, -- Parcial1
-        0, -- Parcial2
-        0, -- Parcial3
-        0, -- Parcial4
-        0  -- Promedio
-    FROM INSERTED;
-END;
-GO
-
-
-  SELECT 
-        m.Nombre, 
-        c.Parcial1,
-		c.Parcial2,
-		c.Parcial3,
-		c.Parcial4
-    FROM alumno al
-    INNER JOIN AlumnoMateria am ON al.Matricula = am.Matricula
-    INNER JOIN Calificacion c ON c.IDAlumnoMateria = am.IDAlumnoMateria
-	inner join materia m on m.IDMateria = am.IDMateria
-	where al.IDUsuario = 14
-
+ 
+ 
 
 -- Insertar roles: Alumno, Maestro, Administrativo, Director
 INSERT INTO rol (nombreRol) VALUES ('Alumno'), ('Maestro'), ('Administrativo'), ('Director');
-
--- Insertar grupos
-INSERT INTO grupo (grado, Grupo, anio) VALUES
-(1, 'A', '2023'),
-(2, 'B', '2023'),
-(3, 'C', '2023');
+ 
 
 -- Estatus como "Activo", "Inactivo", "Egresado", etc.
 INSERT INTO estatus (descripcion) VALUES ('Activo'), ('Inactivo'), ('Egresado');
@@ -154,8 +117,8 @@ VALUES (
     'AdminNombre',
     'AdminApellidoP',
     'AdminApellidoM',
-    'AD2',
-    '00d0c504f03e06a06d03e0540fe08304001c0c306f0e006b0730ca05c0730320390e308b02b08901008b006051019048', -- Idealmente esta contraseña debería estar hasheada
+    'AD1',
+    '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce', -- Idealmente esta contraseña debería estar hasheada
     '2025-10-01',
     '2026-10-01', -- PeriodoFin NULL indica que sigue activo
     1,    -- Suponiendo que 1 es "Activo" en la tabla estatus
@@ -163,42 +126,10 @@ VALUES (
 );
 
 INSERT INTO Administrativo (IDUsuario)
-VALUES (2);
-
-select*from Director
-select*from materia
-select*from Usuario
-select*from Estatus
-
-SELECT 
-    u.IdUsuario,
-    e.descripcion AS StatusDescripcion,
-    r.nombreRol AS NombreRol
-FROM Usuario u
-INNER JOIN Estatus e ON u.IDStatus = e.IDStatus
-INNER JOIN Rol r ON u.IDROL = r.IDROL
-WHERE u.usuario = 'AD1' 
-  AND u.contrasena = '0d50be08600f0270ec0f109604f0910ef09e0400d104402d0870510ce0a905d0d80f805100d07300e08a0b80fe0170c3';
-
-  select*from Alumno
-
-  SELECT 
-        u.Nombre, 
-        u.ApellidoPaterno, 
-        u.ApellidoMaterno, 
-        (CAST(g.grado AS VARCHAR) + '-' + g.grupo + '-' + g.anio) AS Grupo,
-        m.cedulaprofesional,
-        e.descripcion as Estatus, 
-        u.PeriodoIngreso, 
-        u.PeriodoFin
-    FROM Maestro m
-    INNER JOIN Usuario u ON m.IDUsuario = u.IDUsuario
-    INNER JOIN Grupo g ON m.IDGrupo = g.IDGrupo
-    INNER JOIN Estatus e ON u.IDStatus = e.IDStatus
-
-	select*from Usuario
-	select*from Alumno
+VALUES (1);
 
 --Aasdfg@1
 UPDATE Usuario
 SET Contrasena = '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce';
+
+select*from Usuario

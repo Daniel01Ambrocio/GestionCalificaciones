@@ -84,10 +84,10 @@ namespace gestionescolar.Presentation
                             registrarMateria.Visible = true;
                             break;
 
-                        case "Directivo":
+                        case "Director":
                             // Ver todo
                             registroUsuarios.Visible = true;
-                            misCalificaciones.Visible = true;
+                            misCalificaciones.Visible = false;
                             asignarCalificacion.Visible = true;
                             verCalificacionesGrupo.Visible = true; 
                             solicitarBaja.Visible = true;
@@ -106,7 +106,6 @@ namespace gestionescolar.Presentation
                 {
                     Response.Redirect("index.aspx");
                 }
-
             }
         }
 
