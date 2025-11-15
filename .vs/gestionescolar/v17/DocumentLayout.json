@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\danie\\documents\\d\\gestioncalificaciones\\gestionescolar\\styles\\menu.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\styles\\menu.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\danie\\documents\\d\\gestioncalificaciones\\gestionescolar\\presentation\\cambiarcontrasena.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\cambiarcontrasena.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\danie\\documents\\d\\gestioncalificaciones\\gestionescolar\\presentation\\cambiarcontrasena.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\cambiarcontrasena.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\danie\\documents\\d\\gestioncalificaciones\\gestionescolar\\presentation\\menu.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
@@ -23,19 +27,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "menu.css",
-              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Styles\\menu.css",
-              "RelativeDocumentMoniker": "gestionescolar\\Styles\\menu.css",
-              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Styles\\menu.css",
-              "RelativeToolTip": "gestionescolar\\Styles\\menu.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-11-15T17:21:59.661Z",
+              "Title": "CambiarContrasena.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\CambiarContrasena.aspx.cs",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\CambiarContrasena.aspx.cs",
+              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\CambiarContrasena.aspx.cs",
+              "RelativeToolTip": "gestionescolar\\Presentation\\CambiarContrasena.aspx.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAswCwAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T17:41:51.76Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "CambiarContrasena.aspx",
+              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\CambiarContrasena.aspx",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\CambiarContrasena.aspx",
+              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\CambiarContrasena.aspx",
+              "RelativeToolTip": "gestionescolar\\Presentation\\CambiarContrasena.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-15T17:39:43.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "menu.Master",
               "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\menu.Master",
               "RelativeDocumentMoniker": "gestionescolar\\Presentation\\menu.Master",
@@ -43,7 +60,7 @@
               "RelativeToolTip": "gestionescolar\\Presentation\\menu.Master",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-15T17:20:03.775Z",
+              "WhenOpened": "2025-11-15T17:38:56.225Z",
               "EditorCaption": ""
             }
           ]
