@@ -33,26 +33,29 @@ namespace gestionescolar.Presentation
         alumnoMateriaBLL alumnoMateriaBLL = new alumnoMateriaBLL();
         private bool ValidarUsuario(string usuario, string status)
         {
-            if ((usuario != null && status.Equals("Activo", StringComparison.OrdinalIgnoreCase)) || status != null)
+            if (usuario != null && (status == "Activo" || status == "Egresado"))
             {
                 return true;
             }
             else
             {
                 return false;
-                
+
             }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Evitar caché del navegador
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Cache.SetNoStore();
-            Response.Expires = -1;
+            Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
+            Response.Cache.SetValidUntilExpires(false);
+
+            // Verificar si hay sesión activa
             if (Session["Usuario"] == null)
             {
-                // Redirigir al login si no hay sesión
-                Response.Redirect("index.aspx");
+                Response.Redirect("index.aspx");   // tu página de login
             }
             string ms = Convert.ToString(Session["mensaje"]);
             if (ms.Length > 0)

@@ -16,7 +16,7 @@ namespace gestionescolar.Presentation
         AlumnoBLL alumnoBLL = new AlumnoBLL();
         private bool ValidarUsuario(string usuario, string status)
         {
-            if (usuario != "0" && status.Equals("Activo", StringComparison.OrdinalIgnoreCase))
+            if (usuario != null && (status == "Activo" || status == "Egresado"))
             {
                 return true;
             }
@@ -29,15 +29,17 @@ namespace gestionescolar.Presentation
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Evitar caché del navegador
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Cache.SetNoStore();
-            Response.Expires = -1;
+            Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
+            Response.Cache.SetValidUntilExpires(false);
+
+            // Verificar si hay sesión activa
             if (Session["Usuario"] == null)
             {
-                // Redirigir al login si no hay sesión
-                Response.Redirect("index.aspx");
+                Response.Redirect("index.aspx");   // tu página de login
             }
-             
             if (!IsPostBack)
             {
                 string usuario = Convert.ToString(Session["Usuario"]);

@@ -12,7 +12,7 @@ namespace gestionescolar.Presentation
     {
         private bool ValidarUsuario(string usuario, string status)
         {
-            if ((usuario != null && status=="Activo")  || status != null)
+            if (usuario != null && (status == "Activo" || status == "Egresado"))
             {
                 return true;
             }
@@ -25,13 +25,17 @@ namespace gestionescolar.Presentation
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Evitar caché del navegador
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Cache.SetNoStore();
-            Response.Expires = -1;
+            Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
+            Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
+            Response.Cache.SetNoServerCaching();
+
+            // Verificar si hay sesión activa
             if (Session["Usuario"] == null)
             {
-                // Redirigir al login si no hay sesión
-                Response.Redirect("index.aspx");
+                Response.Redirect("index.aspx");   // página de login
             }
             if (!IsPostBack)
             {
@@ -111,19 +115,30 @@ namespace gestionescolar.Presentation
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            // Cierra la sesión del usuario autenticado
+            // 1. Cerrar sesión de Forms Authentication
             FormsAuthentication.SignOut();
 
+            // 2. Abandonar la sesión actual
             Session.Clear();
             Session.Abandon();
 
-            // Evita que se use el historial para volver
+            // 3. Eliminar cookies de sesión y autenticación
+            if (Request.Cookies["ASP.NET_SessionId"] != null)
+            {
+                Response.Cookies["ASP.NET_SessionId"].Expires = DateTime.Now.AddDays(-1);
+            }
+            if (Request.Cookies[FormsAuthentication.FormsCookieName] != null)
+            {
+                Response.Cookies[FormsAuthentication.FormsCookieName].Expires = DateTime.Now.AddDays(-1);
+            }
+
+            // 4. Evitar que el navegador use caché para volver atrás
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Cache.SetNoStore();
-            Response.Cache.SetExpires(DateTime.UtcNow.AddSeconds(-1));
+            Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
 
-            HttpContext.Current.Response.Redirect("index.aspx", false);
-            HttpContext.Current.ApplicationInstance.CompleteRequest();
+            // 5. Redirigir al login
+            Response.Redirect("index.aspx");
         }
     }
 }
