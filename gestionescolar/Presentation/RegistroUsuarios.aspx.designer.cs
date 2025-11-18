@@ -15,6 +15,15 @@ namespace gestionescolar.Presentation
     {
 
         /// <summary>
+        /// Control lbrol.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbrol;
+
+        /// <summary>
         /// Control ddlRol.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace gestionescolar.Presentation
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRol;
+
+        /// <summary>
+        /// Control btnAtras.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAtras;
 
         /// <summary>
         /// Control nombrediv.

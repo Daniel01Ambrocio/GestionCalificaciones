@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\logo.png" />
+    <Content Include="Presentation\AsignarCalificacion.aspx" />
     <Content Include="Presentation\BienvenidaLogeado.aspx" />
     <Content Include="Presentation\CambiarContrasena.aspx" />
     <Content Include="Presentation\index.aspx" />
@@ -118,6 +119,13 @@
     <Compile Include="Entities\Entrol.cs" />
     <Compile Include="Entities\EntUsuario.cs" />
     <Compile Include="Entities\Estestatus.cs" />
+    <Compile Include="Presentation\AsignarCalificacion.aspx.cs">
+      <DependentUpon>AsignarCalificacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentation\AsignarCalificacion.aspx.designer.cs">
+      <DependentUpon>AsignarCalificacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\BienvenidaLogeado.aspx.cs">
       <DependentUpon>BienvenidaLogeado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

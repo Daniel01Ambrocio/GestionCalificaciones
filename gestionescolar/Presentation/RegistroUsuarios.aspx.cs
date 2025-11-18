@@ -65,6 +65,7 @@ namespace gestionescolar.Presentation
             }
             if (!IsPostBack)
             {
+                btnAtras.Visible = false;
                 string usuario = Convert.ToString(Session["Usuario"]);
                 string status =Convert.ToString(Session["Status"]);
                 bool v = ValidarUsuario(usuario, status);
@@ -286,12 +287,16 @@ namespace gestionescolar.Presentation
             cedulaDiv.Visible = false;
             btnRegistrar.Visible = false;
             string opcion = ddlRol.SelectedValue;
+            lbrol.Text = "Rol: " + ddlRol.SelectedItem.Text;
             if (ddlRol.SelectedValue == "3")//administrativo
             {
                 MostrarCamposGenerico();
                 grupoDiv.Visible = false;
                 cedulaDiv.Visible = false;
                 btnRegistrar.Visible = true;
+                btnAtras.Visible = true;
+                btnRol.Visible = false;
+                ddlRol.Visible = false;
             }
             else if (ddlRol.SelectedValue == "4")//Director
             {
@@ -299,6 +304,9 @@ namespace gestionescolar.Presentation
                 grupoDiv.Visible = false;
                 cedulaDiv.Visible = false;
                 btnRegistrar.Visible = true;
+                btnAtras.Visible = true;
+                btnRol.Visible = false;
+                ddlRol.Visible = false;
             }
             else if (ddlRol.SelectedValue == "2")//maestro
             {
@@ -307,6 +315,9 @@ namespace gestionescolar.Presentation
                 grupoDiv.Visible = true;
                 cedulaDiv.Visible = true;
                 btnRegistrar.Visible = true;
+                btnAtras.Visible = true;
+                btnRol.Visible = false;
+                ddlRol.Visible = false;
             }
             else if (ddlRol.SelectedValue == "1")//alumno
             {
@@ -315,6 +326,9 @@ namespace gestionescolar.Presentation
                 grupoDiv.Visible = true;
                 cedulaDiv.Visible = false;
                 btnRegistrar.Visible = true;
+                btnAtras.Visible = true;
+                btnRol.Visible = false;
+                ddlRol.Visible = false;
             }
             else
             {
@@ -323,6 +337,7 @@ namespace gestionescolar.Presentation
                 grupoDiv.Visible = false;
                 cedulaDiv.Visible = false;
                 btnRegistrar.Visible = false;
+                lbrol.Text = "Rol:";
             }
         }
         protected void MostrarAlerta(string mensaje, bool esExito)
@@ -452,6 +467,18 @@ namespace gestionescolar.Presentation
 
                 return sb.ToString();
             }
+        }
+
+        protected void btnAtras_Click(object sender, EventArgs e)
+        {
+            btnAtras.Visible = false;
+            btnRol.Visible = true;
+            ddlRol.Visible = true;
+            OcultarCamposGenerico();
+            lbrol.Text = "Rol:";
+            grupoDiv.Visible = false;
+            cedulaDiv.Visible = false;
+            btnRegistrar.Visible = false;
         }
     }
 }

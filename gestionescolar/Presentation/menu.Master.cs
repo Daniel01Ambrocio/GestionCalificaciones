@@ -52,7 +52,6 @@ namespace gestionescolar.Presentation
                     registroUsuarios.Visible = false;
                     misCalificaciones.Visible = false;
                     asignarCalificacion.Visible = false;
-                    verCalificacionesGrupo.Visible = false;
                     solicitarBaja.Visible = false;
                     imprimirBoleta.Visible = false;
                     autorizarBajas.Visible = false;
@@ -72,7 +71,6 @@ namespace gestionescolar.Presentation
 
                         case "Maestro":
                             asignarCalificacion.Visible = true;
-                            verCalificacionesGrupo.Visible = true;
                             listaAlumnos.Visible = true;
                             break;
 
@@ -93,7 +91,6 @@ namespace gestionescolar.Presentation
                             registroUsuarios.Visible = true;
                             misCalificaciones.Visible = false;
                             asignarCalificacion.Visible = true;
-                            verCalificacionesGrupo.Visible = true; 
                             solicitarBaja.Visible = true;
                             imprimirBoleta.Visible = true;
                             autorizarBajas.Visible = true;

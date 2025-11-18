@@ -9,10 +9,11 @@
 
             <!-- Rol -->
             <div class="mb-3">
-                <label class="form-label">Rol</label>
-                <asp:DropDownList ID="ddlRol" runat="server" CssClass="form-select  textbox-delgado" AutoPostBack="false" onchange="toggleCampos()">
+                <asp:Label ID="lbrol" runat="server" class="form-label" Text="Rol"></asp:Label>
+                 <asp:DropDownList ID="ddlRol" runat="server" CssClass="form-select  textbox-delgado" AutoPostBack="false" onchange="toggleCampos()">
                 </asp:DropDownList>
                 <asp:Button ID="btnRol" runat="server" Text="Seleccionar" CssClass="btn btn-primary" OnClick="btnRol_Click" />
+                <asp:Button ID="btnAtras" runat="server" Text="Atras" CssClass="btn btn-danger" OnClick="btnAtras_Click"/>
             </div>
 
             <!-- Nombre -->
