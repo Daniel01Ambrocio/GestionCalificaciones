@@ -7,7 +7,6 @@
 
     <div class="container py-4">
 
-        <!-- QUITAMOS justify-content-center y reducimos el ancho para que se pegue más al lado izquierdo -->
         <div class="row">
             <div class="col-12 col-md-7 col-lg-5">
 

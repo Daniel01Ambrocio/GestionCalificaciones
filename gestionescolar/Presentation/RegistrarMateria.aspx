@@ -5,7 +5,7 @@
     <div class="container mt-4">
     <!-- Encabezado -->
     <div class="section-header">
-        <h3>📋 Gestión de Grupos</h3>
+        <h3>📋 Gestión de Materias</h3>
     </div>
 
     <!-- Contenedor principal del formulario y lista -->
@@ -21,11 +21,11 @@
         </div>
 
         <div class="row">
-            <!-- Lista de grupos -->
+            <!-- Lista de materias -->
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
-                        Lista de Grupos
+                        Lista de Materias
                     </div>
                     <div class="card-body p-0">
                         <asp:GridView runat="server" ID="gvMaterias" CssClass="table table-striped table-bordered mb-0"
@@ -56,7 +56,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
-                        Registrar nuevo grupo
+                        Registrar nueva materia
                     </div>
                     <div class="card-body">
                         <div class="form-group">

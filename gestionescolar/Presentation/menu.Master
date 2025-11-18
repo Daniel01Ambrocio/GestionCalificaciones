@@ -32,7 +32,7 @@
                 <asp:HyperLink ID="verCalificacionesGrupo" CssClass="nav-link" NavigateUrl="ListaCalificaciones.aspx" Text="Ver calificaciones por grupo" runat="server" />
                 <asp:HyperLink ID="solicitarBaja" CssClass="nav-link" NavigateUrl="SolicitudBaja.aspx" Text="Solicitar baja de alumno o maestro" runat="server" />
                 <asp:HyperLink ID="imprimirBoleta" CssClass="nav-link" NavigateUrl="ImprimirBoleta.aspx" Text="Imprimir boleta de calificaciones" runat="server" />
-                <asp:HyperLink ID="registrarMateria" CssClass="nav-link" NavigateUrl="RegistrarMateria.aspx" Text="Registrar materia" runat="server" />
+                <asp:HyperLink ID="registrarMateria" CssClass="nav-link" NavigateUrl="RegistrarMateria.aspx" Text="Registrar/ver materia" runat="server" />
                 <asp:HyperLink ID="autorizarBajas" CssClass="nav-link" NavigateUrl="AutorizarBajas.aspx" Text="Autorizar bajas" runat="server" />
                 <asp:HyperLink ID="bajaAdministrativos" CssClass="nav-link" NavigateUrl="BajaAdministrativo.aspx" Text="Dar de baja administrativos" runat="server" />
                 <asp:HyperLink ID="listaGrupos" CssClass="nav-link" NavigateUrl="RegistrarVerGrupos.aspx" Text="Registrar/ver grupos" runat="server" />
