@@ -18,5 +18,13 @@ namespace gestionescolar.BLL
         {
             return usuarioDLL.ActualizaUser(entUsuario);
         }
+        public bool ConfirmaAnteriorContrasena(EntUsuario entUsuario)
+        {
+            return usuarioDLL.ConfirmaAnteriorContrasena(entUsuario);
+        }
+        public bool ActualizarContrasena(EntUsuario entUsuario)
+        {
+            return usuarioDLL.ActualizarContrasena(entUsuario);
+        }
     }
 }

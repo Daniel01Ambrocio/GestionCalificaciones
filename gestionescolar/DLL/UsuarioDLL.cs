@@ -72,7 +72,55 @@ namespace gestionescolar.DLL
                     conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    return true;
+                    return true;//Realizo la actualizacion
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+        public bool ConfirmaAnteriorContrasena(EntUsuario entUsuario)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    string query = "SELECT COUNT(1) FROM usuario WHERE usuario = @usuario AND contrasena = @contrasena";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@usuario", entUsuario.usuario);
+                    cmd.Parameters.AddWithValue("@contrasena", entUsuario.contrasena);
+
+                    conn.Open();
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    return count > 0; // true si existe registro
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+        public bool ActualizarContrasena(EntUsuario entUsuario)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+
+                try
+                {
+                    string query = "UPDATE Usuario SET contrasena = @contrasena WHERE usuario = @usuario";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@usuario", entUsuario.usuario);
+                    cmd.Parameters.AddWithValue("@contrasena", entUsuario.contrasenaNueva);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    return true; //Realizo la actualizacion
                 }
                 catch
                 {

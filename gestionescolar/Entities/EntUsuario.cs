@@ -17,5 +17,6 @@ namespace gestionescolar.Entities
         public DateTime PeriodoFin { get; set; }
         public int IDStatus { get; set; }
         public int IDROL { get; set; }
+        public string contrasenaNueva { get; set; }
     }
 }
