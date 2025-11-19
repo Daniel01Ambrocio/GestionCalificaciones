@@ -1,4 +1,6 @@
 ﻿using gestionescolar.BLL;
+using gestionescolar.DLL;
+using gestionescolar.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,6 +13,10 @@ namespace gestionescolar.Presentation
 {
     public partial class AsignarCalificacion : System.Web.UI.Page
     {
+        GrupoBLL grupoBLL = new GrupoBLL();
+        EntUsuario entUsuario = new EntUsuario();
+        Entgrupo entgrupo = new Entgrupo();
+        AlumnoBLL alumnoBLL = new AlumnoBLL();
         private bool ValidarUsuario(string usuario, string status)
         {
             if (usuario != null && (status == "Activo" || status == "Egresado"))
@@ -45,10 +51,11 @@ namespace gestionescolar.Presentation
                 if (v)
                 {
                     //Cargar la lista de grupos que estan asignados al maestro
+                    CargarGruposPorMaestro();
 
-
+                    btnAtras.Visible = false;
                     //Cargar la lista de alumnos segun el grupo seleccionado
-                    MostrarAlumnosCalificaciones();
+                    MostrarAlumnosCalificaciones(entgrupo);
                 }
                 else
                 {
@@ -57,11 +64,87 @@ namespace gestionescolar.Presentation
 
             }
         }
-        public void MostrarAlumnosCalificaciones()
+        public void MostrarAlumnosCalificaciones(Entgrupo entgrupo)
         {
             DataTable dataAlumnos = new DataTable();
+            dataAlumnos = alumnoBLL.MostrarAlumnosCalificaciones(entgrupo);
             gdvAlumnoCalificaciones.DataSource = dataAlumnos;
             gdvAlumnoCalificaciones.DataBind();
+        }
+        private void CargarGruposPorMaestro()
+        {
+            entUsuario.usuario = Convert.ToString(Session["Usuario"]);
+            DataTable dt = grupoBLL.CargarGruposPorMaestro(entUsuario);
+
+            ddlGrupo.Items.Clear(); // Limpiar antes de cargar
+
+            // Agrega el ítem por defecto
+            ddlGrupo.Items.Add(new ListItem("Selecciona un grupo", ""));
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string texto = $"{row["grado"]}-{row["Grupo"]}-{row["anio"]}";
+                string valor = row["IDGrupo"].ToString();
+
+                ddlGrupo.Items.Add(new ListItem(texto, valor));
+            }
+        }
+
+        protected void btngrupo_Click(object sender, EventArgs e)
+        {
+            // Verificar que se haya seleccionado un grupo
+            if (ddlGrupo.SelectedValue != "")
+            {
+                // Mostrar el grupo seleccionado en el label (solo texto, sin editar)
+                lbGrupo.Text = "Grupo seleccionado: " + ddlGrupo.SelectedItem.Text;
+
+                // Hacer invisible el DropDownList para mostrar solo el Label
+                ddlGrupo.Visible = false;
+                btngrupo.Visible = false;
+                // Obtener el ID del grupo seleccionado y asignarlo a entgrupo
+                entgrupo.IDGrupo = Convert.ToInt16(ddlGrupo.SelectedValue);
+
+                // Llamar al método para mostrar alumnos y calificaciones
+                MostrarAlumnosCalificaciones(entgrupo);
+                
+            }
+            else
+            {
+                // Mostrar un mensaje de error o advertencia si no se ha seleccionado un grupo
+                MostrarAlerta("Por favor, selecciona un grupo.", false);
+            }
+        }
+
+        protected void btnAtras_Click(object sender, EventArgs e)
+        {
+            ddlGrupo.Visible = true;
+            btngrupo.Visible = true;
+            btnAtras.Visible = false;
+        }
+        protected void MostrarAlerta(string mensaje, bool esExito)
+        {
+            // Color verde para éxito, rojo para error
+            string color = esExito ? "green" : "red";
+
+            // Script para mostrar una alerta centrada con estilos personalizados
+            string script = $@"
+                var alerta = document.createElement('div');
+                alerta.innerText = '{mensaje}';
+                alerta.style.position = 'fixed';
+                alerta.style.top = '50%';
+                alerta.style.left = '50%';
+                alerta.style.transform = 'translate(-50%, -50%)';
+                alerta.style.backgroundColor = '{color}';
+                alerta.style.color = 'white';
+                alerta.style.padding = '15px 30px';
+                alerta.style.borderRadius = '8px';
+                alerta.style.fontWeight = 'bold';
+                alerta.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                alerta.style.zIndex = '9999';
+                document.body.appendChild(alerta);
+                setTimeout(function() {{ alerta.remove(); }}, 6000);";
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarAlerta", script, true);
         }
     }
 }

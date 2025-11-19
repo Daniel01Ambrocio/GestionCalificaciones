@@ -27,6 +27,10 @@ namespace gestionescolar.BLL
         {
             return grupoDLL.ObtenerGruposConID();
         }
+        public DataTable CargarGruposPorMaestro(EntUsuario entUsuario)
+        {
+            return grupoDLL.CargarGruposPorMaestro(entUsuario);
+        }
         public int ObtenerGradoPorIdGrupo(Entgrupo entgrupo)
         {
             return grupoDLL.ObtenerGradoPorIdGrupo(entgrupo);

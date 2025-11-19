@@ -78,6 +78,28 @@ namespace gestionescolar.DLL
 
             return dtRoles;
         }
+        public DataTable CargarGruposPorMaestro(EntUsuario entUsuario)
+        {
+            DataTable dtRoles = new DataTable();
+
+            // Corregir la sintaxis de la consulta SQL
+            string query = "SELECT g.IDGrupo, g.grado, g.grupo, g.anio FROM grupo AS g INNER JOIN maestro AS m ON g.idgrupo = m.idgrupo INNER JOIN usuario AS u ON m.idusuario = u.idusuario WHERE u.usuario = @usuario";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                // Agregar el parámetro para evitar inyecciones SQL
+                cmd.Parameters.AddWithValue("@usuario", entUsuario.usuario);
+
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    da.Fill(dtRoles);
+                }
+            }
+
+            return dtRoles;
+        }
+
         public string RegistrarGrupo(Entgrupo grupo)
         {
             try
