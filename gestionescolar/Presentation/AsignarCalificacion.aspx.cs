@@ -103,7 +103,7 @@ namespace gestionescolar.Presentation
                 btngrupo.Visible = false;
                 // Obtener el ID del grupo seleccionado y asignarlo a entgrupo
                 entgrupo.IDGrupo = Convert.ToInt16(ddlGrupo.SelectedValue);
-
+                btnAtras.Visible = true;
                 // Llamar al método para mostrar alumnos y calificaciones
                 MostrarAlumnosCalificaciones(entgrupo);
                 
