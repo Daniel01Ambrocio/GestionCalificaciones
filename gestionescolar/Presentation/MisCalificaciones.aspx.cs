@@ -14,6 +14,7 @@ namespace gestionescolar.Presentation
     {
         Entalumno entalumno = new Entalumno();
         AlumnoBLL alumnoBLL = new AlumnoBLL();
+        CalificacionBLL calificacionBLL = new CalificacionBLL();
         private bool ValidarUsuario(string usuario, string status)
         {
             if (usuario != null && (status == "Activo" || status == "Egresado"))
@@ -63,7 +64,7 @@ namespace gestionescolar.Presentation
         public void MostrarCalificaciones(Entalumno entalumno)
         {
             DataTable dataCalificacionAlumno = new DataTable();
-            dataCalificacionAlumno = alumnoBLL.MostrarCalificaciones(entalumno);
+            dataCalificacionAlumno = calificacionBLL.MostrarCalificaciones(entalumno);
             gvCalificaciones.DataSource = dataCalificacionAlumno;
             gvCalificaciones.DataBind();
         }

@@ -89,6 +89,7 @@
     <Compile Include="BLL\AdministrativoBLL.cs" />
     <Compile Include="BLL\AlumnoBLL.cs" />
     <Compile Include="BLL\alumnoMateriaBLL.cs" />
+    <Compile Include="BLL\CalificacionBLL.cs" />
     <Compile Include="BLL\DirectorBLL.cs" />
     <Compile Include="BLL\GrupoBLL.cs" />
     <Compile Include="BLL\loginBLL.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="DLL\AdministrativoDLL.cs" />
     <Compile Include="DLL\AlumnoDLL.cs" />
     <Compile Include="DLL\AlumnoMateriaDLL.cs" />
+    <Compile Include="DLL\CalificacionDLL.cs" />
     <Compile Include="DLL\DirectorDLL.cs" />
     <Compile Include="DLL\GrupoDLL.cs" />
     <Compile Include="DLL\loginDLL.cs" />
@@ -108,7 +110,7 @@
     <Compile Include="DLL\RolDLL.cs" />
     <Compile Include="DLL\StatusDLL.cs" />
     <Compile Include="DLL\UsuarioDLL.cs" />
-    <Compile Include="Entities\Calificacion.cs" />
+    <Compile Include="Entities\Entcalificacion.cs" />
     <Compile Include="Entities\Entadministrativo.cs" />
     <Compile Include="Entities\Entalumno.cs" />
     <Compile Include="Entities\EntalumnoMateria.cs" />
