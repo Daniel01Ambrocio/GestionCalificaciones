@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\danie\\documents\\d\\gestioncalificaciones\\gestionescolar\\presentation\\asignarcalificacion.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\asignarcalificacion.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\danie\\documents\\d\\gestioncalificaciones\\gestionescolar\\presentation\\datosescuela.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\datosescuela.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\presentation\\asignarcalificacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\asignarcalificacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\dll\\escueladll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\dll\\escueladll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\danie\\documents\\d\\gestioncalificaciones\\gestionescolar\\dll\\calificaciondll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\dll\\calificaciondll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\bll\\escuelabll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\bll\\escuelabll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\danie\\documents\\d\\gestioncalificaciones\\gestionescolar\\bll\\calificacionbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\bll\\calificacionbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\presentation\\datosescuela.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\datosescuela.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,55 +30,52 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CalificacionDLL.cs",
-              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\DLL\\CalificacionDLL.cs",
-              "RelativeDocumentMoniker": "gestionescolar\\DLL\\CalificacionDLL.cs",
-              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\DLL\\CalificacionDLL.cs",
-              "RelativeToolTip": "gestionescolar\\DLL\\CalificacionDLL.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAkwFwAAABBAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "EscuelaDLL.cs",
+              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\DLL\\EscuelaDLL.cs",
+              "RelativeDocumentMoniker": "gestionescolar\\DLL\\EscuelaDLL.cs",
+              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\DLL\\EscuelaDLL.cs",
+              "RelativeToolTip": "gestionescolar\\DLL\\EscuelaDLL.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAswEcAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T15:47:29.27Z",
+              "WhenOpened": "2025-11-20T18:04:38.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EscuelaBLL.cs",
+              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\BLL\\EscuelaBLL.cs",
+              "RelativeDocumentMoniker": "gestionescolar\\BLL\\EscuelaBLL.cs",
+              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\BLL\\EscuelaBLL.cs",
+              "RelativeToolTip": "gestionescolar\\BLL\\EscuelaBLL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T18:04:21.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DatosEscuela.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\DatosEscuela.aspx.cs",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\DatosEscuela.aspx.cs",
+              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\DatosEscuela.aspx.cs",
+              "RelativeToolTip": "gestionescolar\\Presentation\\DatosEscuela.aspx.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAApwFEAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T17:52:07.669Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CalificacionBLL.cs",
-              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\BLL\\CalificacionBLL.cs",
-              "RelativeDocumentMoniker": "gestionescolar\\BLL\\CalificacionBLL.cs",
-              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\BLL\\CalificacionBLL.cs",
-              "RelativeToolTip": "gestionescolar\\BLL\\CalificacionBLL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T15:47:12.018Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AsignarCalificacion.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\AsignarCalificacion.aspx.cs",
-              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\AsignarCalificacion.aspx.cs",
-              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\AsignarCalificacion.aspx.cs",
-              "RelativeToolTip": "gestionescolar\\Presentation\\AsignarCalificacion.aspx.cs",
-              "ViewState": "AgIAAKIAAAAAAAAAAAAcwMAAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T20:59:48.88Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AsignarCalificacion.aspx",
-              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\AsignarCalificacion.aspx",
-              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\AsignarCalificacion.aspx",
-              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\AsignarCalificacion.aspx",
-              "RelativeToolTip": "gestionescolar\\Presentation\\AsignarCalificacion.aspx",
+              "Title": "DatosEscuela.aspx",
+              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\DatosEscuela.aspx",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\DatosEscuela.aspx",
+              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\DatosEscuela.aspx",
+              "RelativeToolTip": "gestionescolar\\Presentation\\DatosEscuela.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-18T20:52:04.84Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-20T17:47:33.332Z"
             }
           ]
         }

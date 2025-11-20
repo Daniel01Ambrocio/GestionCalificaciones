@@ -43,7 +43,9 @@ namespace gestionescolar.BLL
         {
             return alumnoDLL.ObtenerAlumnos();
         }
-        
-
+        public DataTable ObtenerAlumnosPorGrupo(Entgrupo entgrupo)
+        {
+            return alumnoDLL.ObtenerAlumnosPorGrupo(entgrupo);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using gestionescolar.Entities;
+﻿using gestionescolar.BLL;
+using gestionescolar.Entities;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,7 +15,7 @@ namespace gestionescolar.DLL
         string connectionString = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
         public DataTable ObtenerAlumnos()
         {
-            DataTable dtRoles = new DataTable();
+            DataTable dtalumno = new DataTable();
 
             string query = @"SELECT 
                     u.Nombre, 
@@ -33,10 +34,10 @@ namespace gestionescolar.DLL
             using (SqlCommand cmd = new SqlCommand(query, conn))
             using (SqlDataAdapter da = new SqlDataAdapter(cmd))
             {
-                da.Fill(dtRoles);
+                da.Fill(dtalumno);
             }
 
-            return dtRoles;
+            return dtalumno;
         }
         public string RegistrarAlumno(EntUsuario entUsuario, Entalumno entalumno)
         {
@@ -113,6 +114,30 @@ namespace gestionescolar.DLL
                 return 0;
             }
         }
-        
+        public DataTable ObtenerAlumnosPorGrupo(Entgrupo entgrupo)
+        {
+            DataTable dtalumno = new DataTable();
+
+            string query = @"SELECT 
+                        (u.Nombre +' '+ u.ApellidoPaterno +' '+ u.ApellidoMaterno) AS NombreCompleto,
+                        a.Matricula
+                     FROM Alumno a
+                     INNER JOIN Usuario u ON a.IDUsuario = u.IDUsuario
+                     INNER JOIN Grupo g ON a.IDGrupo = g.IDGrupo
+                     WHERE a.IDGrupo = @IDGrupo";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+            {
+                cmd.Parameters.AddWithValue("@IDGrupo", entgrupo.IDGrupo);
+
+                conn.Open();
+                da.Fill(dtalumno);
+            }
+
+            return dtalumno;
+        }
+
     }
 }

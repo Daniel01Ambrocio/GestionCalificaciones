@@ -26,6 +26,7 @@
 
             <!-- Navegación -->
             <nav class="nav flex-column mb-3">
+                <asp:HyperLink ID="datosEscuela" CssClass="nav-link" NavigateUrl="DatosEscuela.aspx" Text="Datos de la escuela" runat="server" />
                 <asp:HyperLink ID="registroUsuarios" CssClass="nav-link" NavigateUrl="RegistroUsuarios.aspx" Text="Registrar usuario" runat="server" />
                 <asp:HyperLink ID="misCalificaciones" CssClass="nav-link" NavigateUrl="MisCalificaciones.aspx" Text="Mis calificaciones" runat="server" />
                 <asp:HyperLink ID="asignarCalificacion" CssClass="nav-link" NavigateUrl="AsignarCalificacion.aspx" Text="Asignar/calificar alumno" runat="server" />

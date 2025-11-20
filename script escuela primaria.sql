@@ -2,6 +2,15 @@ create database escuelaBD
 
 use escuelaBD
 
+CREATE TABLE Escuela (
+    IDEscuela INT IDENTITY(1,1) PRIMARY KEY,
+    NombreEscuela NVARCHAR(150) NOT NULL,
+    ClaveInstitucion NVARCHAR(20) NOT NULL,
+    Direccion NVARCHAR(250),
+    Telefono NVARCHAR(20) NULL,
+    Logotipo NVARCHAR(300) NULL,
+    CicloEscolar NVARCHAR(20) NOT NULL
+);
 
 CREATE TABLE Rol (
     IDROL INT IDENTITY(1,1) PRIMARY KEY,
@@ -89,7 +98,7 @@ CREATE TABLE Calificacion (
     Parcial2 DECIMAL(5,2) CHECK (Parcial2 BETWEEN 0 AND 10),
     Parcial3 DECIMAL(5,2) CHECK (Parcial3 BETWEEN 0 AND 10),
     Parcial4 DECIMAL(5,2) CHECK (Parcial4 BETWEEN 0 AND 10),
-    Promedio Decimal,
+    Promedio DECIMAL(5,2),
     FOREIGN KEY (IDAlumnoMateria) REFERENCES AlumnoMateria(IDAlumnoMateria)
 );
  
@@ -133,3 +142,4 @@ UPDATE Usuario
 SET Contrasena = '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce';
 
 select*from Usuario
+

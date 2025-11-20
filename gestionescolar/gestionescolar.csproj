@@ -71,6 +71,8 @@
     <Content Include="Presentation\AsignarCalificacion.aspx" />
     <Content Include="Presentation\BienvenidaLogeado.aspx" />
     <Content Include="Presentation\CambiarContrasena.aspx" />
+    <Content Include="Presentation\DatosEscuela.aspx" />
+    <Content Include="Presentation\ImprimirBoleta.aspx" />
     <Content Include="Presentation\index.aspx" />
     <Content Include="Presentation\ListaAdministrativos.aspx" />
     <Content Include="Presentation\ListaDirectores.aspx" />
@@ -91,6 +93,7 @@
     <Compile Include="BLL\alumnoMateriaBLL.cs" />
     <Compile Include="BLL\CalificacionBLL.cs" />
     <Compile Include="BLL\DirectorBLL.cs" />
+    <Compile Include="BLL\EscuelaBLL.cs" />
     <Compile Include="BLL\GrupoBLL.cs" />
     <Compile Include="BLL\loginBLL.cs" />
     <Compile Include="BLL\MaestroBLL.cs" />
@@ -103,6 +106,7 @@
     <Compile Include="DLL\AlumnoMateriaDLL.cs" />
     <Compile Include="DLL\CalificacionDLL.cs" />
     <Compile Include="DLL\DirectorDLL.cs" />
+    <Compile Include="DLL\EscuelaDLL.cs" />
     <Compile Include="DLL\GrupoDLL.cs" />
     <Compile Include="DLL\loginDLL.cs" />
     <Compile Include="DLL\MaestroDLL.cs" />
@@ -115,6 +119,7 @@
     <Compile Include="Entities\Entalumno.cs" />
     <Compile Include="Entities\EntalumnoMateria.cs" />
     <Compile Include="Entities\Entdirector.cs" />
+    <Compile Include="Entities\Entescuela.cs" />
     <Compile Include="Entities\Entgrupo.cs" />
     <Compile Include="Entities\Entmaestro.cs" />
     <Compile Include="Entities\Entmateria.cs" />
@@ -141,6 +146,20 @@
     </Compile>
     <Compile Include="Presentation\CambiarContrasena.aspx.designer.cs">
       <DependentUpon>CambiarContrasena.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\DatosEscuela.aspx.cs">
+      <DependentUpon>DatosEscuela.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentation\DatosEscuela.aspx.designer.cs">
+      <DependentUpon>DatosEscuela.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ImprimirBoleta.aspx.cs">
+      <DependentUpon>ImprimirBoleta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentation\ImprimirBoleta.aspx.designer.cs">
+      <DependentUpon>ImprimirBoleta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentation\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
