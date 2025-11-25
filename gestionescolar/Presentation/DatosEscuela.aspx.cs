@@ -2,6 +2,7 @@
 using gestionescolar.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -55,19 +56,22 @@ namespace gestionescolar.Presentation
 
             }
         }
-        // Lista temporal de ejemplo (simula la base de datos)
-        private static List<Entescuela> listaEscuelas = new List<Entescuela>
-        {
-            new Entescuela { IDEscuela = 1, NombreEscuela = "Escuela Primaria 1", ClaveInstitucion = "A123", Direccion = "Calle 1", Telefono = "555-1234", Logotipo = "~/Content/logo.png", CicloEscolar = "2025-2026" },
-        };
-         
 
-        // Método para enlazar datos al GridView
+
         private void BindGrid()
         {
-            gdvEscuela.DataSource = listaEscuelas;
-            gdvEscuela.DataBind();
+            Entescuela escuela = escuelaBLL.ObtenerEscuela();
+
+            if (escuela != null)
+            {
+                // Convertimos la entidad en una lista para que el GridView pueda enlazarla
+                List<Entescuela> lista = new List<Entescuela> { escuela };
+
+                gdvEscuela.DataSource = lista;
+                gdvEscuela.DataBind();
+            }
         }
+
 
         protected void gdvEscuela_RowEditing(object sender, GridViewEditEventArgs e)
         {
@@ -105,39 +109,59 @@ namespace gestionescolar.Presentation
 
             // Manejar carga de logotipo
             FileUpload fu = (FileUpload)row.FindControl("fuLogotipo");
-            if (fu.HasFile)
+            if (fu.HasFile) // Solo si se subió un archivo nuevo
             {
                 string extension = System.IO.Path.GetExtension(fu.FileName).ToLower();
                 if (extension == ".jpg" || extension == ".jpeg" || extension == ".png")
                 {
-                    string fileName = "logoEscuela" + extension; // nombre fijo, ya que es una sola escuela
-                    string ruta = Server.MapPath("~/Content/") + fileName;
+                    // Obtener el nombre del archivo sin extensión
+                    string fileName = System.IO.Path.GetFileNameWithoutExtension(fu.FileName);
+
+                    // Ruta completa para guardar el archivo físicamente
+                    string ruta = Server.MapPath("~/Content/") + fu.FileName;
 
                     // Guardar el archivo
                     fu.SaveAs(ruta);
 
-                    // Guardar ruta relativa en la DB
-                    escuela.Logotipo = "~/Content/" + fileName;
+                    // Guardar solo el nombre en la DB (sin ruta ni extensión)
+                    escuela.Logotipo = fileName;
                 }
                 else
                 {
-                    // Aquí podrías mostrar un mensaje de error sobre extensión no válida
+                    MostrarAlerta("El logo debe de ser del tipo: .jpg, .jpeg o .png", false);
+                    return; // No continuar si el archivo es inválido
+                }
+                // Guardar cambios en la base de datos
+                string mensaje = escuelaBLL.ActualizarEscuela(escuela);
+                if (mensaje == "Correcto")
+                {
+                    MostrarAlerta("Actualización exitosa.", true);
+                }
+                else
+                {
+                    MostrarAlerta("Fallo en la actualización, intentelo más tarde.", false);
+                }
+            }
+            // Actualizamos los datos de la escuela sin actualizar el logo
+            else
+            {
+                // Guardar cambios en la base de datos
+                string mensaje = escuelaBLL.ActualizarEscuelaSinLogo(escuela);
+                if (mensaje == "Correcto")
+                {
+                    MostrarAlerta("Actualización exitosa.", true);
+                }
+                else
+                {
+                    MostrarAlerta("Fallo en la actualización, intentelo más tarde.", false);
                 }
             }
 
-            // Guardar cambios en la base de datos
-            string mensaje = escuelaBLL.ActualizarEscuela(escuela);
-            if(mensaje == "Correcto")
-            {
-                MostrarAlerta("Actualización exitosa.", true);
-            }
-            else
-            {
-                MostrarAlerta("Fallo en la actualización, intentelo más tarde.", false);
-            }
-            gdvEscuela.EditIndex = -1;
+
+                gdvEscuela.EditIndex = -1;
             BindGrid();
         }
+
 
         // Evento cuando se cancela la edición
         protected void gdvEscuela_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)

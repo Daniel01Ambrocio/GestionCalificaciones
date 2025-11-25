@@ -36,9 +36,10 @@
               "RelativeDocumentMoniker": "gestionescolar\\DLL\\EscuelaDLL.cs",
               "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\DLL\\EscuelaDLL.cs",
               "RelativeToolTip": "gestionescolar\\DLL\\EscuelaDLL.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAswEcAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAiwHkAAABnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T18:04:38.99Z"
+              "WhenOpened": "2025-11-20T18:04:38.99Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -48,9 +49,10 @@
               "RelativeDocumentMoniker": "gestionescolar\\BLL\\EscuelaBLL.cs",
               "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\BLL\\EscuelaBLL.cs",
               "RelativeToolTip": "gestionescolar\\BLL\\EscuelaBLL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBYAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T18:04:21.361Z"
+              "WhenOpened": "2025-11-20T18:04:21.361Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -60,7 +62,7 @@
               "RelativeDocumentMoniker": "gestionescolar\\Presentation\\DatosEscuela.aspx.cs",
               "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\DatosEscuela.aspx.cs",
               "RelativeToolTip": "gestionescolar\\Presentation\\DatosEscuela.aspx.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAApwFEAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAiwJAAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-20T17:52:07.669Z",
               "EditorCaption": ""
@@ -75,7 +77,8 @@
               "RelativeToolTip": "gestionescolar\\Presentation\\DatosEscuela.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-20T17:47:33.332Z"
+              "WhenOpened": "2025-11-20T17:47:33.332Z",
+              "EditorCaption": ""
             }
           ]
         }

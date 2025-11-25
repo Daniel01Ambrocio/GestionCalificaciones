@@ -18,5 +18,9 @@ namespace gestionescolar.BLL
         {
             return escuelaDLL.ActualizarEscuela(escuela);
         }
+        public string ActualizarEscuelaSinLogo(Entescuela escuela)
+        {
+            return escuelaDLL.ActualizarEscuelaSinLogo(escuela);
+        }
     }
 }

@@ -143,3 +143,24 @@ SET Contrasena = '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108
 
 select*from Usuario
 
+
+INSERT INTO Escuela 
+( 
+    NombreEscuela,
+    ClaveInstitucion,
+    Direccion,
+    Telefono,
+    Logotipo,
+    CicloEscolar
+)
+VALUES
+( 
+    'Escuela Primaria 1',
+    'A123',
+    'Calle 1',
+    '555-1234',
+    'logoEscuela',
+    '2025-2026'
+);
+
+
