@@ -73,120 +73,88 @@ namespace gestionescolar.Presentation
 
             }
         }
-        
+
         protected void btnImprimir_Click(object sender, EventArgs e)
         {
             string idGrupo = ddlGrupo.SelectedValue;
             if (idGrupo == "Selecciona un grupo")
             {
                 MostrarAlerta("Seleccione un grupo", false);
+                return;
             }
-            else
+
+            int idGrupoSeleccionado;
+            if (!int.TryParse(idGrupo, out idGrupoSeleccionado))
             {
-                entgrupo.IDGrupo = Convert.ToInt16(idGrupo);
-                //Obtenemos una datatable con los datos del la escuela
-                /*
-                1.Datos de la escuela
-                nombre de la escuela
-                ClaveInstitucion
-                Direccion
-                Telefono
-                Logotipo
-                CicloEscolar
-                */
-                entescuela = escuelaBLL.ObtenerEscuela();
-                if (rblTipoImpresion.SelectedValue == "grupo")
+                MostrarAlerta("ID de grupo no válido", false);
+                return;
+            }
+
+            entgrupo.IDGrupo = idGrupoSeleccionado;
+            entescuela = escuelaBLL.ObtenerEscuela();
+
+            if (rblTipoImpresion.SelectedValue == "grupo")
+            {
+                DataTable dtMatriculas = alumnoBLL.ObtenerAlumnosPorGrupo(entgrupo);
+
+                if (dtMatriculas == null || dtMatriculas.Rows.Count == 0)
                 {
-                    // 1. Obtener ID del grupo seleccionado de forma segura
-                    int idGrupoSeleccionado = 0;
-                    if (!int.TryParse(ddlGrupo.SelectedValue, out idGrupoSeleccionado))
-                    {
-                        // Manejo de error si no se puede convertir
-                        Response.Write("El ID del grupo seleccionado no es válido.");
-                        return;
-                    }
-
-                    // 2. Crear la entidad de grupo y obtener los alumnos
-                    entgrupo.IDGrupo = idGrupoSeleccionado;
-                    DataTable dtMatriculas = alumnoBLL.ObtenerAlumnosPorGrupo(entgrupo);
-
-                    // 3. Recorrer cada fila del DataTable y obtener la matrícula
-                    foreach (DataRow row in dtMatriculas.Rows)
-                    {
-                        int matricula = 0;
-
-                        if (row["Matricula"] != DBNull.Value && int.TryParse(row["Matricula"].ToString(), out matricula))
-                        {
-                            //Obtenemos una datatable con los datos personales del alumno
-                            /*
-                            2.Datos personales del alumno
-                            Nombre completo
-                            Número de matrícula
-                            Grado y grupo
-                            */
-                            //Obtenemos un datatable con los datos academicos del alumno
-                            /*
-                            3.Información académica
-                            Nombre del maestro
-                            materias cursadas
-                            Calificaciones obtenidas(por parciales)
-                            Periodo de evaluación(por ejemplo, primer trimestre, segundo semestre, etc.)
-                            */
-                            // Llamada a tu método que devuelve dos DataTable
-                            entalumno.Matricula = matricula;
-                            var info = InformacionComunBoleta(entalumno.Matricula);
-
-                            DataTable dtAlumno = info.dtAlumno;
-                            DataTable dtAcademicos = info.dtAcademicos;
-                            // generar e imprimir las boletas
-                            GenerarPDFBoleta(entescuela, dtAlumno, dtAcademicos);
-                        }
-                        else
-                        {
-                            // Manejo de error si la matrícula no es válida
-                            MostrarAlerta("No se encontró la matricula del alumno.", false);
-                        }
-                    }
+                    MostrarAlerta("No hay alumnos registrados en el grupo.", false);
                 }
                 else
                 {
-                    // Imprimir solo un alumno
-                    string Matricula = ddlAlumno.SelectedValue;
-                    if (Matricula == "Selecciona un alumno")
+                    // Crear un único documento PDF
+                    PdfDocument document = new PdfDocument();
+
+                    foreach (DataRow row in dtMatriculas.Rows)
                     {
-                        MostrarAlerta("Seleccione un grupo", false);
+                        int matricula;
+                        if (row["Matricula"] != DBNull.Value && int.TryParse(row["Matricula"].ToString(), out matricula))
+                        {
+                            var info = InformacionComunBoleta(matricula);
+                            DataTable dtAlumno = info.dtAlumno;
+                            DataTable dtAcademicos = info.dtAcademicos;
+
+                            // Agregar la página del alumno al PDF existente
+                            GenerarPaginaAlumno(document, entescuela, dtAlumno, dtAcademicos);
+                        }
                     }
-                    else
-                    {
-                        entalumno.Matricula = Convert.ToInt16(Matricula);
 
-                        //Obtenemos una datatable con los datos personales del alumno
-                        /*
-                        2.Datos personales del alumno
-                        Nombre completo
-                        Número de matrícula
-                        Grado y grupo
-                        */
-                        //Obtenemos un datatable con los datos academicos del alumno
-                        /*
-                        3.Información académica
-                        Nombre del maestro
-                        materias cursadas
-                        Calificaciones obtenidas(por parciales)
-                        Periodo de evaluación(por ejemplo, primer trimestre, segundo semestre, etc.)
-                        */ 
-                        // Llamada a tu método que devuelve dos DataTable
-                        var info = InformacionComunBoleta(entalumno.Matricula);
+                    // Guardar PDF final y enviarlo al cliente
+                    string ruta = HttpContext.Current.Server.MapPath("~/boletas.pdf");
+                    document.Save(ruta);
 
-                        DataTable dtAlumno = info.dtAlumno;
-                        DataTable dtAcademicos = info.dtAcademicos;
+                    Response.ContentType = "application/pdf";
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=boletas.pdf");
+                    Response.TransmitFile(ruta);
+                    Response.End();
+                }
+                
+            }
+            else
+            {
+                // Para un solo alumno, puedes usar la misma función
+                int matricula;
+                if (int.TryParse(ddlAlumno.SelectedValue, out matricula))
+                {
+                    var info = InformacionComunBoleta(matricula);
+                    DataTable dtAlumno = info.dtAlumno;
+                    DataTable dtAcademicos = info.dtAcademicos;
 
-                        // generar e imprimir la boleta del alumno
-                        GenerarPDFBoleta(entescuela, dtAlumno, dtAcademicos);
-                    }
+                    PdfDocument document = new PdfDocument();
+                    GenerarPaginaAlumno(document, entescuela, dtAlumno, dtAcademicos);
+
+                    string ruta = HttpContext.Current.Server.MapPath("~/boleta.pdf");
+                    document.Save(ruta);
+
+                    Response.ContentType = "application/pdf";
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=boleta.pdf");
+                    Response.TransmitFile(ruta);
+                    Response.End();
                 }
             }
         }
+
         public (DataTable dtAlumno, DataTable dtAcademicos) InformacionComunBoleta(int matricula)
         {
             // Obtener los datos del alumno
@@ -202,26 +170,21 @@ namespace gestionescolar.Presentation
             // Regresamos ambos DataTable
             return (dtAlumno, dtAcademicos);
         }
-        public void GenerarPDFBoleta(Entescuela escuela, DataTable dtAlumno, DataTable dtAcademicos)
+        private void GenerarPaginaAlumno(PdfDocument document, Entescuela escuela, DataTable dtAlumno, DataTable dtAcademicos)
         {
-            PdfDocument document = new PdfDocument();
-            document.Info.Title = "Boleta Escolar";
             PdfPage page = document.AddPage();
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
-            XFont titleFont = new XFont("Verdana", 16 );
-            XFont subFont = new XFont("Verdana", 12 );
+            XFont titleFont = new XFont("Verdana", 16);
+            XFont subFont = new XFont("Verdana", 12);
             XFont textFont = new XFont("Verdana", 10);
 
             int y = 40;
 
-            // ============================
-            //     ENCABEZADO ESCUELA
-            // ============================
+            // LOGO ESCUELA
             if (!string.IsNullOrEmpty(escuela.Logotipo))
             {
                 string logoPath = HttpContext.Current.Server.MapPath(escuela.Logotipo);
-
                 if (File.Exists(logoPath))
                 {
                     XImage logo = XImage.FromFile(logoPath);
@@ -230,84 +193,54 @@ namespace gestionescolar.Presentation
             }
 
             int textX = 150;
-
             gfx.DrawString(escuela.NombreEscuela, titleFont, XBrushes.Black, textX, y + 10);
             gfx.DrawString("Clave: " + escuela.ClaveInstitucion, textFont, XBrushes.Black, textX, y + 35);
             gfx.DrawString("Ciclo Escolar: " + escuela.CicloEscolar, textFont, XBrushes.Black, textX, y + 55);
             gfx.DrawString(escuela.Direccion, textFont, XBrushes.Black, textX, y + 75);
-
             if (!string.IsNullOrEmpty(escuela.Telefono))
                 gfx.DrawString("Tel: " + escuela.Telefono, textFont, XBrushes.Black, textX, y + 95);
 
-            y += 120; // separador
+            y += 120;
 
-            // ============================
-            // TABLA DATOS DEL ALUMNO
-            // ============================
             DataRow alumno = dtAlumno.Rows[0];
 
-            // *** Calcular promedio general ***
-            double promedioGeneral = 0;
-            if (dtAcademicos.Rows.Count > 0)
-            {
-                promedioGeneral = dtAcademicos.AsEnumerable()
-                    .Average(r => Convert.ToDouble(r["Promedio"]));
-            }
+            // Promedio
+            double promedioGeneral = dtAcademicos.Rows.Count > 0
+                ? dtAcademicos.AsEnumerable().Average(r => Convert.ToDouble(r["Promedio"]))
+                : 0;
 
+            // TABLA DATOS DEL ALUMNO
             int tableX = 40;
             int tableWidth = (int)page.Width - 80;
             int rowHeight = 25;
-
-            // Título
             gfx.DrawString("DATOS DEL ALUMNO", subFont, XBrushes.Black, tableX, y - 5);
-
-            // Marco externo de la tabla (3 filas)
             gfx.DrawRectangle(XPens.Black, tableX, y, tableWidth, rowHeight * 3);
 
-            // Líneas horizontales
+            int colWidth = tableWidth / 3;
+            gfx.DrawLine(XPens.Black, tableX + colWidth, y, tableX + colWidth, y + rowHeight * 3);
+            gfx.DrawLine(XPens.Black, tableX + colWidth * 2, y, tableX + colWidth * 2, y + rowHeight * 3);
             gfx.DrawLine(XPens.Black, tableX, y + rowHeight, tableX + tableWidth, y + rowHeight);
             gfx.DrawLine(XPens.Black, tableX, y + rowHeight * 2, tableX + tableWidth, y + rowHeight * 2);
 
-            // Líneas verticales (3 columnas iguales)
-            int colWidth = tableWidth / 3;
-
-            gfx.DrawLine(XPens.Black, tableX + colWidth, y, tableX + colWidth, y + rowHeight * 3);
-            gfx.DrawLine(XPens.Black, tableX + colWidth * 2, y, tableX + colWidth * 2, y + rowHeight * 3);
-
-            // ==================================
-            //     INSERTAR LOS DATOS
-            // ==================================
-
-            // Fila 1 (a1 a2 a3)
             gfx.DrawString("Nombre:", textFont, XBrushes.Black, tableX + 5, y + 17);
             gfx.DrawString(alumno["NombreCompleto"].ToString(), textFont, XBrushes.Black, tableX + colWidth + 5, y + 17);
             gfx.DrawString("Promedio general:", textFont, XBrushes.Black, tableX + colWidth * 2 + 5, y + 17);
-            string nombreArchivo = alumno["NombreCompleto"].ToString();
-            // Fila 2 (b1 b2 b3)
+
             gfx.DrawString("Matrícula:", textFont, XBrushes.Black, tableX + 5, y + 17 + rowHeight);
             gfx.DrawString(alumno["Matricula"].ToString(), textFont, XBrushes.Black, tableX + colWidth + 5, y + 17 + rowHeight);
             gfx.DrawString(promedioGeneral.ToString("0.0"), textFont, XBrushes.Black, tableX + colWidth * 2 + 5, y + 17 + rowHeight);
 
-            // Fila 3 (c1 c2 c3)
             gfx.DrawString("Grado y Grupo:", textFont, XBrushes.Black, tableX + 5, y + 17 + rowHeight * 2);
             gfx.DrawString(alumno["GradoGrupo"].ToString(), textFont, XBrushes.Black, tableX + colWidth + 5, y + 17 + rowHeight * 2);
-            // c3 se queda vacío
 
-            y += rowHeight * 3 + 40; // espacio antes de tabla de calificaciones
+            y += rowHeight * 3 + 40;
 
-            // ============================
-            // TABLA DE CALIFICACIONES
-            // ============================
+            // TABLA CALIFICACIONES
             gfx.DrawString("CALIFICACIONES", subFont, XBrushes.Black, tableX, y - 5);
-
             int headerHeight = 25;
             colWidth = tableWidth / 6;
-
-            // Encabezado con bordes
             gfx.DrawRectangle(XPens.Black, tableX, y, tableWidth, headerHeight);
-
             string[] headers = { "Materia", "Parcial 1", "Parcial 2", "Parcial 3", "Parcial 4", "Promedio" };
-
             for (int i = 0; i < headers.Length; i++)
             {
                 gfx.DrawLine(XPens.Black, tableX + colWidth * i, y, tableX + colWidth * i, y + headerHeight);
@@ -316,11 +249,9 @@ namespace gestionescolar.Presentation
 
             y += headerHeight;
 
-            // Filas de materias
             foreach (DataRow row in dtAcademicos.Rows)
             {
                 gfx.DrawRectangle(XPens.Black, tableX, y, tableWidth, headerHeight);
-
                 gfx.DrawString(row["NombreMateria"].ToString(), textFont, XBrushes.Black, tableX + 5, y + 17);
                 gfx.DrawString(row["Parcial1"].ToString(), textFont, XBrushes.Black, tableX + colWidth + 5, y + 17);
                 gfx.DrawString(row["Parcial2"].ToString(), textFont, XBrushes.Black, tableX + colWidth * 2 + 5, y + 17);
@@ -328,15 +259,12 @@ namespace gestionescolar.Presentation
                 gfx.DrawString(row["Parcial4"].ToString(), textFont, XBrushes.Black, tableX + colWidth * 4 + 5, y + 17);
                 gfx.DrawString(row["Promedio"].ToString(), textFont, XBrushes.Black, tableX + colWidth * 5 + 5, y + 17);
 
-                // Líneas internas verticales
                 for (int i = 1; i < 6; i++)
-                {
                     gfx.DrawLine(XPens.Black, tableX + colWidth * i, y, tableX + colWidth * i, y + headerHeight);
-                }
 
                 y += headerHeight;
 
-                // Salto de página si se llena
+                // Salto de página si es necesario
                 if (y > page.Height - 60)
                 {
                     page = document.AddPage();
@@ -344,15 +272,6 @@ namespace gestionescolar.Presentation
                     y = 40;
                 }
             }
-
-            // Guardar PDF
-            string ruta = HttpContext.Current.Server.MapPath("~/boleta"+ nombreArchivo + ".pdf");
-            document.Save(ruta);
-
-            HttpContext.Current.Response.ContentType = "application/pdf";
-            HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=boleta" + nombreArchivo + ".pdf");
-            HttpContext.Current.Response.TransmitFile(ruta);
-            HttpContext.Current.Response.End();
         }
 
         private void CargarGrupos()
