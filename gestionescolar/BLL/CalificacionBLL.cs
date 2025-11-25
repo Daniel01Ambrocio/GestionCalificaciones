@@ -23,5 +23,9 @@ namespace gestionescolar.BLL
         {
             return calificacionDLL.ActualizarCalificaciones(entcalificacion);
         }
+        public DataTable ObtenerCalififcacionesPorMatricula(Entalumno entalumno)
+        {
+            return calificacionDLL.ObtenerCalififcacionesPorMatricula(entalumno);
+        }
     }
 }

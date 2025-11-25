@@ -33,13 +33,13 @@ namespace gestionescolar.Presentation
         protected global::System.Web.UI.WebControls.DropDownList ddlGrupo;
 
         /// <summary>
-        /// Control Label1.
+        /// Control lbtipoImpresion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lbtipoImpresion;
 
         /// <summary>
         /// Control rblTipoImpresion.
@@ -49,6 +49,15 @@ namespace gestionescolar.Presentation
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rblTipoImpresion;
+
+        /// <summary>
+        /// Control btnOpcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnOpcion;
 
         /// <summary>
         /// Control divAlumno.
@@ -76,6 +85,15 @@ namespace gestionescolar.Presentation
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlAlumno;
+
+        /// <summary>
+        /// Control btnSleccionarAlumno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSleccionarAlumno;
 
         /// <summary>
         /// Control btnImprimir.

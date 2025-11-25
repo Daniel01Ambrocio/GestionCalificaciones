@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\danie\\documents\\d\\gestioncalificaciones\\gestionescolar\\presentation\\datosescuela.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\datosescuela.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\danie\\documents\\d\\gestioncalificaciones\\gestionescolar\\presentation\\imprimirboleta.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\imprimirboleta.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\dll\\escueladll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\dll\\escueladll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\bll\\escuelabll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\bll\\escuelabll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\presentation\\datosescuela.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\datosescuela.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\presentation\\imprimirboleta.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\imprimirboleta.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EscuelaDLL.cs",
-              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\DLL\\EscuelaDLL.cs",
-              "RelativeDocumentMoniker": "gestionescolar\\DLL\\EscuelaDLL.cs",
-              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\DLL\\EscuelaDLL.cs",
-              "RelativeToolTip": "gestionescolar\\DLL\\EscuelaDLL.cs",
-              "ViewState": "AgIAAHIAAAAAAAAAAAAiwHkAAABnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T18:04:38.99Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EscuelaBLL.cs",
-              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\BLL\\EscuelaBLL.cs",
-              "RelativeDocumentMoniker": "gestionescolar\\BLL\\EscuelaBLL.cs",
-              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\BLL\\EscuelaBLL.cs",
-              "RelativeToolTip": "gestionescolar\\BLL\\EscuelaBLL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBYAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T18:04:21.361Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DatosEscuela.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\DatosEscuela.aspx.cs",
-              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\DatosEscuela.aspx.cs",
-              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\DatosEscuela.aspx.cs",
-              "RelativeToolTip": "gestionescolar\\Presentation\\DatosEscuela.aspx.cs",
-              "ViewState": "AgIAAH8AAAAAAAAAAAAiwJAAAABFAAAAAAAAAA==",
+              "Title": "ImprimirBoleta.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\ImprimirBoleta.aspx.cs",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\ImprimirBoleta.aspx.cs",
+              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\ImprimirBoleta.aspx.cs",
+              "RelativeToolTip": "gestionescolar\\Presentation\\ImprimirBoleta.aspx.cs",
+              "ViewState": "AgIAAJMBAAAAAAAAAAAiwKwBAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T17:52:07.669Z",
+              "WhenOpened": "2025-11-25T17:50:45.861Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DatosEscuela.aspx",
-              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\DatosEscuela.aspx",
-              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\DatosEscuela.aspx",
-              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\DatosEscuela.aspx",
-              "RelativeToolTip": "gestionescolar\\Presentation\\DatosEscuela.aspx",
+              "DocumentIndex": 1,
+              "Title": "ImprimirBoleta.aspx",
+              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\ImprimirBoleta.aspx",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\ImprimirBoleta.aspx",
+              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\ImprimirBoleta.aspx",
+              "RelativeToolTip": "gestionescolar\\Presentation\\ImprimirBoleta.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-20T17:47:33.332Z",
+              "WhenOpened": "2025-11-25T17:50:34.933Z",
               "EditorCaption": ""
             }
           ]

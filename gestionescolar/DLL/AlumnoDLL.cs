@@ -138,6 +138,30 @@ namespace gestionescolar.DLL
 
             return dtalumno;
         }
+        public DataTable ObtenerAlumnoPorMatricula(Entalumno entalumno)
+        {
+            DataTable dt = new DataTable();
 
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                string query = @"SELECT
+                    u.Nombre + ' ' + u.ApellidoPaterno + ' ' + u.ApellidoMaterno AS NombreCompleto,
+                    a.Matricula,
+                    (CAST(g.grado AS VARCHAR) + ' ' + g.grupo) AS GradoGrupo
+                FROM Alumno a
+                INNER JOIN Usuario u ON a.IDUsuario = u.IDUsuario
+                INNER JOIN Grupo g ON a.IDGrupo = g.IDGrupo
+                WHERE a.Matricula = @matricula";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@matricula", entalumno.Matricula);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+
+            return dt;
+        }
     }
 }

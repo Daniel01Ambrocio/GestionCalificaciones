@@ -9,17 +9,20 @@
             <!-- Selección: Grupo -->
             <div class="mb-3">
                 <asp:Label ID="lbGrupo" runat="server" class="form-label" Text="Grupo: "></asp:Label>
-                <asp:DropDownList ID="ddlGrupo" runat="server" CssClass="form-select textbox-delgado" AutoPostBack="true" OnSelectedIndexChanged="ddlGrupo_SelectedIndexChanged">
+                <asp:DropDownList ID="ddlGrupo" runat="server" CssClass="form-select textbox-delgado">
                 </asp:DropDownList>
             </div>
 
             <!-- Tipo de impresión -->
             <div class="mb-3">
-                <asp:Label ID="Label1" runat="server" Text="Tipo de impresión:" CssClass="form-label"></asp:Label>
-                <asp:RadioButtonList ID="rblTipoImpresion" runat="server" AutoPostBack="true" OnSelectedIndexChanged="rblTipoImpresion_SelectedIndexChanged">
+                <asp:Label ID="lbtipoImpresion" runat="server" Text="Tipo de impresión:" CssClass="form-label"></asp:Label>
+                <asp:RadioButtonList ID="rblTipoImpresion" runat="server" >
                     <asp:ListItem Text="Por grupo (todas las boletas)" Value="grupo" Selected="True" />
                     <asp:ListItem Text="Por alumno" Value="alumno" />
                 </asp:RadioButtonList>
+                <br />
+                <asp:Button ID="btnOpcion" runat="server" Text="Seleccionar" CssClass="btn btn-primary" OnClick="btnOpcion_Click"/>
+                
             </div>
 
             <!-- Selección de alumno (solo si el usuario elige 'por alumno') -->
@@ -29,8 +32,9 @@
             </div>
 
             <!-- Botones -->
-            <asp:Button ID="btnImprimir" runat="server" Text="Imprimir" CssClass="btn btn-primary" OnClick="btnImprimir_Click" />
-            <asp:Button ID="btnAtras" runat="server" Text="Atrás" CssClass="btn btn-danger" />
+            <asp:Button ID="btnSleccionarAlumno" runat="server" Text="Seleccionar Alumno" CssClass="btn btn-primary" OnClick="btnSleccionarAlumno_Click"/>
+            <asp:Button ID="btnImprimir" runat="server" Text="Imprimir" CssClass="btn btn-success" OnClick="btnImprimir_Click" />
+            <asp:Button ID="btnAtras" runat="server" Text="Atrás" CssClass="btn btn-danger" OnClick="btnAtras_Click" />
         </div>
     </div>
 </asp:Content>
