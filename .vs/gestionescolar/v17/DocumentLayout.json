@@ -1,14 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\",
+  "WorkspaceRootPath": "C:\\Users\\desarrollo\\Documents\\React\\CRUD\\GestionCalificaciones\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\danie\\documents\\d\\gestioncalificaciones\\gestionescolar\\presentation\\imprimirboleta.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\imprimirboleta.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\crud\\gestioncalificaciones\\gestionescolar\\presentation\\registrarmateria.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\registrarmateria.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\presentation\\imprimirboleta.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\imprimirboleta.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\crud\\gestioncalificaciones\\gestionescolar\\presentation\\index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\crud\\gestioncalificaciones\\gestionescolar\\presentation\\cambiarcontrasena.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\cambiarcontrasena.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ImprimirBoleta.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\ImprimirBoleta.aspx.cs",
-              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\ImprimirBoleta.aspx.cs",
-              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\ImprimirBoleta.aspx.cs",
-              "RelativeToolTip": "gestionescolar\\Presentation\\ImprimirBoleta.aspx.cs",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAiwIEAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T17:50:45.861Z",
+              "DocumentIndex": 1,
+              "Title": "index.aspx",
+              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\CRUD\\GestionCalificaciones\\gestionescolar\\Presentation\\index.aspx",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\index.aspx",
+              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\CRUD\\GestionCalificaciones\\gestionescolar\\Presentation\\index.aspx",
+              "RelativeToolTip": "gestionescolar\\Presentation\\index.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-03-28T17:04:23.204Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ImprimirBoleta.aspx",
-              "DocumentMoniker": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\ImprimirBoleta.aspx",
-              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\ImprimirBoleta.aspx",
-              "ToolTip": "C:\\Users\\danie\\Documents\\d\\GestionCalificaciones\\gestionescolar\\Presentation\\ImprimirBoleta.aspx",
-              "RelativeToolTip": "gestionescolar\\Presentation\\ImprimirBoleta.aspx",
+              "DocumentIndex": 2,
+              "Title": "CambiarContrasena.aspx",
+              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\CRUD\\GestionCalificaciones\\gestionescolar\\Presentation\\CambiarContrasena.aspx",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\CambiarContrasena.aspx",
+              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\CRUD\\GestionCalificaciones\\gestionescolar\\Presentation\\CambiarContrasena.aspx",
+              "RelativeToolTip": "gestionescolar\\Presentation\\CambiarContrasena.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-25T17:50:34.933Z",
+              "WhenOpened": "2026-03-28T16:50:08.643Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RegistrarMateria.aspx",
+              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\CRUD\\GestionCalificaciones\\gestionescolar\\Presentation\\RegistrarMateria.aspx",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\RegistrarMateria.aspx",
+              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\CRUD\\GestionCalificaciones\\gestionescolar\\Presentation\\RegistrarMateria.aspx",
+              "RelativeToolTip": "gestionescolar\\Presentation\\RegistrarMateria.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-03-28T16:49:32.416Z",
               "EditorCaption": ""
             }
           ]
