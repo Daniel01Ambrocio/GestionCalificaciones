@@ -305,3 +305,6 @@ C:\Users\desarrollo\Documents\React\CRUD\GestionCalificaciones\gestionescolar\ob
 C:\Users\desarrollo\Documents\React\CRUD\GestionCalificaciones\gestionescolar\obj\Debug\gestione.BAAFDB97.Up2Date
 C:\Users\desarrollo\Documents\React\CRUD\GestionCalificaciones\gestionescolar\obj\Debug\gestionescolar.dll
 C:\Users\desarrollo\Documents\React\CRUD\GestionCalificaciones\gestionescolar\obj\Debug\gestionescolar.pdb
+C:\Users\desarrollo\Documents\React\CRUD\GestionCalificaciones\gestionescolar\bin\NewsAPI.dll
+C:\Users\desarrollo\Documents\React\CRUD\GestionCalificaciones\gestionescolar\bin\Newtonsoft.Json.dll
+C:\Users\desarrollo\Documents\React\CRUD\GestionCalificaciones\gestionescolar\bin\Newtonsoft.Json.xml

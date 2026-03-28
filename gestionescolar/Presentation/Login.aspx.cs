@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace gestionescolar.Presentation
 {
-    public partial class index : System.Web.UI.Page
+    public partial class Login : System.Web.UI.Page
     {
         loginBLL loginBLL = new loginBLL();
         protected void Page_Load(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace gestionescolar.Presentation
                 string tipoUsuario = resultado.Value.tipoUsuario;
 
                 // Aquí puedes guardar los datos en sesión o redirigir según rol, por ejemplo:
-                Session["Usuario"]= txtUsuario.Text;
+                Session["Usuario"] = txtUsuario.Text;
                 Session["UsuarioID"] = id;
                 Session["Rol"] = rol;
                 Session["TipoUsuario"] = tipoUsuario;
@@ -71,12 +71,12 @@ namespace gestionescolar.Presentation
 
 
                 }
-                
+
             }
             else
             {
                 MostrarAlerta("Usuario y/o contraseña incorrectos.", false);
-               
+
             }
         }
 
@@ -105,21 +105,21 @@ namespace gestionescolar.Presentation
 
             // Script para mostrar una alerta centrada con estilos personalizados
             string script = $@"
-                var alerta = document.createElement('div');
-                alerta.innerText = '{mensaje}';
-                alerta.style.position = 'fixed';
-                alerta.style.top = '50%';
-                alerta.style.left = '50%';
-                alerta.style.transform = 'translate(-50%, -50%)';
-                alerta.style.backgroundColor = '{color}';
-                alerta.style.color = 'white';
-                alerta.style.padding = '15px 30px';
-                alerta.style.borderRadius = '8px';
-                alerta.style.fontWeight = 'bold';
-                alerta.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                alerta.style.zIndex = '9999';
-                document.body.appendChild(alerta);
-                setTimeout(function() {{ alerta.remove(); }}, 6000);";
+        var alerta = document.createElement('div');
+        alerta.innerText = '{mensaje}';
+        alerta.style.position = 'fixed';
+        alerta.style.top = '50%';
+        alerta.style.left = '50%';
+        alerta.style.transform = 'translate(-50%, -50%)';
+        alerta.style.backgroundColor = '{color}';
+        alerta.style.color = 'white';
+        alerta.style.padding = '15px 30px';
+        alerta.style.borderRadius = '8px';
+        alerta.style.fontWeight = 'bold';
+        alerta.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+        alerta.style.zIndex = '9999';
+        document.body.appendChild(alerta);
+        setTimeout(function() {{ alerta.remove(); }}, 6000);";
 
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarAlerta", script, true);
         }

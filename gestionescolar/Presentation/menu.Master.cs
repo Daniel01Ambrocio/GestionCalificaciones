@@ -137,7 +137,7 @@ namespace gestionescolar.Presentation
             Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
 
             // 5. Redirigir al login
-            Response.Redirect("index.aspx");
+            Response.Redirect("Login.aspx");
         }
     }
 }

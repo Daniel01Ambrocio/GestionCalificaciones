@@ -74,6 +74,12 @@
     <Reference Include="MigraDoc.RtfRendering-gdi, Version=6.2.3.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharp-MigraDoc-GDI.6.2.3\lib\net462\MigraDoc.RtfRendering-gdi.dll</HintPath>
     </Reference>
+    <Reference Include="NewsAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NewsAPI.0.7.0\lib\portable45-net45+win8+wpa81\NewsAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PdfSharp-gdi, Version=6.2.3.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharp-GDI.6.2.3\lib\net462\PdfSharp-gdi.dll</HintPath>
     </Reference>
@@ -110,6 +116,7 @@
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
@@ -153,15 +160,16 @@
     <Content Include="Content\logo.png" />
     <Content Include="Content\logoEscuela.png" />
     <Content Include="Presentation\AsignarCalificacion.aspx" />
+    <Content Include="Presentation\Bienvenida.aspx" />
     <Content Include="Presentation\BienvenidaLogeado.aspx" />
     <Content Include="Presentation\CambiarContrasena.aspx" />
     <Content Include="Presentation\DatosEscuela.aspx" />
     <Content Include="Presentation\ImprimirBoleta.aspx" />
-    <Content Include="Presentation\index.aspx" />
     <Content Include="Presentation\ListaAdministrativos.aspx" />
     <Content Include="Presentation\ListaDirectores.aspx" />
     <Content Include="Presentation\ListaEditAlumnos.aspx" />
     <Content Include="Presentation\ListaMaestros.aspx" />
+    <Content Include="Presentation\Login.aspx" />
     <Content Include="Presentation\MisCalificaciones.aspx" />
     <Content Include="Presentation\RegistrarMateria.aspx" />
     <Content Include="Presentation\RegistrarVerGrupos.aspx" />
@@ -210,12 +218,20 @@
     <Compile Include="Entities\Entrol.cs" />
     <Compile Include="Entities\EntUsuario.cs" />
     <Compile Include="Entities\Estestatus.cs" />
+    <Compile Include="Entities\NoticiasEnt.cs" />
     <Compile Include="Presentation\AsignarCalificacion.aspx.cs">
       <DependentUpon>AsignarCalificacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Presentation\AsignarCalificacion.aspx.designer.cs">
       <DependentUpon>AsignarCalificacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Bienvenida.aspx.cs">
+      <DependentUpon>Bienvenida.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentation\Bienvenida.aspx.designer.cs">
+      <DependentUpon>Bienvenida.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentation\BienvenidaLogeado.aspx.cs">
       <DependentUpon>BienvenidaLogeado.aspx</DependentUpon>
@@ -245,13 +261,6 @@
     <Compile Include="Presentation\ImprimirBoleta.aspx.designer.cs">
       <DependentUpon>ImprimirBoleta.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Presentation\index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Presentation\ListaAdministrativos.aspx.cs">
       <DependentUpon>ListaAdministrativos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -280,6 +289,13 @@
     <Compile Include="Presentation\ListaMaestros.aspx.designer.cs">
       <DependentUpon>ListaMaestros.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentation\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\menu.Master.cs">
       <DependentUpon>menu.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -293,6 +309,13 @@
     </Compile>
     <Compile Include="Presentation\MisCalificaciones.aspx.designer.cs">
       <DependentUpon>MisCalificaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Principal.Master.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentation\Principal.Master.designer.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
     </Compile>
     <Compile Include="Presentation\RegistrarMateria.aspx.cs">
       <DependentUpon>RegistrarMateria.aspx</DependentUpon>
@@ -320,6 +343,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Presentation\menu.Master" />
+    <Content Include="Presentation\Principal.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
