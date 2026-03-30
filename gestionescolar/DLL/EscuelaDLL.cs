@@ -19,7 +19,7 @@ namespace gestionescolar.DLL
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = "SELECT TOP 1 * FROM Escuela";
+                string query = "SELECT TOP 1 NombreEscuela, ClaveInstitucion, Direccion, Telefono, Logotipo, CicloEscolar FROM Escuela";
                 SqlCommand cmd = new SqlCommand(query, conn);
 
                 conn.Open();
@@ -48,7 +48,6 @@ namespace gestionescolar.DLL
 
                     escuela = new Entescuela
                     {
-                        IDEscuela = Convert.ToInt32(reader["IDEscuela"]),
                         NombreEscuela = reader["NombreEscuela"].ToString(),
                         ClaveInstitucion = reader["ClaveInstitucion"].ToString(),
                         Direccion = reader["Direccion"].ToString(),
@@ -61,6 +60,35 @@ namespace gestionescolar.DLL
             }
 
             return escuela;
+        }
+        public int ObtenerIDEscuela(Entescuela entescuela)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = @"
+            SELECT IDEscuela 
+            FROM Escuela
+            WHERE NombreEscuela = @NombreEscuela
+              AND ClaveInstitucion = @ClaveInstitucion
+              AND Direccion = @Direccion
+              AND (@Telefono IS NULL OR Telefono = @Telefono)
+              AND (@Logotipo IS NULL OR Logotipo = @Logotipo)
+              AND CicloEscolar = @CicloEscolar";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@NombreEscuela", entescuela.NombreEscuela);
+                cmd.Parameters.AddWithValue("@ClaveInstitucion", entescuela.ClaveInstitucion);
+                cmd.Parameters.AddWithValue("@Direccion", entescuela.Direccion);
+                cmd.Parameters.AddWithValue("@Telefono", (object)entescuela.Telefono ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Logotipo", (object)entescuela.Logotipo ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@CicloEscolar", entescuela.CicloEscolar);
+
+                conn.Open();
+                object result = cmd.ExecuteScalar();
+
+                return result != null ? Convert.ToInt32(result) : 0;
+            }
         }
 
         public string ActualizarEscuela(Entescuela escuela)
@@ -76,9 +104,10 @@ namespace gestionescolar.DLL
                              Telefono=@Telefono, 
                              Logotipo=@Logotipo, 
                              CicloEscolar=@CicloEscolar
-                             WHERE IDEscuela=2";
+                             WHERE IDEscuela=1";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@IDEscuela", escuela.IDEscuela);
                     cmd.Parameters.AddWithValue("@NombreEscuela", escuela.NombreEscuela);
                     cmd.Parameters.AddWithValue("@ClaveInstitucion", escuela.ClaveInstitucion);
                     cmd.Parameters.AddWithValue("@Direccion", escuela.Direccion);
@@ -113,9 +142,10 @@ namespace gestionescolar.DLL
                              Direccion=@Direccion, 
                              Telefono=@Telefono,
                              CicloEscolar=@CicloEscolar
-                             WHERE IDEscuela=2";
+                             WHERE IDEscuela=1";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@IDEscuela", escuela.IDEscuela);
                     cmd.Parameters.AddWithValue("@NombreEscuela", escuela.NombreEscuela);
                     cmd.Parameters.AddWithValue("@ClaveInstitucion", escuela.ClaveInstitucion);
                     cmd.Parameters.AddWithValue("@Direccion", escuela.Direccion);

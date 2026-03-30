@@ -22,5 +22,9 @@ namespace gestionescolar.BLL
         {
             return escuelaDLL.ActualizarEscuelaSinLogo(escuela);
         }
+        public int ObtenerIDEscuela(Entescuela escuela)
+        {
+            return escuelaDLL.ObtenerIDEscuela(escuela);
+        }
     }
 }

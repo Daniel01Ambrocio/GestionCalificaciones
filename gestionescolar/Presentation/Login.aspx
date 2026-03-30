@@ -24,11 +24,9 @@
                     </span>
                 </div>
             </div>
-
-
             <div class="d-grid">
                 <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesión"
-                    CssClass="btn btn-white-bg text-border-black"
+                    CssClass="btn btn-outline-success text-border-black"
                     OnClick="btnLogin_Click" />
             </div>
 

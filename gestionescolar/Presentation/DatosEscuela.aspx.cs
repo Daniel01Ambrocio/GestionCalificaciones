@@ -1,4 +1,5 @@
 ﻿using gestionescolar.BLL;
+using gestionescolar.DLL;
 using gestionescolar.Entities;
 using System;
 using System.Collections.Generic;
@@ -106,6 +107,9 @@ namespace gestionescolar.Presentation
             escuela.Direccion = ((TextBox)row.FindControl("txtDireccion")).Text;
             escuela.Telefono = ((TextBox)row.FindControl("txtTelefono")).Text;
             escuela.CicloEscolar = ((TextBox)row.FindControl("txtCicloEscolar")).Text;
+            //Obtenemos el IDEscuela
+            int IDEscuela = escuelaBLL.ObtenerIDEscuela(escuela);
+            escuela.IDEscuela = IDEscuela;
 
             // Manejar carga de logotipo
             FileUpload fu = (FileUpload)row.FindControl("fuLogotipo");

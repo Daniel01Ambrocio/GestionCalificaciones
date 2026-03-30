@@ -17,15 +17,11 @@
                     <ItemTemplate>
                         <table class="table table-borderless mb-0">
                             <tr>
-                                <th>ID Escuela</th>
-                                <td><%# Eval("IDEscuela") %></td>
-                            </tr>
-                            <tr>
                                 <th>Nombre Escuela</th>
                                 <td><%# Eval("NombreEscuela") %></td>
                             </tr>
                             <tr>
-                                <th>Clave Institución</th>
+                                <th>Clave de la Institución</th>
                                 <td><%# Eval("ClaveInstitucion") %></td>
                             </tr>
                             <tr>
@@ -37,7 +33,7 @@
                                 <td><%# Eval("Telefono") %></td>
                             </tr>
                             <tr>
-                                <th>Logotipo</th>
+                                <th>Escudo</th>
                                 <td>
                                     <asp:Image runat="server" ID="imgLogotipo" ImageUrl='<%# Eval("Logotipo") %>' Width="100px" />
                                 </td>
