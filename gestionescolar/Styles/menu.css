@@ -31,3 +31,9 @@
             color: #495057 !important; /* Gris oscuro */
             text-decoration: underline !important;
         }
+
+.IconMenu {
+    width: 36px;
+    height: 36px;
+    margin-right: 8px;
+}

@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container mt-5">
-        <div class="w-100 Content-general">
+        <div class="col-12 col-md-8 col-lg-7">
             <h2>Imprimir Boletas</h2>
 
             <!-- Selección: Grupo -->

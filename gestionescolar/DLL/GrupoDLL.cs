@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace gestionescolar.DLL
@@ -100,7 +101,7 @@ namespace gestionescolar.DLL
             return dtRoles;
         }
 
-        public string RegistrarGrupo(Entgrupo grupo)
+        public string RegistrarGrupo(Entgrupo entgrupo)
         {
             try
             {
@@ -111,9 +112,9 @@ namespace gestionescolar.DLL
                 VALUES (@grado, @Grupo, @anio);";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@grado", grupo.grado);
-                    cmd.Parameters.AddWithValue("@Grupo", grupo.grupo);
-                    cmd.Parameters.AddWithValue("@anio", grupo.anio);
+                    cmd.Parameters.AddWithValue("@grado", entgrupo.grado);
+                    cmd.Parameters.AddWithValue("@Grupo", entgrupo.grupo);
+                    cmd.Parameters.AddWithValue("@anio", entgrupo.anio);
 
                     conn.Open();
                     int filasAfectadas = cmd.ExecuteNonQuery();
@@ -137,7 +138,7 @@ namespace gestionescolar.DLL
                 return $"Error inesperado: {ex.Message}";
             }
         }
-        public string EliminarGrupo(Entgrupo grupo)
+        public string EliminarGrupo(Entgrupo entgrupo)
         {
             try
             {
@@ -147,7 +148,7 @@ namespace gestionescolar.DLL
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@IdGrupo", grupo.IDGrupo);
+                        cmd.Parameters.AddWithValue("@IdGrupo", entgrupo.IDGrupo);
 
                         conn.Open();
                         int filasAfectadas = cmd.ExecuteNonQuery();
@@ -172,6 +173,30 @@ namespace gestionescolar.DLL
                 return $"Error inesperado: {ex.Message}";
             }
         }
-
+        public bool ExisteAlumnoEnGrupo(Entgrupo entgrupo)
+        {
+            int count = 1;
+            int idgrupo = entgrupo.IDGrupo;
+            //select count(*) from Alumno where IDGrupo = 1
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "select count(*) from Alumno where IDGrupo = @IDGrupo";
+                
+                using(SqlCommand cmd= new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@IdGrupo", entgrupo.IDGrupo);
+                    conn.Open();
+                    count=(int)cmd.ExecuteScalar();
+                }
+            }
+            if(count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

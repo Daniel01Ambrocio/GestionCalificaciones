@@ -144,7 +144,7 @@ namespace gestionescolar.Presentation
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtApellidoPaterno.Text) ||
                 string.IsNullOrWhiteSpace(txtApellidoMaterno.Text) ||
-                string.IsNullOrWhiteSpace(txtPassword.Text) ||
+                string.IsNullOrWhiteSpace(txtPasswor.Text) ||
                 string.IsNullOrWhiteSpace(txtvalicontra.Text) ||
                 string.IsNullOrWhiteSpace(txtPeriodoIngreso.Text) ||
                 string.IsNullOrWhiteSpace(txtPeriodoFin.Text) ||
@@ -158,7 +158,7 @@ namespace gestionescolar.Presentation
                 DateTime fechafin = Convert.ToDateTime(txtPeriodoFin.Text);
                 if(fechafin > fechainicio)
                 {
-                    string valida = ValidaContraseña(txtPassword.Text, txtvalicontra.Text);
+                    string valida = ValidaContraseña(txtPasswor.Text, txtvalicontra.Text);
                     if (valida != "Correcto")
                     {
                         MostrarAlerta(valida, false);
@@ -166,7 +166,7 @@ namespace gestionescolar.Presentation
                     else
                     {
                         string pass = "";
-                        pass = HashPassword(txtPassword.Text);
+                        pass = HashPassword(txtPasswor.Text);
                         entUsuario.Nombre = txtNombre.Text;
                         entUsuario.ApellidoPaterno = txtApellidoPaterno.Text;
                         entUsuario.ApellidoMaterno = txtApellidoMaterno.Text;
@@ -373,7 +373,7 @@ namespace gestionescolar.Presentation
             txtApellidoPaterno.Text = "";
             txtApellidoMaterno.Text = "";
             txtvalicontra.Text = "";
-            txtPassword.Text = "";
+            txtPasswor.Text = "";
             txtPeriodoIngreso.Text = "";
             txtPeriodoFin.Text = "";
             ddlStatus.SelectedIndex = -1;

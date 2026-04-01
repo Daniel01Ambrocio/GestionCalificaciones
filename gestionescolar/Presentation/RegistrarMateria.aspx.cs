@@ -110,18 +110,26 @@ namespace gestionescolar.Presentation
             {
                 entmateria.Nombre = txtNombre.Text;
                 entmateria.GradoEscolar = Convert.ToInt16(txtGradoEscolar.Text);
-                mensaje = materiaBLL.RegistrarMateria(entmateria);
-                if (mensaje == "Registro exitoso.")
+                if(entmateria.GradoEscolar > 0)
                 {
-                    LimpiarFormulario();
-                    MostrarMaterias();
-                    Session["mensaje"] = mensaje;
-                    Response.Redirect(Request.RawUrl);
+                    mensaje = materiaBLL.RegistrarMateria(entmateria);
+                    if (mensaje == "Registro exitoso.")
+                    {
+                        LimpiarFormulario();
+                        MostrarMaterias();
+                        Session["mensaje"] = mensaje;
+                        Response.Redirect(Request.RawUrl);
+                    }
+                    else
+                    {
+                        MostrarAlerta(mensaje, false);
+                    }
                 }
                 else
                 {
-                    MostrarAlerta(mensaje, false);
+                    MostrarAlerta("El grado debe de ser mayor a 0", false);
                 }
+                
             }
 
             entmateria = new Entmateria();

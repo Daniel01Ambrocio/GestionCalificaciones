@@ -157,6 +157,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Icons\iconoListAdministrativos.png" />
+    <Content Include="Content\Icons\iconoListAlumnos.png" />
+    <Content Include="Content\Icons\iconoRegGrupos.png" />
+    <Content Include="Content\Icons\iconoBorrAdministrativo.png" />
+    <Content Include="Content\Icons\iconoAutBajas.png" />
+    <Content Include="Content\Icons\iconoRegMateria.png" />
+    <Content Include="Content\Icons\iconoMisCalificaciones.png" />
+    <Content Include="Content\Icons\iconoRegCalificaciones.png" />
+    <Content Include="Content\Icons\iconoEscuela.png" />
+    <Content Include="Content\Icons\iconoRegUsuario.png" />
+    <Content Include="Content\Icons\iconoSolicitudBaja.png" />
+    <Content Include="Content\Icons\iconoImpBoleta.png" />
+    <Content Include="Content\Icons\iconoListMaestros.png" />
+    <Content Include="Content\Icons\iconoListDirectores.png" />
     <Content Include="Content\logo.png" />
     <Content Include="Content\logoEscuela.png" />
     <Content Include="Presentation\AsignarCalificacion.aspx" />
@@ -174,6 +188,8 @@
     <Content Include="Presentation\RegistrarMateria.aspx" />
     <Content Include="Presentation\RegistrarVerGrupos.aspx" />
     <Content Include="Presentation\RegistroUsuarios.aspx" />
+    <Content Include="Presentation\SolicitudBaja.aspx" />
+    <Content Include="Styles\Animaciones.css" />
     <Content Include="Styles\buttons.css" />
     <Content Include="Styles\global.css" />
     <Content Include="Styles\menu.css" />
@@ -338,6 +354,13 @@
     <Compile Include="Presentation\RegistroUsuarios.aspx.designer.cs">
       <DependentUpon>RegistroUsuarios.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\SolicitudBaja.aspx.cs">
+      <DependentUpon>SolicitudBaja.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentation\SolicitudBaja.aspx.designer.cs">
+      <DependentUpon>SolicitudBaja.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -351,7 +374,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\Boletas\" />
+    <Folder Include="Content\EscudosImg\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

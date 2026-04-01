@@ -81,7 +81,7 @@ namespace gestionescolar.Presentation
 
             // Mostrar el logotipo existente en el FileUpload
             GridViewRow row = gdvEscuela.Rows[e.NewEditIndex];
-            entescuela =escuelaBLL.ObtenerEscuela(); // método que trae la escuela de la DB
+            entescuela = escuelaBLL.ObtenerEscuela(); // método que trae la escuela de la DB
 
             Image img = (Image)row.FindControl("imgEditLogotipo");
             if (!string.IsNullOrEmpty(entescuela.Logotipo))
@@ -122,7 +122,7 @@ namespace gestionescolar.Presentation
                     string fileName = System.IO.Path.GetFileNameWithoutExtension(fu.FileName);
 
                     // Ruta completa para guardar el archivo físicamente
-                    string ruta = Server.MapPath("~/Content/") + fu.FileName;
+                    string ruta = Server.MapPath("~/Content/EscudosImg/") + fu.FileName;
 
                     // Guardar el archivo
                     fu.SaveAs(ruta);
@@ -162,7 +162,7 @@ namespace gestionescolar.Presentation
             }
 
 
-                gdvEscuela.EditIndex = -1;
+            gdvEscuela.EditIndex = -1;
             BindGrid();
         }
 

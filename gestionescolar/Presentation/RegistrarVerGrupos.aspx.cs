@@ -114,8 +114,48 @@ namespace gestionescolar.Presentation
                 entgrupo.grupo = txtGrupo.Text;
                 entgrupo.grado=Convert.ToInt16(txtGrado.Text);
                 entgrupo.anio = Convert.ToInt16(txtAnio.Text);
-                mensaje = grupoBLL.RegistrarGrupo(entgrupo);
-                if (mensaje == "Registro exitoso.")
+                if(entgrupo.grado > 0)
+                {
+                    if (entgrupo.anio > 2000)
+                    {
+                        mensaje = grupoBLL.RegistrarGrupo(entgrupo);
+                        if (mensaje == "Registro exitoso.")
+                        {
+                            LimpiarFormulario();
+                            MostrarGrupos();
+                            Session["mensaje"] = mensaje;
+                            Response.Redirect(Request.RawUrl);
+                        }
+                        else
+                        {
+                            MostrarAlerta(mensaje, false);
+                        }
+                    }
+                    else
+                    {
+                        MostrarAlerta("El año debe de ser mayor a 2000", false);
+                    }
+                }
+                else
+                {
+                    MostrarAlerta("El grado debe de ser mayor a 0", false);
+                }
+            }
+
+            entgrupo = new Entgrupo();
+        }
+        protected void gvGrupos_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string mensaje = "";
+            bool existe = true;
+            entgrupo.IDGrupo = Convert.ToInt32(gvGrupos.DataKeys[e.RowIndex].Value);
+            //Validamos que no exista un alumno registrado en ese grupo
+            existe = grupoBLL.ExisteAlumnoEnGrupo(entgrupo);
+            //existe es falso cuando no hay alumnos
+            if(existe == false)
+            {
+                mensaje = grupoBLL.EliminarGrupo(entgrupo);
+                if (mensaje == "Eliminación exitosa.")
                 {
                     LimpiarFormulario();
                     MostrarGrupos();
@@ -127,25 +167,11 @@ namespace gestionescolar.Presentation
                     MostrarAlerta(mensaje, false);
                 }
             }
-
-            entgrupo = new Entgrupo();
-        }
-        protected void gvGrupos_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            string mensaje = "";
-            entgrupo.IDGrupo = Convert.ToInt32(gvGrupos.DataKeys[e.RowIndex].Value);
-            mensaje = grupoBLL.EliminarGrupo(entgrupo);
-            if (mensaje == "Eliminación exitosa.")
-            {
-                LimpiarFormulario();
-                MostrarGrupos();
-                Session["mensaje"] = mensaje;
-                Response.Redirect(Request.RawUrl);
-            }
             else
             {
-                MostrarAlerta(mensaje, false);
+                MostrarAlerta("El grupo no se puede eliminar, ya que existe(n) alumno(s) vinculados.", false);
             }
+            
         }
 
         private void LimpiarFormulario()

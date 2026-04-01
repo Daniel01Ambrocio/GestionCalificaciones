@@ -1,10 +1,10 @@
 ﻿.Content-general {
-    max-width: 75%;
+    max-width: 70% !important;
     margin: 0 auto;
 }
 
 .textbox-delgado {
-    border: 1px solid #999; /* Borde negro clarito y delgado */
+    border: 1px solid #999 !important; /* Borde negro clarito y delgado */
     border-radius: 4px;
     padding: 6px 10px;
     outline: none;

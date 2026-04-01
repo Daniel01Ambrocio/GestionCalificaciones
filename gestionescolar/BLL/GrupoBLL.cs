@@ -19,6 +19,10 @@ namespace gestionescolar.BLL
         {
             return grupoDLL.EliminarGrupo(grupo);
         }
+        public bool ExisteAlumnoEnGrupo(Entgrupo entgrupo)
+        {
+            return grupoDLL.ExisteAlumnoEnGrupo(entgrupo);
+        }
         public DataTable ObtenerGrupos()
         {
             return grupoDLL.ObtenerGrupos();

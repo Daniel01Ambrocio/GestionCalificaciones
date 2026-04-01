@@ -26,8 +26,8 @@ namespace gestionescolar.DLL
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    // Buscar el archivo real en /Content/
-                    string basePath = HttpContext.Current.Server.MapPath("~/Content/");
+                    // Buscar el archivo real en /Content/EscudosImg/
+                    string basePath = HttpContext.Current.Server.MapPath("~/Content/EscudosImg/");
                     string logoName = reader["Logotipo"] != DBNull.Value ? reader["Logotipo"].ToString() : null;
                     string logoPath = null;
 
@@ -40,7 +40,7 @@ namespace gestionescolar.DLL
                             string fullPath = Path.Combine(basePath, logoName + ext);
                             if (File.Exists(fullPath))
                             {
-                                logoPath = "/Content/" + logoName + ext;
+                                logoPath = "/Content/EscudosImg/" + logoName + ext;
                                 break;
                             }
                         }

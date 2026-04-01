@@ -1,6 +1,7 @@
 create database escuelaBD
 
 use escuelaBD
+ 
 
 CREATE TABLE Escuela (
     IDEscuela INT IDENTITY(1,1) PRIMARY KEY,
@@ -76,6 +77,7 @@ CREATE TABLE Alumno (
 	FOREIGN KEY (IDGrupo) REFERENCES grupo(IDGrupo)
 );
 
+
 CREATE TABLE Materia (
     IDMateria INT IDENTITY(1,1) PRIMARY KEY,
     Nombre VARCHAR(50) NOT NULL,
@@ -103,13 +105,18 @@ CREATE TABLE Calificacion (
 );
  
  
+ go
 
 -- Insertar roles: Alumno, Maestro, Administrativo, Director
 INSERT INTO rol (nombreRol) VALUES ('Alumno'), ('Maestro'), ('Administrativo'), ('Director');
- 
+  
+ go
+
 
 -- Estatus como "Activo", "Inactivo", "Egresado", etc.
 INSERT INTO estatus (descripcion) VALUES ('Activo'), ('Inactivo'), ('Egresado');
+ 
+ go
 
 INSERT INTO Usuario (
     Nombre,
@@ -133,15 +140,23 @@ VALUES (
     1,    -- Suponiendo que 1 es "Activo" en la tabla estatus
     3     -- IDROL para "Administrativo"
 );
+ 
+ go
 
 INSERT INTO Administrativo (IDUsuario)
 VALUES (1);
+ 
+ go
 
 --Aasdfg@1
 UPDATE Usuario
 SET Contrasena = '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce';
+ 
+ go
 
 select*from Usuario
+ 
+ go
 
 
 INSERT INTO Escuela 
@@ -162,5 +177,7 @@ VALUES
     'logoEscuela',
     '2025-2026'
 );
+ 
+ go
 
-
+select*from ROL;
