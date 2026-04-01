@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -127,6 +128,27 @@ namespace gestionescolar.DLL
                     return false;
                 }
             }
+        }
+        public DataTable ObtenerUsuariosPorRol(int idRol)
+        {
+            DataTable dt = new DataTable();
+
+            string query = @"
+        SELECT 
+            u.IdUsuario,
+            (u.Nombre + ' ' + u.ApellidoPaterno + ' ' + u.ApellidoMaterno) AS NombreUsuario
+        FROM Usuario u
+        WHERE u.IDROL = @IDROL";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+            {
+                cmd.Parameters.AddWithValue("@IDROL", idRol);
+                da.Fill(dt);
+            }
+
+            return dt;
         }
     }
 }

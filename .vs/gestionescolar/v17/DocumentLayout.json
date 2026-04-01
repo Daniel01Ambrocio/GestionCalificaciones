@@ -1,12 +1,88 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\crud\\gestioncalificaciones\\gestionescolar\\presentation\\solicitudbaja.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\solicitudbaja.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\crud\\gestioncalificaciones\\gestionescolar\\presentation\\solicitudbaja.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\solicitudbaja.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\crud\\gestioncalificaciones\\gestionescolar\\dll\\usuariodll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\dll\\usuariodll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\crud\\gestioncalificaciones\\gestionescolar\\bll\\usuariobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\bll\\usuariobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsuarioDLL.cs",
+              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\DLL\\UsuarioDLL.cs",
+              "RelativeDocumentMoniker": "gestionescolar\\DLL\\UsuarioDLL.cs",
+              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\DLL\\UsuarioDLL.cs",
+              "RelativeToolTip": "gestionescolar\\DLL\\UsuarioDLL.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAIwJcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T23:07:58.831Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsuarioBLL.cs",
+              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\BLL\\UsuarioBLL.cs",
+              "RelativeDocumentMoniker": "gestionescolar\\BLL\\UsuarioBLL.cs",
+              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\BLL\\UsuarioBLL.cs",
+              "RelativeToolTip": "gestionescolar\\BLL\\UsuarioBLL.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAmwCIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T23:06:58.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SolicitudBaja.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\Presentation\\SolicitudBaja.aspx.cs",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\SolicitudBaja.aspx.cs",
+              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\Presentation\\SolicitudBaja.aspx.cs",
+              "RelativeToolTip": "gestionescolar\\Presentation\\SolicitudBaja.aspx.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAowBIAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T22:00:03.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SolicitudBaja.aspx",
+              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\Presentation\\SolicitudBaja.aspx",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\SolicitudBaja.aspx",
+              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\Presentation\\SolicitudBaja.aspx",
+              "RelativeToolTip": "gestionescolar\\Presentation\\SolicitudBaja.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-04-01T21:59:11.448Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
