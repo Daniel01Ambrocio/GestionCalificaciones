@@ -23,7 +23,7 @@
 
             <!-- Usuario -->
             <div class="mb-3">
-                <label class="form-label fw-semibold">Usuario</label>
+                <label class="form-label fw-semibold">Usuario a suspender</label>
                 <asp:DropDownList ID="ddlUsuario" runat="server" CssClass="form-select">
                     <asp:ListItem Text="Seleccione un usuario" Value="" />
                 </asp:DropDownList>

@@ -55,7 +55,6 @@ namespace gestionescolar.Presentation
                     solicitarBaja.Visible = false;
                     imprimirBoleta.Visible = false;
                     autorizarBajas.Visible = false;
-                    bajaAdministrativos.Visible = false;
                     listaGrupos.Visible = false;
                     listaAlumnos.Visible = false;
                     listaMaestros.Visible = false;
@@ -94,17 +93,14 @@ namespace gestionescolar.Presentation
                             registroUsuarios.Visible = true;
                             misCalificaciones.Visible = false;
                             asignarCalificacion.Visible = true;
-                            solicitarBaja.Visible = true;
                             imprimirBoleta.Visible = true;
-                            autorizarBajas.Visible = true;
-                            bajaAdministrativos.Visible = true;
+                            autorizarBajas.Visible = true; 
                             listaGrupos.Visible = true;
                             listaAlumnos.Visible = true;
                             listaMaestros.Visible = true;
                             listaAdministrativos.Visible = true;
                             ListaDirectoresV.Visible = true;
                             datosEscuela.Visible = true;
-                            MisSolicitudes.Visible = true;
                             break;
                     }
                 }

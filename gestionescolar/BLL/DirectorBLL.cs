@@ -43,5 +43,9 @@ namespace gestionescolar.BLL
         {
             return directorDLL.ObtenerDirectoresActivos();
         }
+        public Entdirector ObtenerIDDirector(string usuario)
+        {
+            return directorDLL.ObtenerIDDirector(usuario);
+        }
     }
 }

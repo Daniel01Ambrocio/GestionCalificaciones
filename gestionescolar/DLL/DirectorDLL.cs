@@ -96,5 +96,41 @@ namespace gestionescolar.DLL
                 return "Error de registro";
             }
         }
+        public Entdirector ObtenerIDDirector(string usuario)
+        {
+            Entdirector director = null; // initialize the object
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    string query = @"
+                SELECT d.Iddirector
+                FROM Director d
+                INNER JOIN Usuario u ON d.IDUsuario = u.IDUsuario
+                WHERE u.usuario = @Usuario";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Usuario", usuario);
+
+                        conn.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            director = new Entdirector();
+                            director.Iddirector = reader.GetInt32(reader.GetOrdinal("Iddirector"));
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return null; // optionally, log the exception
+            }
+
+            return director;
+        }
     }
 }

@@ -191,6 +191,6 @@ VALUES
 );
  
  go
-
-select*from ROL;
-
+select*from Estatus
+select*from Usuario;
+select*from SolicitudBajas

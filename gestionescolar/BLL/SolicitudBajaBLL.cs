@@ -20,5 +20,17 @@ namespace gestionescolar.BLL
         {
             return solicitudbajadll.MostrarSolicitudes(IdAdministrativo);
         }
+        public DataTable MostrarSolicitudesPendientes()
+        {
+            return solicitudbajadll.MostrarSolicitudesPendientes();
+        }
+        public DataTable MostrarSolicitudesAprobadas()
+        {
+            return solicitudbajadll.MostrarSolicitudesAprobadas();
+        }
+        public string AprobarSolicitud(int IDSolicitudBajas)
+        {
+            return solicitudbajadll.AprobarSolicitud(IDSolicitudBajas);
+        }
     }
 }

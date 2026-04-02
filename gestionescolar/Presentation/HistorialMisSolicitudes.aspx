@@ -34,7 +34,7 @@
 
                             <Columns>
                                 <asp:BoundField DataField="NombAdministrativo" HeaderText="Administrativo" />
-                                <asp:BoundField DataField="NombUsuarioBaja" HeaderText="Usuario para baja" />
+                                <asp:BoundField DataField="NombUsuarioBaja" HeaderText="Usuario a suspender" />
                                 <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
                                 <asp:BoundField DataField="NombDirectivo" HeaderText="Directivo" />
                                 <asp:BoundField DataField="FechaSolicitud" HeaderText="Fecha de solicitud" />

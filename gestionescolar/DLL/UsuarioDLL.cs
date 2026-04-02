@@ -129,6 +129,29 @@ namespace gestionescolar.DLL
                 }
             }
         }
+        public bool ActualizarStatusUsuario(int IDSolicitudBajas)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+
+                try
+                {
+                    string query = "UPDATE SET U.IDStatus = 2 FROM Usuario U INNER JOIN SolicitudBajas S ON U.IdUsuario = S.IDUsuarioBaja WHERE S.IDSolicitudBajas = @IDSolicitudBajas;";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@IDSolicitudBajas", IDSolicitudBajas); 
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    return true;//Realizo la actualizacion
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
         public DataTable ObtenerUsuariosPorRol(int idRol)
         {
             DataTable dt = new DataTable();

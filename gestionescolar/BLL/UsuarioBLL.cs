@@ -31,5 +31,9 @@ namespace gestionescolar.BLL
         {
             return usuarioDLL.ObtenerUsuariosPorRol(idRol);
         }
+        public bool ActualizarStatusUsuario(int IDSolicitudBajas)
+        {
+            return usuarioDLL.ActualizarStatusUsuario(IDSolicitudBajas);
+        }
     }
 }

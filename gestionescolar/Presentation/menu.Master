@@ -114,22 +114,12 @@
                 <asp:HyperLink
                     ID="autorizarBajas"
                     CssClass="nav-link"
-                    NavigateUrl="AutorizarBajas.aspx"
+                    NavigateUrl="AprobarSolicitudes.aspx"
                     runat="server">
                     <img src="../Content/Icons/iconoAutBajas.png" 
                         alt="Escuela" 
                         class="IconMenu" />
                     Autorizar bajas
-                </asp:HyperLink>
-                <asp:HyperLink
-                    ID="bajaAdministrativos"
-                    CssClass="nav-link"
-                    NavigateUrl="BajaAdministrativo.aspx"
-                    runat="server">
-                    <img src="../Content/Icons/iconoBorrAdministrativo.png" 
-                        alt="Escuela" 
-                        class="IconMenu" />
-                    Dar de baja administrativos
                 </asp:HyperLink>
                 <asp:HyperLink
                     ID="listaGrupos"

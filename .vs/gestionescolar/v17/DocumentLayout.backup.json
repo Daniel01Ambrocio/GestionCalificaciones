@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\crud\\gestioncalificaciones\\gestionescolar\\dll\\solicitudbajadll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\dll\\solicitudbajadll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\crud\\gestioncalificaciones\\gestionescolar\\presentation\\aprobarsolicitudes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\aprobarsolicitudes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\crud\\gestioncalificaciones\\gestionescolar\\presentation\\historialmissolicitudes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\historialmissolicitudes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\crud\\gestioncalificaciones\\gestionescolar\\bll\\usuariobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\bll\\usuariobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\crud\\gestioncalificaciones\\gestionescolar\\presentation\\historialmissolicitudes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\historialmissolicitudes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\crud\\gestioncalificaciones\\gestionescolar\\dll\\usuariodll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\dll\\usuariodll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SolicitudBajaDLL.cs",
-              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\DLL\\SolicitudBajaDLL.cs",
-              "RelativeDocumentMoniker": "gestionescolar\\DLL\\SolicitudBajaDLL.cs",
-              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\DLL\\SolicitudBajaDLL.cs",
-              "RelativeToolTip": "gestionescolar\\DLL\\SolicitudBajaDLL.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAwwEcAAAADAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "UsuarioDLL.cs",
+              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\DLL\\UsuarioDLL.cs",
+              "RelativeDocumentMoniker": "gestionescolar\\DLL\\UsuarioDLL.cs",
+              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\DLL\\UsuarioDLL.cs",
+              "RelativeToolTip": "gestionescolar\\DLL\\UsuarioDLL.cs",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAIwIoAAAC2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T18:43:34.959Z",
+              "WhenOpened": "2026-04-02T22:39:46.2Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "HistorialMisSolicitudes.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\Presentation\\HistorialMisSolicitudes.aspx.cs",
-              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\HistorialMisSolicitudes.aspx.cs",
-              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\Presentation\\HistorialMisSolicitudes.aspx.cs",
-              "RelativeToolTip": "gestionescolar\\Presentation\\HistorialMisSolicitudes.aspx.cs",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAwwIsAAAA2AAAAAAAAAA==",
+              "Title": "UsuarioBLL.cs",
+              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\BLL\\UsuarioBLL.cs",
+              "RelativeDocumentMoniker": "gestionescolar\\BLL\\UsuarioBLL.cs",
+              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\BLL\\UsuarioBLL.cs",
+              "RelativeToolTip": "gestionescolar\\BLL\\UsuarioBLL.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACEAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T18:30:12.025Z",
+              "WhenOpened": "2026-04-02T22:37:44.548Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HistorialMisSolicitudes.aspx",
-              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\CRUD\\GestionCalificaciones\\gestionescolar\\Presentation\\HistorialMisSolicitudes.aspx",
-              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\HistorialMisSolicitudes.aspx",
-              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\CRUD\\GestionCalificaciones\\gestionescolar\\Presentation\\HistorialMisSolicitudes.aspx",
-              "RelativeToolTip": "gestionescolar\\Presentation\\HistorialMisSolicitudes.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-04-02T18:00:37.157Z",
+              "DocumentIndex": 0,
+              "Title": "AprobarSolicitudes.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\Presentation\\AprobarSolicitudes.aspx.cs",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\AprobarSolicitudes.aspx.cs",
+              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\Presentation\\AprobarSolicitudes.aspx.cs",
+              "RelativeToolTip": "gestionescolar\\Presentation\\AprobarSolicitudes.aspx.cs",
+              "ViewState": "AgIAAJIAAAAAAAAAAAAYwKQAAAB5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T22:33:12.338Z",
               "EditorCaption": ""
             }
           ]
