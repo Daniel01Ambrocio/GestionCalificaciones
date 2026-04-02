@@ -37,6 +37,27 @@ namespace gestionescolar.DLL
 
             return dtRoles;
         }
+        public DataTable ObtenerDirectoresActivos()
+        {
+            DataTable dtRoles = new DataTable();
+
+            string query = @"SELECT
+            (u.Nombre + ' ' + u.ApellidoPaterno + ' ' + u.ApellidoMaterno) AS NombreDirector,
+            d.Iddirector
+        FROM Director d
+        INNER JOIN Usuario u ON d.IDUsuario = u.IDUsuario 
+        INNER JOIN Estatus e ON u.IDStatus = e.IDStatus
+        WHERE e.Descripcion = 'Activo'";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+            {
+                da.Fill(dtRoles);
+            }
+
+            return dtRoles;
+        }
         public string RegistrarDirector(EntUsuario entUsuario)
         {
             try

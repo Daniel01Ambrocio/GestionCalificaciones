@@ -82,6 +82,16 @@
                     Solicitar baja de alumno o maestro
                 </asp:HyperLink>
                 <asp:HyperLink
+                    ID="MisSolicitudes"
+                    CssClass="nav-link"
+                    NavigateUrl="HistorialMisSolicitudes.aspx"
+                    runat="server">
+                    <img src="../Content/Icons/iconoHisMisSolicitudes.png" 
+                        alt="Escuela" 
+                        class="IconMenu" />
+                    Historial de mis solicitudes
+                </asp:HyperLink>
+                <asp:HyperLink
                     ID="imprimirBoleta"
                     CssClass="nav-link"
                     NavigateUrl="ImprimirBoleta.aspx"

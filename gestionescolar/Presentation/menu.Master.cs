@@ -63,6 +63,7 @@ namespace gestionescolar.Presentation
                     registrarMateria.Visible = false;
                     ListaDirectoresV.Visible = false;
                     datosEscuela.Visible = false;
+                    MisSolicitudes.Visible = false;
                     switch (rol)
                     {
                         case "Alumno":
@@ -85,6 +86,7 @@ namespace gestionescolar.Presentation
                             ListaDirectoresV.Visible = true;
                             registrarMateria.Visible = true;
                             datosEscuela.Visible = true;
+                            MisSolicitudes.Visible = true;
                             break;
 
                         case "Director":
@@ -102,6 +104,7 @@ namespace gestionescolar.Presentation
                             listaAdministrativos.Visible = true;
                             ListaDirectoresV.Visible = true;
                             datosEscuela.Visible = true;
+                            MisSolicitudes.Visible = true;
                             break;
                     }
                 }

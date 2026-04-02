@@ -12,7 +12,7 @@ using System.Web.UI.WebControls;
 
 namespace gestionescolar.Presentation
 {
-    public partial class SolicitudBaja : System.Web.UI.Page
+    public partial class HistorialSolicitudes : System.Web.UI.Page
     {
         RolBLL rolBLL = new RolBLL();
         UsuarioBLL UsuarioBLL = new UsuarioBLL();
@@ -61,7 +61,7 @@ namespace gestionescolar.Presentation
                 if (v)
                 {
                     usuario = Session["Usuario"].ToString();
-                    entadministrativo= AdministrativoBLL.ObtenerIDAdministrativo(usuario);
+                    entadministrativo = AdministrativoBLL.ObtenerIDAdministrativo(usuario);
 
                     if (entadministrativo.IdAdministrativo < 1)
                     {
@@ -94,11 +94,10 @@ namespace gestionescolar.Presentation
                     else
                     {
                         Session["IdAdministrativo"] = entadministrativo.IdAdministrativo;
-                        LimpiarFormulario();
-                        CargarRoles();
-                        CargarDirectoresActivos();
-                    }
                         
+                        MostrarSolicitudes();
+                    }
+
                 }
                 else
                 {
@@ -107,87 +106,13 @@ namespace gestionescolar.Presentation
 
             }
         }
-         
-        private void CargarRoles()
+        public void MostrarSolicitudes()
         {
-            DataTable dt = new DataTable();
-            ddlRol.Items.Clear(); // Limpiar antes de cargar
-            dt = rolBLL.ObtenerRoles();
-            ddlRol.DataSource = dt;
-            ddlRol.DataTextField = "NombreRol";
-            ddlRol.DataValueField = "IdRol";
-            ddlRol.DataBind();
-
-            // Agrega el ítem por defecto
-            ddlRol.Items.Insert(0, new ListItem("Selecciona un rol", ""));
-        }
-        private void CargarDirectoresActivos()
-        {
-            DataTable dtDirectores = new DataTable();
-            ddlDirectivoAprov.Items.Clear(); // Limpiar antes de cargar
-            dtDirectores = directorBLL.ObtenerDirectoresActivos();
-            ddlDirectivoAprov.DataSource = dtDirectores;
-            ddlDirectivoAprov.DataTextField = "NombreDirector";
-            ddlDirectivoAprov.DataValueField = "Iddirector";
-            ddlDirectivoAprov.DataBind();
-
-            // Agrega el ítem por defecto
-            ddlDirectivoAprov.Items.Insert(0, new ListItem("Selecciona un directivo", ""));
-        }
-
-        private void CargarUsuarios(int idRol)
-        {
-            ddlUsuario.Items.Clear();
-
-            if (idRol == 0)
-            {
-                ddlUsuario.Items.Insert(0, new ListItem("Seleccione un usuario", ""));
-                return;
-            }
-
-            DataTable dt = UsuarioBLL.ObtenerUsuariosPorRol(idRol);
-
-            ddlUsuario.DataSource = dt;
-            ddlUsuario.DataTextField = "NombreUsuario"; // ajusta al nombre real
-            ddlUsuario.DataValueField = "IdUsuario";
-            ddlUsuario.DataBind();
-
-            ddlUsuario.Items.Insert(0, new ListItem("Seleccione un usuario", ""));
-        }
-        protected void ddlRol_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int idRol;
-
-            if (int.TryParse(ddlRol.SelectedValue, out idRol))
-            {
-                CargarUsuarios(idRol);
-            }
-            else
-            {
-                // Si no selecciona nada, limpiar usuarios
-                ddlUsuario.Items.Clear();
-                ddlUsuario.Items.Insert(0, new ListItem("Seleccione un usuario", ""));
-            }
-        }
-          
-
-        protected void btnCancelar_Click(object sender, EventArgs e)
-        {
-            LimpiarFormulario();
-        }
-        private void LimpiarFormulario()
-        {
-            // Deseleccionar
-            ddlRol.ClearSelection();
-
-            // Borrar todos los elementos
-            ddlUsuario.Items.Clear();
-
-            // Limpiar textbox
-            txtMotivo.Text = string.Empty;
-
-            // Deseleccionar
-            ddlDirectivoAprov.ClearSelection();
+            int IdAdministrativo = Convert.ToInt16(Session["IdAdministrativo"]);
+            DataTable dtSolicitudes = new DataTable();
+            dtSolicitudes = solicitudbajabll.MostrarSolicitudes(IdAdministrativo);
+            gvSolicitudes.DataSource = dtSolicitudes;
+            gvSolicitudes.DataBind();
         }
         protected void MostrarAlerta(string mensaje, bool esExito)
         {
@@ -215,51 +140,47 @@ namespace gestionescolar.Presentation
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarAlerta", script, true);
         }
 
-        protected void btnEnviar_Click(object sender, EventArgs e)
+        protected void btnFiltrar_Click(object sender, EventArgs e)
         {
-            // Validamos que los campos estén llenos
-            if (string.IsNullOrEmpty(ddlRol.SelectedValue))
-            {
-                MostrarAlerta("Debe de seleccionar un rol para el usuario que desea suspender.", false);
-                return;
-            }
+            string textoBusqueda = txtFiltro.Text.Trim();
+            int IdAdministrativo = Convert.ToInt16(Session["IdAdministrativo"]);
+            DataTable dtOriginal = solicitudbajabll.MostrarSolicitudes(IdAdministrativo);
 
-            if (string.IsNullOrEmpty(ddlUsuario.SelectedValue))
+            if (!string.IsNullOrEmpty(textoBusqueda) && dtOriginal.Rows.Count > 0)
             {
-                MostrarAlerta("Debe de seleccionar un usuario que desea suspender.", false);
-                return;
-            }
+                string[] palabras = textoBusqueda.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-            if (string.IsNullOrEmpty(ddlDirectivoAprov.SelectedValue))
-            {
-                MostrarAlerta("Debe de seleccionar un directivo para aprobar su solicitud.", false);
-                return;
-            }
+                List<string> condiciones = new List<string>();
 
-            if (string.IsNullOrEmpty(txtMotivo.Text))
-            {
-                MostrarAlerta("Debe de ingresar un motivo.", false);
-                return;
-            }
-            
-            entsolicitudBajas.IDAdministrativo = Convert.ToInt16(Session["IdAdministrativo"]);
-            entsolicitudBajas.IDDirectivo = Convert.ToInt16(ddlDirectivoAprov.SelectedValue);
-            entsolicitudBajas.IDUsuarioBaja = Convert.ToInt16(ddlUsuario.SelectedValue);
-            entsolicitudBajas.Descripcion = txtMotivo.Text;
-            entsolicitudBajas.FechaSolicitud = DateTime.Today;
-            entsolicitudBajas.Estado = "Pendiente";
+                // Recorrer todas las columnas del DataTable
+                foreach (string palabra in palabras)
+                {
+                    string palabraLimpia = palabra.Replace("'", "''");
+                    List<string> condicionesPorPalabra = new List<string>();
 
-            // Todos los campos estan llenos:
-            string mensaje = solicitudbajabll.RegistrarSolicitud(entsolicitudBajas);
-            if(mensaje == "Registro correcto.")
-            {
-                MostrarAlerta(mensaje, true);
-                LimpiarFormulario();
+                    foreach (DataColumn col in dtOriginal.Columns)
+                    {
+                        // Solo filtrar columnas de tipo string o convertible a string
+                        condicionesPorPalabra.Add($"ISNULL(CONVERT([{col.ColumnName}], 'System.String'),'') LIKE '%{palabraLimpia}%'");
+                    }
+
+                    // Combinar condiciones de todas las columnas con OR (la palabra puede estar en cualquiera)
+                    condiciones.Add("(" + string.Join(" OR ", condicionesPorPalabra) + ")");
+                }
+
+                // Combinar condiciones de todas las palabras con AND (todas las palabras deben aparecer)
+                string filtroFinal = string.Join(" AND ", condiciones);
+
+                DataRow[] filasFiltradas = dtOriginal.Select(filtroFinal);
+
+                gvSolicitudes.DataSource = filasFiltradas.Length > 0 ? filasFiltradas.CopyToDataTable() : null;
             }
             else
             {
-                MostrarAlerta(mensaje, false);
+                gvSolicitudes.DataSource = dtOriginal;
             }
+
+            gvSolicitudes.DataBind();
         }
     }
 }

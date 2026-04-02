@@ -39,5 +39,9 @@ namespace gestionescolar.BLL
         {
             return directorDLL.ObtenerDirectores();
         }
+        public DataTable ObtenerDirectoresActivos()
+        {
+            return directorDLL.ObtenerDirectoresActivos();
+        }
     }
 }

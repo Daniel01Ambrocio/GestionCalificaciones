@@ -96,6 +96,15 @@ namespace gestionescolar.Presentation
         protected global::System.Web.UI.WebControls.HyperLink solicitarBaja;
 
         /// <summary>
+        /// Control MisSolicitudes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink MisSolicitudes;
+
+        /// <summary>
         /// Control imprimirBoleta.
         /// </summary>
         /// <remarks>

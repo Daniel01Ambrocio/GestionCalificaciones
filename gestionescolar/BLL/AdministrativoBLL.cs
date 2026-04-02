@@ -35,6 +35,10 @@ namespace gestionescolar.BLL
                 }
             }
         }
+        public Entadministrativo ObtenerIDAdministrativo(string usuario)
+        {
+            return administrativoDLL.ObtenerIDAdministrativo(usuario);
+        }
         public DataTable ObtenerAdministrativos()
         {
             return administrativoDLL.ObtenerAdministrativos();

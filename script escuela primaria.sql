@@ -103,6 +103,18 @@ CREATE TABLE Calificacion (
     Promedio DECIMAL(5,2),
     FOREIGN KEY (IDAlumnoMateria) REFERENCES AlumnoMateria(IDAlumnoMateria)
 );
+
+CREATE TABLE SolicitudBajas (
+    IDSolicitudBajas INT IDENTITY(1,1) PRIMARY KEY,
+    IDAdministrativo INT NOT NULL,
+    IDDirectivo INT NOT NULL,
+    IDUsuarioBaja INT NOT NULL,
+    Descripcion VARCHAR(255),
+    FechaSolicitud DATETIME,
+    FechaAprobacion DATETIME,
+    Estado VARCHAR(10),
+    FOREIGN KEY (IDUsuarioBaja) REFERENCES Usuario(IDUsuario)
+);
  
  
  go

@@ -171,6 +171,7 @@
     <Content Include="Content\Icons\iconoImpBoleta.png" />
     <Content Include="Content\Icons\iconoListMaestros.png" />
     <Content Include="Content\Icons\iconoListDirectores.png" />
+    <Content Include="Content\Icons\iconoHisMisSolicitudes.png" />
     <Content Include="Content\logo.png" />
     <Content Include="Content\logoEscuela.png" />
     <Content Include="Presentation\AsignarCalificacion.aspx" />
@@ -178,6 +179,7 @@
     <Content Include="Presentation\BienvenidaLogeado.aspx" />
     <Content Include="Presentation\CambiarContrasena.aspx" />
     <Content Include="Presentation\DatosEscuela.aspx" />
+    <Content Include="Presentation\HistorialMisSolicitudes.aspx" />
     <Content Include="Presentation\ImprimirBoleta.aspx" />
     <Content Include="Presentation\ListaAdministrativos.aspx" />
     <Content Include="Presentation\ListaDirectores.aspx" />
@@ -207,6 +209,7 @@
     <Compile Include="BLL\MaestroBLL.cs" />
     <Compile Include="BLL\MateriaBLL.cs" />
     <Compile Include="BLL\RolBLL.cs" />
+    <Compile Include="BLL\SolicitudBajaBLL.cs" />
     <Compile Include="BLL\StatusBLL.cs" />
     <Compile Include="BLL\UsuarioBLL.cs" />
     <Compile Include="DLL\AdministrativoDLL.cs" />
@@ -220,6 +223,7 @@
     <Compile Include="DLL\MaestroDLL.cs" />
     <Compile Include="DLL\MateriaDLL.cs" />
     <Compile Include="DLL\RolDLL.cs" />
+    <Compile Include="DLL\SolicitudBajaDLL.cs" />
     <Compile Include="DLL\StatusDLL.cs" />
     <Compile Include="DLL\UsuarioDLL.cs" />
     <Compile Include="Entities\Entcalificacion.cs" />
@@ -232,6 +236,7 @@
     <Compile Include="Entities\Entmaestro.cs" />
     <Compile Include="Entities\Entmateria.cs" />
     <Compile Include="Entities\Entrol.cs" />
+    <Compile Include="Entities\EntSolicitudBajas.cs" />
     <Compile Include="Entities\EntUsuario.cs" />
     <Compile Include="Entities\Estestatus.cs" />
     <Compile Include="Entities\NoticiasEnt.cs" />
@@ -269,6 +274,13 @@
     </Compile>
     <Compile Include="Presentation\DatosEscuela.aspx.designer.cs">
       <DependentUpon>DatosEscuela.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\HistorialMisSolicitudes.aspx.cs">
+      <DependentUpon>HistorialMisSolicitudes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentation\HistorialMisSolicitudes.aspx.designer.cs">
+      <DependentUpon>HistorialMisSolicitudes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentation\ImprimirBoleta.aspx.cs">
       <DependentUpon>ImprimirBoleta.aspx</DependentUpon>

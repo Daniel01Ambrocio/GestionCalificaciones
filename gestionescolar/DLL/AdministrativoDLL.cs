@@ -1,4 +1,5 @@
-﻿using gestionescolar.Entities;
+﻿using gestionescolar.BLL;
+using gestionescolar.Entities;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -74,7 +75,42 @@ namespace gestionescolar.DLL
                 return "Error de registro";
             }
         }
+        public Entadministrativo ObtenerIDAdministrativo(string usuario)
+        {
+            Entadministrativo admin = null; // initialize the object
 
-        
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    string query = @"
+                SELECT a.IDAdministrativo
+                FROM Administrativo a
+                INNER JOIN Usuario u ON a.IDUsuario = u.IDUsuario
+                WHERE u.usuario = @Usuario";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Usuario", usuario);
+
+                        conn.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            admin = new Entadministrativo();
+                            admin.IdAdministrativo = reader.GetInt32(reader.GetOrdinal("IDAdministrativo"));
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return null; // optionally, log the exception
+            }
+
+            return admin;
+        }
     }
+
 }
