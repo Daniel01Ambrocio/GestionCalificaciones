@@ -49,7 +49,7 @@ namespace gestionescolar.Presentation
             // Verificar si hay sesión activa
             if (Session["Usuario"] == null)
             {
-                Response.Redirect("index.aspx");   // tu página de login
+                Response.Redirect("Login.aspx");   // tu página de login
             }
             if (!IsPostBack)
             {
@@ -68,7 +68,7 @@ namespace gestionescolar.Presentation
                 }
                 else
                 {
-                    Response.Redirect("index.aspx");
+                    Response.Redirect("Login.aspx");
                 }
 
             }

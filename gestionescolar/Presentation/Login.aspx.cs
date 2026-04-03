@@ -49,27 +49,31 @@ namespace gestionescolar.Presentation
                 Session["Rol"] = rol;
                 Session["TipoUsuario"] = tipoUsuario;
                 Session["Status"] = status;
-                switch (rol)
+                if(status == "Inactivo")
                 {
-                    case "Alumno":
-                        // Redireccionar 
-                        Response.Redirect("BienvenidaLogeado.aspx");
-                        break;
-                    case "Maestro":
-                        // Redireccionar 
-                        Response.Redirect("BienvenidaLogeado.aspx");
-                        break;
-                    case "Administrativo":
-                        // Redireccionar 
-                        Response.Redirect("BienvenidaLogeado.aspx");
-                        break;
-                    case "Director":
-                        // Redireccionar 
-                        Response.Redirect("BienvenidaLogeado.aspx");
-                        break;
-
-
-
+                    MostrarAlerta("La cuenta está desactivada.", false);
+                }
+                else
+                {
+                    switch (rol)
+                    {
+                        case "Alumno":
+                            // Redireccionar 
+                            Response.Redirect("BienvenidaLogeado.aspx");
+                            break;
+                        case "Maestro":
+                            // Redireccionar 
+                            Response.Redirect("BienvenidaLogeado.aspx");
+                            break;
+                        case "Administrativo":
+                            // Redireccionar 
+                            Response.Redirect("BienvenidaLogeado.aspx");
+                            break;
+                        case "Director":
+                            // Redireccionar 
+                            Response.Redirect("BienvenidaLogeado.aspx");
+                            break;
+                    }
                 }
 
             }
@@ -105,21 +109,21 @@ namespace gestionescolar.Presentation
 
             // Script para mostrar una alerta centrada con estilos personalizados
             string script = $@"
-        var alerta = document.createElement('div');
-        alerta.innerText = '{mensaje}';
-        alerta.style.position = 'fixed';
-        alerta.style.top = '50%';
-        alerta.style.left = '50%';
-        alerta.style.transform = 'translate(-50%, -50%)';
-        alerta.style.backgroundColor = '{color}';
-        alerta.style.color = 'white';
-        alerta.style.padding = '15px 30px';
-        alerta.style.borderRadius = '8px';
-        alerta.style.fontWeight = 'bold';
-        alerta.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-        alerta.style.zIndex = '9999';
-        document.body.appendChild(alerta);
-        setTimeout(function() {{ alerta.remove(); }}, 6000);";
+                var alerta = document.createElement('div');
+                alerta.innerText = '{mensaje}';
+                alerta.style.position = 'fixed';
+                alerta.style.top = '50%';
+                alerta.style.left = '50%';
+                alerta.style.transform = 'translate(-50%, -50%)';
+                alerta.style.backgroundColor = '{color}';
+                alerta.style.color = 'white';
+                alerta.style.padding = '15px 30px';
+                alerta.style.borderRadius = '8px';
+                alerta.style.fontWeight = 'bold';
+                alerta.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                alerta.style.zIndex = '9999';
+                document.body.appendChild(alerta);
+                setTimeout(function() {{ alerta.remove(); }}, 6000);";
 
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarAlerta", script, true);
         }

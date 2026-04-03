@@ -45,7 +45,7 @@ namespace gestionescolar.Presentation
             // Verificar si hay sesión activa
             if (Session["Usuario"] == null)
             {
-                Response.Redirect("index.aspx");
+                Response.Redirect("Login.aspx");
             }
             string ms = Convert.ToString(Session["mensaje"]);
             if (ms.Length > 0)
@@ -101,7 +101,7 @@ namespace gestionescolar.Presentation
                 }
                 else
                 {
-                    Response.Redirect("index.aspx");
+                    Response.Redirect("Login.aspx");
                 }
 
             }
