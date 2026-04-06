@@ -8,7 +8,7 @@
         <div class="col-12 col-md-8 col-lg-7">
             <!-- Encabezado -->
             <div class="section-header">
-                <h3>Historial de solicitud de bajas de usuario</h3>
+                <h3>Solicitar baja de usuario</h3>
             </div>
             <!-- Rol -->
             <div class="mb-3 row">
