@@ -185,7 +185,7 @@ namespace gestionescolar.Presentation
         {
             string textoBusqueda = txtFiltro.Text.Trim();
 
-            DataTable dtOriginal = grupoBLL.ObtenerGrupos(); // Tu método para cargar los grupos
+            DataTable dtOriginal = grupoBLL.ObtenerGrupos(); //cargar los grupos
 
             if (!string.IsNullOrEmpty(textoBusqueda))
             {

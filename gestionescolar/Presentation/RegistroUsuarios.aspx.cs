@@ -67,7 +67,7 @@ namespace gestionescolar.Presentation
             {
                 btnAtras.Visible = false;
                 string usuario = Convert.ToString(Session["Usuario"]);
-                string status =Convert.ToString(Session["Status"]);
+                string status = Convert.ToString(Session["Status"]);
                 bool v = ValidarUsuario(usuario, status);
                 if (v)
                 {
@@ -78,12 +78,16 @@ namespace gestionescolar.Presentation
                     btnRegistrar.Visible = false;
                     CargarRoles();
                     CargarStatus();
+
+                    //Autollenar el txtPeriodoIngreso, se carga la fecha actual
+                    txtPeriodoIngreso.Text = DateTime.Now.ToString("yyyy-MM-dd");
+
                 }
                 else
                 {
                     Response.Redirect("Login.aspx");
                 }
-                    
+
             }
         }
         private void CargarRoles()
@@ -117,7 +121,7 @@ namespace gestionescolar.Presentation
             }
         }
 
-        private void CargarStatus()  
+        private void CargarStatus()
         {
             DataTable dt = new DataTable();
             ddlStatus.Items.Clear(); // Limpiar antes de cargar
@@ -148,7 +152,7 @@ namespace gestionescolar.Presentation
                 string.IsNullOrWhiteSpace(txtvalicontra.Text) ||
                 string.IsNullOrWhiteSpace(txtPeriodoIngreso.Text) ||
                 string.IsNullOrWhiteSpace(txtPeriodoFin.Text) ||
-                string.IsNullOrWhiteSpace(ddlStatus.SelectedValue)) 
+                string.IsNullOrWhiteSpace(ddlStatus.SelectedValue))
             {
                 MostrarAlerta("Todos los campos deben estar llenos.", false);
             }
@@ -156,7 +160,7 @@ namespace gestionescolar.Presentation
             {
                 DateTime fechainicio = Convert.ToDateTime(txtPeriodoIngreso.Text);
                 DateTime fechafin = Convert.ToDateTime(txtPeriodoFin.Text);
-                if(fechafin > fechainicio)
+                if (fechafin > fechainicio)
                 {
                     string valida = ValidaContraseña(txtPasswor.Text, txtvalicontra.Text);
                     if (valida != "Correcto")
@@ -217,29 +221,45 @@ namespace gestionescolar.Presentation
                             {
                                 mensaje = "";
                                 entalumno.IDGrupo = Convert.ToInt16(ddlGrupo.SelectedValue);
-                                mensaje = alumnoBLL.RegistrarAlumno(entUsuario ,entalumno);
+                                mensaje = alumnoBLL.RegistrarAlumno(entUsuario, entalumno);
                                 if (mensaje == "Registro exitoso.")//Si fue exitoso, le asignamos las materias
                                 {
                                     //Tenemos el usuario.usuario
                                     //obtenemos la matricula del alumno
-                                    entalumno.Matricula =alumnoBLL.BuscarMatriculaByUsuario(entUsuario);
-                                    if(entalumno.Matricula != 0)
+                                    entalumno.Matricula = alumnoBLL.BuscarMatriculaByUsuario(entUsuario);
+                                    if (entalumno.Matricula != 0)
                                     {
                                         //Obtenemos el grado del grupo
                                         entgrupo.IDGrupo = entalumno.IDGrupo;
                                         entgrupo.grado = GrupoBLL.ObtenerGradoPorIdGrupo(entgrupo);
                                         List<int> listaIdMateria = new List<int>();
                                         listaIdMateria = materiaBLL.ObtenerMateriasPorGrado(entgrupo);
-                                        if(listaIdMateria.Count > 0)
+                                        if (listaIdMateria.Count > 0)
                                         {
-                                            //InsertamosAlumnoMateria
-                                            string validaInsert = alumnoMateriaBLL.RegistrarAlumnoMateria(listaIdMateria, entalumno);
-                                            if(validaInsert != "Registro exitoso.")
+                                            //Validamos que la cantidad de alumnos sea igual o menor a 35
+                                            int cantidadAlmnos = 0;
+                                            cantidadAlmnos = alumnoBLL.CantidadAlumnosEngrupo(entgrupo);
+                                            if(cantidadAlmnos != 1000)
                                             {
-                                                MostrarAlerta(validaInsert, false);
+                                                if (cantidadAlmnos <= 35)
+                                                {
+                                                    //InsertamosAlumnoMateria
+                                                    string validaInsert = alumnoMateriaBLL.RegistrarAlumnoMateria(listaIdMateria, entalumno);
+                                                    if (validaInsert != "Registro exitoso.")
+                                                    {
+                                                        MostrarAlerta(validaInsert, false);
+                                                    }
+                                                    mensaje = validaInsert;
+                                                }
+                                                else
+                                                {
+                                                    MostrarAlerta("El grupo lleno. Asigne otro grupo al alumn@.", false);
+                                                }
                                             }
-                                            mensaje = validaInsert;
-
+                                            else
+                                            {
+                                                MostrarAlerta("No se logró encontrar el grupo. Intentelo más tarde.", false);
+                                            }
                                         }
                                         else
                                         {
@@ -251,6 +271,7 @@ namespace gestionescolar.Presentation
                                         MostrarAlerta("Matricula no encontrada.", false);
                                     }
                                 }
+                                
                             }
 
                         }
@@ -275,7 +296,7 @@ namespace gestionescolar.Presentation
                 {
                     MostrarAlerta("El periodo de fin debe de ser mayor al periodo de inicio.", false);
                 }
-                    
+
             }
         }
 
@@ -405,7 +426,7 @@ namespace gestionescolar.Presentation
             statusdiv.Visible = false;
             contrainfodiv.Visible = false;
         }
-        
+
         public string ValidaContraseña(string contra, string validaContra)
         {
             string mensaje = "";

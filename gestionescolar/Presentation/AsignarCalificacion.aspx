@@ -15,7 +15,15 @@
                 <asp:Button ID="btngrupo" runat="server" Text="Seleccionar grupo" CssClass="btn btn-primary" OnClick="btngrupo_Click" />
                 <asp:Button ID="btnAtras" runat="server" Text="Atras" CssClass="btn btn-danger" OnClick="btnAtras_Click" />
             </div>
-
+            <!-- Filtros -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <asp:TextBox runat="server" CssClass="form-control" ID="txtFiltro" placeholder="Filtrar por nombre, grupo o materia" />
+                        <asp:Button runat="server" Text="Filtrar" CssClass="btn btn-primary" ID="btnFiltrar" OnClick="btnFiltrar_Click" />
+                    </div>
+                </div>
+            </div>
             <div class="table-responsive">
                 <asp:GridView runat="server" ID="gdvAlumnoCalificaciones" CssClass="table table-striped table-bordered mb-0"
                     AutoGenerateColumns="False" GridLines="None"
@@ -26,7 +34,7 @@
                     OnRowUpdating="gdvAlumnoCalificaciones_RowUpdating">
                     <Columns>
 
-                        <asp:BoundField DataField="nombreAlumno" HeaderText="Nombre Alumno" ReadOnly="True" />
+                        <asp:BoundField DataField="NombreAlumno" HeaderText="Nombre Alumno" ReadOnly="True" />
                         <asp:BoundField DataField="Grupo" HeaderText="Grupo" ReadOnly="True" />
                         <asp:BoundField DataField="Materia" HeaderText="Materia" ReadOnly="True" />
 
@@ -59,10 +67,10 @@
                                     CommandName="Cancel"
                                     CssClass="btn btn-secondary btn-sm" />
                             </EditItemTemplate>
-                        </asp:TemplateField> 
+                        </asp:TemplateField>
                     </Columns>
-                </asp:GridView> 
+                </asp:GridView>
             </div>
-        </div> 
+        </div>
     </div>
 </asp:Content>

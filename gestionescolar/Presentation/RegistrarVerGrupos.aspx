@@ -78,7 +78,7 @@
                                         ID="txtGrupo" />
                                 </div>
                                 <div class="form-group">
-                                    <label>Año (2026)</label>
+                                    <label>Año</label>
                                     <asp:TextBox runat="server"
                                         CssClass="form-control"
                                         ID="txtAnio"

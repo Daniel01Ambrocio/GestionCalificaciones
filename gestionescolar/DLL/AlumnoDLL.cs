@@ -163,5 +163,37 @@ namespace gestionescolar.DLL
 
             return dt;
         }
+        public int CantidadAlumnosEngrupo(Entgrupo entgrupo)
+        {
+            try
+            {
+                int cantidad = 0;
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    string query = @"select count(*) from Alumno where IDGrupo=@IDGrupo";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@IDGrupo", entgrupo.IDGrupo);
+
+                        conn.Open();
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int parsedMatricula))
+                        {
+                            cantidad = parsedMatricula;
+                        }
+                    }
+                }
+
+                return cantidad;
+            }
+            catch (SqlException ex)
+            {
+                //error
+                return 1000;
+            }
+        }
     }
 }

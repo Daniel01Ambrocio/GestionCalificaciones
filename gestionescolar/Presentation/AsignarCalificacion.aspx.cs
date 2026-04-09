@@ -56,8 +56,8 @@ namespace gestionescolar.Presentation
                     //Cargar la lista de grupos que estan asignados al maestro
                     CargarGruposPorMaestro();
                     btnAtras.Visible = false;
-                    //Cargar la lista de alumnos segun el grupo seleccionado
-                    MostrarAlumnosCalificaciones(entgrupo);
+                    btnFiltrar.Visible = false;
+                    txtFiltro.Visible = false;
                 }
                 else
                 {
@@ -108,7 +108,9 @@ namespace gestionescolar.Presentation
                 btnAtras.Visible = true;
                 // Llamar al método para mostrar alumnos y calificaciones
                 MostrarAlumnosCalificaciones(entgrupo);
-                
+                btnFiltrar.Visible = true;
+                txtFiltro.Visible = true;
+
             }
             else
             {
@@ -118,6 +120,7 @@ namespace gestionescolar.Presentation
         }
         protected void gdvAlumnoCalificaciones_RowEditing(object sender, GridViewEditEventArgs e)
         {
+
             gdvAlumnoCalificaciones.EditIndex = e.NewEditIndex;
             entgrupo.IDGrupo = Convert.ToInt16(ddlGrupo.SelectedValue);
             // Llamar al método para mostrar alumnos y calificaciones
@@ -156,7 +159,7 @@ namespace gestionescolar.Presentation
 
             if (!valid1 || !valid2 || !valid3 || !valid4)
             {
-                MostrarAlerta("Todos los valores deben ser numéricos.",false);
+                MostrarAlerta("Todos los valores deben ser numéricos.", false);
             }
             else
             {
@@ -222,6 +225,8 @@ namespace gestionescolar.Presentation
             ddlGrupo.Visible = true;
             btngrupo.Visible = true;
             btnAtras.Visible = false;
+            txtFiltro.Visible = false;
+            btnFiltrar.Visible = false;
         }
         protected void MostrarAlerta(string mensaje, bool esExito)
         {
@@ -247,6 +252,52 @@ namespace gestionescolar.Presentation
                 setTimeout(function() {{ alerta.remove(); }}, 6000);";
 
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarAlerta", script, true);
+        }
+
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            DataTable dtOriginal = new DataTable();
+            string textoBusqueda = txtFiltro.Text.Trim();
+            entgrupo.IDGrupo = Convert.ToInt16(ddlGrupo.SelectedValue);
+            dtOriginal = calificacionBLL.MostrarAlumnosCalificaciones(entgrupo);
+
+            if (!string.IsNullOrEmpty(textoBusqueda))
+            {
+                // Separar por palabras
+                string[] palabras = textoBusqueda.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                // Armar condiciones por cada palabra (en grado, Grupo, anio)
+                List<string> condiciones = new List<string>();
+                foreach (string palabra in palabras)
+                {
+                    condiciones.Add($@"
+                        (CONVERT(NombreAlumno, System.String) LIKE '%{palabra}%'
+                        OR CONVERT(Grupo, System.String) LIKE '%{palabra}%'
+                        OR CONVERT(Materia, System.String) LIKE '%{palabra}%')"
+                     );
+                }
+
+                string filtroFinal = string.Join(" AND ", condiciones);
+
+                // Filtrar el DataTable
+                DataRow[] filasFiltradas = dtOriginal.Select(filtroFinal);
+
+                if (filasFiltradas.Length > 0)
+                {
+                    DataTable dtFiltrado = filasFiltradas.CopyToDataTable();
+                    gdvAlumnoCalificaciones.DataSource = dtFiltrado;
+                }
+                else
+                {
+                    gdvAlumnoCalificaciones.DataSource = null;
+                }
+            }
+            else
+            {
+                gdvAlumnoCalificaciones.DataSource = dtOriginal; // Mostrar todo si no hay búsqueda
+            }
+
+            gdvAlumnoCalificaciones.DataBind();
         }
     }
 }

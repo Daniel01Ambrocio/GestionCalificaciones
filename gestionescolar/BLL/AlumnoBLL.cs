@@ -51,5 +51,9 @@ namespace gestionescolar.BLL
         {
             return alumnoDLL.ObtenerAlumnoPorMatricula(entalumno);
         }
+        public int CantidadAlumnosEngrupo(Entgrupo entgrupo)
+        {
+            return alumnoDLL.CantidadAlumnosEngrupo(entgrupo);
+        }
     }
 }
