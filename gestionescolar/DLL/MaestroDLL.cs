@@ -20,7 +20,7 @@ namespace gestionescolar.DLL
                     u.Nombre, 
                     u.ApellidoPaterno, 
                     u.ApellidoMaterno, 
-                    (CAST(g.grado AS VARCHAR) + '-' + g.grupo + '-' + g.anio) AS Grupo,
+                    (CAST(g.grado AS VARCHAR(3)) + '-' + g.grupo + '-' + CAST(g.anio AS VARCHAR(4))) AS Grupo,
                     m.cedulaprofesional,
                     e.descripcion as Estatus, 
                     FORMAT(u.PeriodoIngreso, 'dd-MM-yyyy') AS PeriodoIngreso, 

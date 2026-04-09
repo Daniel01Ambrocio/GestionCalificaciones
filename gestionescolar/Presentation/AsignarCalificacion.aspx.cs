@@ -55,7 +55,6 @@ namespace gestionescolar.Presentation
                 {
                     //Cargar la lista de grupos que estan asignados al maestro
                     CargarGruposPorMaestro();
-
                     btnAtras.Visible = false;
                     //Cargar la lista de alumnos segun el grupo seleccionado
                     MostrarAlumnosCalificaciones(entgrupo);

@@ -161,7 +161,7 @@ namespace gestionescolar.DLL
             u.IdUsuario,
             (u.Nombre + ' ' + u.ApellidoPaterno + ' ' + u.ApellidoMaterno) AS NombreUsuario
         FROM Usuario u
-        WHERE u.IDROL = @IDROL";
+        WHERE u.IDROL = @IDROL AND u.IDStatus=1";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))

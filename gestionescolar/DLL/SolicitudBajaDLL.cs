@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 
 namespace gestionescolar.DLL
@@ -68,21 +69,25 @@ namespace gestionescolar.DLL
         {
             DataTable dtsolicitudes = new DataTable();
 
-            string query = "SELECT sb.IDSolicitudBajas, " +
-                   "CONCAT(au.Nombre, ' ', au.ApellidoPaterno, ' ', au.ApellidoMaterno) AS NombAdministrativo, " +
-                   "CONCAT(u.Nombre, ' ', u.ApellidoPaterno, ' ', u.ApellidoMaterno) AS NombUsuarioBaja, " +
-                   "sb.Descripcion, " +
-                   "CONCAT(du.Nombre, ' ', du.ApellidoPaterno, ' ', du.ApellidoMaterno) AS NombDirectivo, " +
-                   "CONVERT(VARCHAR(10), sb.FechaSolicitud, 103) AS FechaSolicitud, " +  // dd/MM/yyyy
-                   "CONVERT(VARCHAR(10), sb.FechaAprobacion, 103) AS FechaAprobacion, " + // dd/MM/yyyy
-                   "sb.Estado " +
-                   "FROM SolicitudBajas sb " +
-                   "INNER JOIN Administrativo a ON sb.IDAdministrativo = a.IDAdministrativo " +
-                   "INNER JOIN Usuario au ON a.IDUsuario = au.IdUsuario " +
-                   "INNER JOIN Usuario u ON sb.IDUsuarioBaja = u.IdUsuario " +
-                   "INNER JOIN Director d ON sb.IDDirectivo = d.IdDirector " +
-                   "INNER JOIN Usuario du ON d.IDUsuario = du.IdUsuario " +
-                   "WHERE sb.IDAdministrativo = @IdAdministrativo";
+            string query = @"
+                SELECT 
+                    sb.IDSolicitudBajas,
+                    CONCAT(au.Nombre, ' ', au.ApellidoPaterno, ' ', au.ApellidoMaterno) AS NombAdministrativo,
+                    CONCAT(u.Nombre, ' ', u.ApellidoPaterno, ' ', u.ApellidoMaterno) AS NombUsuarioBaja,
+                    r.nombreRol AS NombreRol,
+                    sb.Descripcion,
+                    CONCAT(du.Nombre, ' ', du.ApellidoPaterno, ' ', du.ApellidoMaterno) AS NombDirectivo,
+                    CONVERT(VARCHAR(10), sb.FechaSolicitud, 103) AS FechaSolicitud,
+                    CONVERT(VARCHAR(10), sb.FechaAprobacion, 103) AS FechaAprobacion,
+                    sb.Estado
+                FROM SolicitudBajas sb
+                INNER JOIN Administrativo a ON sb.IDAdministrativo = a.IDAdministrativo 
+                INNER JOIN Usuario au ON a.IDUsuario = au.IdUsuario 
+                INNER JOIN Usuario u ON sb.IDUsuarioBaja = u.IdUsuario 
+                INNER JOIN Rol r ON u.IDROL = r.IDROL
+                INNER JOIN Director d ON sb.IDDirectivo = d.IdDirector 
+                INNER JOIN Usuario du ON d.IDUsuario = du.IdUsuario 
+                WHERE sb.IDAdministrativo = @IdAdministrativo";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -105,6 +110,7 @@ namespace gestionescolar.DLL
             string query = "SELECT sb.IDSolicitudBajas, " +
                    "CONCAT(au.Nombre, ' ', au.ApellidoPaterno, ' ', au.ApellidoMaterno) AS NombAdministrativo, " +
                    "CONCAT(u.Nombre, ' ', u.ApellidoPaterno, ' ', u.ApellidoMaterno) AS NombUsuarioBaja, " +
+                   "r.nombreRol AS NombreRol,"+
                    "sb.Descripcion, " +
                    "CONCAT(du.Nombre, ' ', du.ApellidoPaterno, ' ', du.ApellidoMaterno) AS NombDirectivo, " +
                    "CONVERT(VARCHAR(10), sb.FechaSolicitud, 103) AS FechaSolicitud, " +  // dd/MM/yyyy
@@ -114,6 +120,7 @@ namespace gestionescolar.DLL
                    "INNER JOIN Administrativo a ON sb.IDAdministrativo = a.IDAdministrativo " +
                    "INNER JOIN Usuario au ON a.IDUsuario = au.IdUsuario " +
                    "INNER JOIN Usuario u ON sb.IDUsuarioBaja = u.IdUsuario " +
+                   "INNER JOIN Rol r ON u.IDROL = r.IDROL " +
                    "INNER JOIN Director d ON sb.IDDirectivo = d.IdDirector " +
                    "INNER JOIN Usuario du ON d.IDUsuario = du.IdUsuario " +
                    "WHERE sb.Estado = 'Pendiente'";
@@ -137,6 +144,7 @@ namespace gestionescolar.DLL
             string query = "SELECT sb.IDSolicitudBajas, " +
                    "CONCAT(au.Nombre, ' ', au.ApellidoPaterno, ' ', au.ApellidoMaterno) AS NombAdministrativo, " +
                    "CONCAT(u.Nombre, ' ', u.ApellidoPaterno, ' ', u.ApellidoMaterno) AS NombUsuarioBaja, " +
+                   "r.nombreRol AS NombreRol,"+
                    "sb.Descripcion, " +
                    "CONCAT(du.Nombre, ' ', du.ApellidoPaterno, ' ', du.ApellidoMaterno) AS NombDirectivo, " +
                    "CONVERT(VARCHAR(10), sb.FechaSolicitud, 103) AS FechaSolicitud, " +  // dd/MM/yyyy
@@ -146,6 +154,7 @@ namespace gestionescolar.DLL
                    "INNER JOIN Administrativo a ON sb.IDAdministrativo = a.IDAdministrativo " +
                    "INNER JOIN Usuario au ON a.IDUsuario = au.IdUsuario " +
                    "INNER JOIN Usuario u ON sb.IDUsuarioBaja = u.IdUsuario " +
+                   "INNER JOIN Rol r ON u.IDROL = r.IDROL " +
                    "INNER JOIN Director d ON sb.IDDirectivo = d.IdDirector " +
                    "INNER JOIN Usuario du ON d.IDUsuario = du.IdUsuario " +
                    "WHERE sb.Estado = 'Aprobado'";

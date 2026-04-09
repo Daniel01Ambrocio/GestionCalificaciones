@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container mt-5">
-        <div class="col-12 col-md-8 col-lg-7">
+        <div class="col-12 col-md-10 col-lg-10">
             <h2>Asignar calificaciones</h2>
 
             <!-- Rol -->
@@ -16,7 +16,7 @@
                 <asp:Button ID="btnAtras" runat="server" Text="Atras" CssClass="btn btn-danger" OnClick="btnAtras_Click" />
             </div>
 
-            <div class="card-body p-0">
+            <div class="table-responsive">
                 <asp:GridView runat="server" ID="gdvAlumnoCalificaciones" CssClass="table table-striped table-bordered mb-0"
                     AutoGenerateColumns="False" GridLines="None"
                     DataKeyNames="IDCalificacion"

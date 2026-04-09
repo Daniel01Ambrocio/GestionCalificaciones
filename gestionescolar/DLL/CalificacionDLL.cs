@@ -51,22 +51,22 @@ namespace gestionescolar.DLL
 
             string query = @"
                 SELECT
-                c.IDCalificacion,
-                u.Nombre + ' ' + u.ApellidoPaterno + ' ' + u.ApellidoMaterno AS NombreAlumno,
-	            CAST(g.grado AS VARCHAR(10)) + ' ' + g.grupo + ' ' + g.anio AS Grupo,
-                m.Nombre + ' ' + CAST(m.GradoEscolar AS VARCHAR(10)) AS Materia,
-                c.Parcial1,
-                c.Parcial2,
-                c.Parcial3,
-                c.Parcial4,
-                c.Promedio
-            FROM Alumno al
-            INNER JOIN grupo g ON al.IDGrupo = g.IDGrupo
-            INNER JOIN AlumnoMateria am ON al.Matricula = am.Matricula
-            INNER JOIN Materia m ON m.IDMateria = am.IDMateria
-            INNER JOIN Calificacion c ON c.IDAlumnoMateria = am.IDAlumnoMateria
-            INNER JOIN Usuario u ON al.IDUsuario = u.IdUsuario
-            WHERE al.IDGrupo = @IDGrupo";
+                    c.IDCalificacion,
+                    u.Nombre + ' ' + u.ApellidoPaterno + ' ' + u.ApellidoMaterno AS NombreAlumno,
+                    CAST(g.grado AS VARCHAR(10)) + ' ' + g.grupo + ' ' + CAST(g.anio AS VARCHAR(10)) AS Grupo,
+                    m.Nombre + ' ' + CAST(m.GradoEscolar AS VARCHAR(10)) AS Materia,
+                    c.Parcial1,
+                    c.Parcial2,
+                    c.Parcial3,
+                    c.Parcial4,
+                    c.Promedio
+                FROM Alumno al
+                INNER JOIN Grupo g ON al.IDGrupo = g.IDGrupo
+                INNER JOIN AlumnoMateria am ON al.Matricula = am.Matricula
+                INNER JOIN Materia m ON m.IDMateria = am.IDMateria
+                INNER JOIN Calificacion c ON c.IDAlumnoMateria = am.IDAlumnoMateria
+                INNER JOIN Usuario u ON al.IDUsuario = u.IDUsuario
+                WHERE al.IDGrupo = @IDGrupo";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))

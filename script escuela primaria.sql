@@ -1,7 +1,8 @@
 create database escuelaBD
+go 
 
-use escuelaBD
- 
+use  escuelaBD
+go
 
 CREATE TABLE Escuela (
     IDEscuela INT IDENTITY(1,1) PRIMARY KEY,
@@ -22,7 +23,7 @@ CREATE TABLE Grupo (
 	IDGrupo int identity(1,1) primary key,
 	grado int,
 	grupo varchar(3),
-	anio varchar(5)
+	anio int
 )
 
 CREATE TABLE Estatus (
@@ -45,6 +46,7 @@ CREATE TABLE Usuario (
     FOREIGN KEY (IDROL) REFERENCES rol(IDROL),
 	FOREIGN KEY (IDStatus) REFERENCES estatus(IDStatus)
 );
+select*from Usuario
 
 CREATE TABLE Director (
     Iddirector INT IDENTITY(1,1) PRIMARY KEY,
@@ -104,6 +106,11 @@ CREATE TABLE Calificacion (
     FOREIGN KEY (IDAlumnoMateria) REFERENCES AlumnoMateria(IDAlumnoMateria)
 );
 
+go
+ALTER TABLE Calificacion
+ADD CONSTRAINT UQ_Calificacion_IDAlumnoMateria UNIQUE (IDAlumnoMateria);
+
+go
 CREATE TABLE SolicitudBajas (
     IDSolicitudBajas INT IDENTITY(1,1) PRIMARY KEY,
     IDAdministrativo INT NOT NULL,
@@ -167,7 +174,7 @@ SET Contrasena = '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108
  go
 
 select*from Usuario
- 
+SELECT*FROM Alumno 
  go
 
 
@@ -194,3 +201,53 @@ VALUES
 select*from Estatus
 select*from Usuario;
 select*from SolicitudBajas
+go
+
+
+CREATE TRIGGER TR_InsertarAlumnoMateria
+ON Materia
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @AnioActual INT;
+    SET @AnioActual = YEAR(GETDATE());
+
+    -- Tabla temporal para capturar IDs generados
+    DECLARE @NuevasRelaciones TABLE (
+        IDAlumnoMateria INT
+    );
+
+    -- Insert en AlumnoMateria capturando el ID generado
+    INSERT INTO AlumnoMateria (Matricula, IDMateria)
+    OUTPUT INSERTED.IDAlumnoMateria INTO @NuevasRelaciones
+    SELECT 
+        A.Matricula,
+        I.IDMateria
+    FROM inserted I
+    INNER JOIN Grupo G 
+        ON G.grado = I.GradoEscolar
+       AND G.anio = @AnioActual
+    INNER JOIN Alumno A 
+        ON A.IDGrupo = G.IDGrupo
+    WHERE NOT EXISTS (
+        SELECT 1 
+        FROM AlumnoMateria AM
+        WHERE AM.Matricula = A.Matricula
+          AND AM.IDMateria = I.IDMateria
+    );
+
+    -- Insert en Calificacion con valores en 0
+    INSERT INTO Calificacion (IDAlumnoMateria, Parcial1, Parcial2, Parcial3, Parcial4, Promedio)
+    SELECT 
+        IDAlumnoMateria,
+        0, 0, 0, 0, 0
+    FROM @NuevasRelaciones;
+
+END;
+GO
+
+ SELECT*FROM AlumnoMateria
+ SELECT*FROM Maestro
+ SELECT*FROM Calificacion

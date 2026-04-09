@@ -71,7 +71,6 @@ namespace gestionescolar.Presentation
 
                         case "Maestro":
                             asignarCalificacion.Visible = true;
-                            listaAlumnos.Visible = true;
                             break;
 
                         case "Administrativo":
@@ -89,10 +88,7 @@ namespace gestionescolar.Presentation
                             break;
 
                         case "Director":
-                            // Ver todo
                             registroUsuarios.Visible = true;
-                            misCalificaciones.Visible = false;
-                            asignarCalificacion.Visible = true;
                             imprimirBoleta.Visible = true;
                             autorizarBajas.Visible = true; 
                             listaGrupos.Visible = true;

@@ -21,7 +21,7 @@ namespace gestionescolar.DLL
                     u.Nombre, 
                     u.ApellidoPaterno, 
                     u.ApellidoMaterno, 
-                    (CAST(g.grado AS VARCHAR) + '-' + g.grupo + '-' + g.anio) AS Grupo, 
+                    (CAST(g.grado AS VARCHAR) + '-' + g.grupo + '-' + CAST(g.anio AS VARCHAR)) AS Grupo, 
                     e.descripcion as Estatus, 
                     FORMAT(u.PeriodoIngreso, 'dd-MM-yyyy') AS PeriodoIngreso, 
                     FORMAT(u.PeriodoFin, 'dd-MM-yyyy') AS PeriodoFin
