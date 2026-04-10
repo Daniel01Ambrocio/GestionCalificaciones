@@ -45,7 +45,7 @@ namespace gestionescolar.DLL
 
             return dtCalificaciones;
         }
-        public DataTable MostrarAlumnosCalificaciones(Entgrupo entgrupo)
+        public DataTable MostrarAlumnosCalificaciones(Entgrupo entgrupo, Entmateria entmateria)
         {
             DataTable dtCalificaciones = new DataTable();
 
@@ -66,12 +66,14 @@ namespace gestionescolar.DLL
                 INNER JOIN Materia m ON m.IDMateria = am.IDMateria
                 INNER JOIN Calificacion c ON c.IDAlumnoMateria = am.IDAlumnoMateria
                 INNER JOIN Usuario u ON al.IDUsuario = u.IDUsuario
-                WHERE al.IDGrupo = @IDGrupo";
+                WHERE al.IDGrupo = @IDGrupo AND
+                m.IDMateria = @IDMateria ";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@IDGrupo", entgrupo.IDGrupo);
+                cmd.Parameters.AddWithValue("@IDMateria", entmateria.IDMateria);
 
                 using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                 {

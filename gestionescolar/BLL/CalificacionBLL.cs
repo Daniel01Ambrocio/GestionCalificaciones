@@ -15,9 +15,9 @@ namespace gestionescolar.BLL
         {
             return calificacionDLL.MostrarCalificaciones(entalumno);
         }
-        public DataTable MostrarAlumnosCalificaciones(Entgrupo entgrupo)
+        public DataTable MostrarAlumnosCalificaciones(Entgrupo entgrupo, Entmateria entmateria)
         {
-            return calificacionDLL.MostrarAlumnosCalificaciones(entgrupo);
+            return calificacionDLL.MostrarAlumnosCalificaciones(entgrupo, entmateria);
         }
         public bool ActualizarCalificaciones(Entcalificacion entcalificacion)
         {

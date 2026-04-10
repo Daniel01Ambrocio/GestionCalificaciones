@@ -31,5 +31,9 @@ namespace gestionescolar.BLL
         {
             return MateriaDLL.ObtenerMateriasPorGrado(entgrupo);
         }
+        public DataTable CargarMateriasPorGrupo(int idGrupo)
+        {
+            return MateriaDLL.CargarMateriasPorGrupo(idGrupo);
+        }
     }
 }

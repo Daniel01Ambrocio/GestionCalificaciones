@@ -33,40 +33,22 @@ namespace gestionescolar.Presentation
         protected global::System.Web.UI.WebControls.DropDownList ddlGrupo;
 
         /// <summary>
-        /// Control btngrupo.
+        /// Control LbMateria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btngrupo;
+        protected global::System.Web.UI.WebControls.Label LbMateria;
 
         /// <summary>
-        /// Control btnAtras.
+        /// Control ddlMateria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAtras;
-
-        /// <summary>
-        /// Control txtFiltro.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFiltro;
-
-        /// <summary>
-        /// Control btnFiltrar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFiltrar;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMateria;
 
         /// <summary>
         /// Control gdvAlumnoCalificaciones.

@@ -7,22 +7,24 @@
         <div class="col-12 col-md-10 col-lg-10">
             <h2>Asignar calificaciones</h2>
 
-            <!-- Rol -->
+            <!-- Grupo y materia -->
             <div class="mb-3">
                 <asp:Label ID="lbGrupo" runat="server" class="form-label" Text="Grupo: "></asp:Label>
-                <asp:DropDownList ID="ddlGrupo" runat="server" CssClass="form-select  textbox-delgado" AutoPostBack="false" onchange="toggleCampos()">
+                <asp:DropDownList
+                    ID="ddlGrupo"
+                    runat="server"
+                    CssClass="form-select textbox-delgado"
+                    AutoPostBack="true"
+                    OnSelectedIndexChanged="ddlGrupo_SelectedIndexChanged">
                 </asp:DropDownList>
-                <asp:Button ID="btngrupo" runat="server" Text="Seleccionar grupo" CssClass="btn btn-primary" OnClick="btngrupo_Click" />
-                <asp:Button ID="btnAtras" runat="server" Text="Atras" CssClass="btn btn-danger" OnClick="btnAtras_Click" />
-            </div>
-            <!-- Filtros -->
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <asp:TextBox runat="server" CssClass="form-control" ID="txtFiltro" placeholder="Filtrar por nombre, grupo o materia" />
-                        <asp:Button runat="server" Text="Filtrar" CssClass="btn btn-primary" ID="btnFiltrar" OnClick="btnFiltrar_Click" />
-                    </div>
-                </div>
+                <asp:Label ID="LbMateria" runat="server" class="form-label" Text="Matería: "></asp:Label>
+                <asp:DropDownList
+                    ID="ddlMateria"
+                    runat="server"
+                    CssClass="form-select textbox-delgado"
+                    AutoPostBack="true"
+                    OnSelectedIndexChanged="ddlMateria_SelectedIndexChanged">
+                </asp:DropDownList>
             </div>
             <div class="table-responsive">
                 <asp:GridView runat="server" ID="gdvAlumnoCalificaciones" CssClass="table table-striped table-bordered mb-0"

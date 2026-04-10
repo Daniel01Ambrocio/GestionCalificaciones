@@ -72,6 +72,32 @@ namespace gestionescolar.DLL
             }
 
             return dtRoles;
+        } 
+        public DataTable CargarMateriasPorGrupo(int idGrupo)
+        {
+            DataTable dtMaterias = new DataTable();
+
+            string query = @"
+                SELECT DISTINCT m.IDMateria, m.Nombre as NombreMateria
+                    FROM Materia m
+                    INNER JOIN AlumnoMateria am ON am.IDMateria = m.IDMateria
+                    INNER JOIN Alumno a ON a.Matricula = am.Matricula
+                    INNER JOIN Grupo g ON g.IDGrupo = a.IDGrupo
+                    WHERE g.IDGrupo = @idGrupo;
+                ";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@idGrupo", idGrupo);
+
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    da.Fill(dtMaterias);
+                }
+            }
+
+            return dtMaterias;
         }
         public string RegistrarMateria(Entmateria Materia)
         {
@@ -80,8 +106,8 @@ namespace gestionescolar.DLL
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     string query = @"
-                INSERT INTO Materia (Nombre, GradoEscolar) 
-                VALUES (@Nombre, @GradoEscolar);";
+                    INSERT INTO Materia (Nombre, GradoEscolar) 
+                    VALUES (@Nombre, @GradoEscolar);";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@Nombre", Materia.Nombre);

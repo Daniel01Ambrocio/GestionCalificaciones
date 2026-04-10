@@ -20,6 +20,9 @@ namespace gestionescolar.Presentation
         AlumnoBLL alumnoBLL = new AlumnoBLL();
         Entcalificacion entcalificacion = new Entcalificacion();
         CalificacionBLL calificacionBLL = new CalificacionBLL();
+        MateriaBLL materiaBLL = new MateriaBLL();
+        Entmateria entmateria = new Entmateria();
+        
         private bool ValidarUsuario(string usuario, string status)
         {
             if (usuario != null && (status == "Activo" || status == "Egresado"))
@@ -55,9 +58,7 @@ namespace gestionescolar.Presentation
                 {
                     //Cargar la lista de grupos que estan asignados al maestro
                     CargarGruposPorMaestro();
-                    btnAtras.Visible = false;
-                    btnFiltrar.Visible = false;
-                    txtFiltro.Visible = false;
+                    LimpiarAlumnoCalificaciones();
                 }
                 else
                 {
@@ -66,10 +67,10 @@ namespace gestionescolar.Presentation
 
             }
         }
-        public void MostrarAlumnosCalificaciones(Entgrupo entgrupo)
+        public void MostrarAlumnosCalificaciones(Entgrupo entgrupo, Entmateria entmateria)
         {
             DataTable dataAlumnos = new DataTable();
-            dataAlumnos = calificacionBLL.MostrarAlumnosCalificaciones(entgrupo);
+            dataAlumnos = calificacionBLL.MostrarAlumnosCalificaciones(entgrupo, entmateria);
             gdvAlumnoCalificaciones.DataSource = dataAlumnos;
             gdvAlumnoCalificaciones.DataBind();
         }
@@ -91,48 +92,79 @@ namespace gestionescolar.Presentation
                 ddlGrupo.Items.Add(new ListItem(texto, valor));
             }
         }
-
-        protected void btngrupo_Click(object sender, EventArgs e)
+        private void CargarMateriasPorGrupo(int idGrupo)
         {
-            // Verificar que se haya seleccionado un grupo
+            DataTable dt = materiaBLL.CargarMateriasPorGrupo(idGrupo);
+
+            ddlMateria.Items.Clear();
+            ddlMateria.Items.Add(new ListItem("Selecciona una materia", ""));
+
+            foreach (DataRow row in dt.Rows)
+            {
+                ddlMateria.Items.Add(new ListItem(
+                    row["NombreMateria"].ToString(),
+                    row["IDMateria"].ToString()
+                ));
+            }
+        }
+        protected void ddlGrupo_SelectedIndexChanged(object sender, EventArgs e)
+        {
             if (ddlGrupo.SelectedValue != "")
             {
-                // Mostrar el grupo seleccionado en el label (solo texto, sin editar)
-                lbGrupo.Text = "Grupo seleccionado: " + ddlGrupo.SelectedItem.Text;
+                int idGrupo = Convert.ToInt32(ddlGrupo.SelectedValue);
 
-                // Hacer invisible el DropDownList para mostrar solo el Label
-                ddlGrupo.Visible = false;
-                btngrupo.Visible = false;
-                // Obtener el ID del grupo seleccionado y asignarlo a entgrupo
-                entgrupo.IDGrupo = Convert.ToInt16(ddlGrupo.SelectedValue);
-                btnAtras.Visible = true;
-                // Llamar al método para mostrar alumnos y calificaciones
-                MostrarAlumnosCalificaciones(entgrupo);
-                btnFiltrar.Visible = true;
-                txtFiltro.Visible = true;
-
+                // Cargar materias según grupo
+                CargarMateriasPorGrupo(idGrupo);
             }
             else
             {
-                // Mostrar un mensaje de error o advertencia si no se ha seleccionado un grupo
-                MostrarAlerta("Por favor, selecciona un grupo.", false);
+                ddlMateria.ClearSelection();
+                LimpiarAlumnoCalificaciones();
             }
         }
+        private void LimpiarAlumnoCalificaciones()
+        {
+            gdvAlumnoCalificaciones.DataSource = null;
+            gdvAlumnoCalificaciones.DataBind();
+        }
+        protected void ddlMateria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlGrupo.SelectedValue != "" && ddlMateria.SelectedValue != "")
+            {
+                entgrupo.IDGrupo = Convert.ToInt32(ddlGrupo.SelectedValue);
+
+                int idMateria = Convert.ToInt32(ddlMateria.SelectedValue);
+                entmateria.IDMateria = idMateria;
+
+                MostrarAlumnosCalificaciones(entgrupo, entmateria);
+            }
+            else
+            {
+                LimpiarAlumnoCalificaciones();
+            }
+        }
+
+        
         protected void gdvAlumnoCalificaciones_RowEditing(object sender, GridViewEditEventArgs e)
         {
 
             gdvAlumnoCalificaciones.EditIndex = e.NewEditIndex;
             entgrupo.IDGrupo = Convert.ToInt16(ddlGrupo.SelectedValue);
-            // Llamar al método para mostrar alumnos y calificaciones
-            MostrarAlumnosCalificaciones(entgrupo);
+
+            int idMateria = Convert.ToInt32(ddlMateria.SelectedValue);
+            entmateria.IDMateria = idMateria;
+
+            MostrarAlumnosCalificaciones(entgrupo, entmateria);
         }
 
         protected void gdvAlumnoCalificaciones_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gdvAlumnoCalificaciones.EditIndex = -1;
-            entgrupo.IDGrupo = Convert.ToInt16(ddlGrupo.SelectedValue);
-            // Llamar al método para mostrar alumnos y calificaciones
-            MostrarAlumnosCalificaciones(entgrupo);
+
+            int idMateria = Convert.ToInt32(ddlMateria.SelectedValue);
+            entmateria.IDMateria = idMateria;
+
+            MostrarAlumnosCalificaciones(entgrupo, entmateria);
         }
 
         protected void gdvAlumnoCalificaciones_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -215,19 +247,12 @@ namespace gestionescolar.Presentation
             }
             gdvAlumnoCalificaciones.EditIndex = -1;
             entgrupo.IDGrupo = Convert.ToInt16(ddlGrupo.SelectedValue);
+            entmateria.IDMateria = Convert.ToInt16(ddlMateria.SelectedValue);
             // Llamar al método para mostrar alumnos y calificaciones
-            MostrarAlumnosCalificaciones(entgrupo);
+            MostrarAlumnosCalificaciones(entgrupo, entmateria);
         }
 
 
-        protected void btnAtras_Click(object sender, EventArgs e)
-        {
-            ddlGrupo.Visible = true;
-            btngrupo.Visible = true;
-            btnAtras.Visible = false;
-            txtFiltro.Visible = false;
-            btnFiltrar.Visible = false;
-        }
         protected void MostrarAlerta(string mensaje, bool esExito)
         {
             // Color verde para éxito, rojo para error
@@ -254,50 +279,6 @@ namespace gestionescolar.Presentation
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarAlerta", script, true);
         }
 
-        protected void btnFiltrar_Click(object sender, EventArgs e)
-        {
-            DataTable dtOriginal = new DataTable();
-            string textoBusqueda = txtFiltro.Text.Trim();
-            entgrupo.IDGrupo = Convert.ToInt16(ddlGrupo.SelectedValue);
-            dtOriginal = calificacionBLL.MostrarAlumnosCalificaciones(entgrupo);
-
-            if (!string.IsNullOrEmpty(textoBusqueda))
-            {
-                // Separar por palabras
-                string[] palabras = textoBusqueda.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-                // Armar condiciones por cada palabra (en grado, Grupo, anio)
-                List<string> condiciones = new List<string>();
-                foreach (string palabra in palabras)
-                {
-                    condiciones.Add($@"
-                        (CONVERT(NombreAlumno, System.String) LIKE '%{palabra}%'
-                        OR CONVERT(Grupo, System.String) LIKE '%{palabra}%'
-                        OR CONVERT(Materia, System.String) LIKE '%{palabra}%')"
-                     );
-                }
-
-                string filtroFinal = string.Join(" AND ", condiciones);
-
-                // Filtrar el DataTable
-                DataRow[] filasFiltradas = dtOriginal.Select(filtroFinal);
-
-                if (filasFiltradas.Length > 0)
-                {
-                    DataTable dtFiltrado = filasFiltradas.CopyToDataTable();
-                    gdvAlumnoCalificaciones.DataSource = dtFiltrado;
-                }
-                else
-                {
-                    gdvAlumnoCalificaciones.DataSource = null;
-                }
-            }
-            else
-            {
-                gdvAlumnoCalificaciones.DataSource = dtOriginal; // Mostrar todo si no hay búsqueda
-            }
-
-            gdvAlumnoCalificaciones.DataBind();
-        }
+        
     }
 }
