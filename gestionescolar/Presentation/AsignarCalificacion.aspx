@@ -10,6 +10,7 @@
             <!-- Grupo y materia -->
             <div class="mb-3">
                 <asp:Label ID="lbGrupo" runat="server" class="form-label" Text="Grupo: "></asp:Label>
+
                 <asp:DropDownList
                     ID="ddlGrupo"
                     runat="server"
@@ -17,6 +18,8 @@
                     AutoPostBack="true"
                     OnSelectedIndexChanged="ddlGrupo_SelectedIndexChanged">
                 </asp:DropDownList>
+
+
                 <asp:Label ID="LbMateria" runat="server" class="form-label" Text="Matería: "></asp:Label>
                 <asp:DropDownList
                     ID="ddlMateria"

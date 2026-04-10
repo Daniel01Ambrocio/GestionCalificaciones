@@ -14,7 +14,10 @@
                 <div class="row mb-3">
                     <div class="input-group">
                         <asp:TextBox runat="server" CssClass="form-control" ID="txtFiltro" placeholder="Filtrar..." />
+
                         <asp:Button runat="server" Text="Filtrar" CssClass="btn btn-primary" ID="btnFiltrarPendientes" OnClick="btnFiltrarPendientes_Click" />
+
+
                     </div>
                 </div>
 

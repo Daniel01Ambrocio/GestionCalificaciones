@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Presentation/menu.Master" AutoEventWireup="true" CodeBehind="ImprimirBoleta.aspx.cs" Inherits="gestionescolar.Presentation.ImprimirBoleta" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -16,13 +17,16 @@
             <!-- Tipo de impresión -->
             <div class="mb-3">
                 <asp:Label ID="lbtipoImpresion" runat="server" Text="Tipo de impresión:" CssClass="form-label"></asp:Label>
-                <asp:RadioButtonList ID="rblTipoImpresion" runat="server" >
+                <asp:RadioButtonList ID="rblTipoImpresion" runat="server">
                     <asp:ListItem Text="Por grupo (todas las boletas)" Value="grupo" Selected="True" />
                     <asp:ListItem Text="Por alumno" Value="alumno" />
                 </asp:RadioButtonList>
                 <br />
-                <asp:Button ID="btnOpcion" runat="server" Text="Seleccionar" CssClass="btn btn-primary" OnClick="btnOpcion_Click"/>
+                <asp:Panel DefaultButton="btnOpcion" runat="server">
+                    <asp:Button ID="btnOpcion" runat="server" Text="Seleccionar" CssClass="btn btn-primary" OnClick="btnOpcion_Click" />
+                </asp:Panel>
                 
+
             </div>
 
             <!-- Selección de alumno (solo si el usuario elige 'por alumno') -->
@@ -32,7 +36,7 @@
             </div>
 
             <!-- Botones -->
-            <asp:Button ID="btnSleccionarAlumno" runat="server" Text="Seleccionar Alumno" CssClass="btn btn-primary" OnClick="btnSleccionarAlumno_Click"/>
+            <asp:Button ID="btnSleccionarAlumno" runat="server" Text="Seleccionar Alumno" CssClass="btn btn-primary" OnClick="btnSleccionarAlumno_Click" />
             <asp:Button ID="btnImprimir" runat="server" Text="Imprimir" CssClass="btn btn-success" OnClick="btnImprimir_Click" />
             <asp:Button ID="btnAtras" runat="server" Text="Atrás" CssClass="btn btn-danger" OnClick="btnAtras_Click" />
         </div>

@@ -92,7 +92,7 @@ namespace gestionescolar.Presentation
 
             entgrupo.IDGrupo = idGrupoSeleccionado;
             entescuela = escuelaBLL.ObtenerEscuela();
-
+            string fecha = DateTime.Now.ToString("dd-MM-yyyy");
             if (rblTipoImpresion.SelectedValue == "grupo")
             {
                 DataTable dtMatriculas = alumnoBLL.ObtenerAlumnosPorGrupo(entgrupo);
@@ -119,13 +119,14 @@ namespace gestionescolar.Presentation
                             GenerarPaginaAlumno(document, entescuela, dtAlumno, dtAcademicos);
                         }
                     }
-
+                    
+                    string nombreFile = "Boletas_" + ddlGrupo.SelectedItem.Text+"_"+fecha;
                     // Guardar PDF final y enviarlo al cliente
-                    string ruta = HttpContext.Current.Server.MapPath("~/boletas.pdf");
+                    string ruta = HttpContext.Current.Server.MapPath("~/Content/Boletas/" + nombreFile + ".pdf");
                     document.Save(ruta);
 
                     Response.ContentType = "application/pdf";
-                    Response.AppendHeader("Content-Disposition", "attachment; filename=boletas.pdf");
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=" + nombreFile + ".pdf");
                     Response.TransmitFile(ruta);
                     Response.End();
                 }
@@ -143,12 +144,12 @@ namespace gestionescolar.Presentation
 
                     PdfDocument document = new PdfDocument();
                     GenerarPaginaAlumno(document, entescuela, dtAlumno, dtAcademicos);
-
-                    string ruta = HttpContext.Current.Server.MapPath("~/boleta.pdf");
+                    string nombreFile = "Boleta_" + ddlAlumno.SelectedItem.Text + "_" + fecha;
+                    string ruta = HttpContext.Current.Server.MapPath("~/Content/Boletas/" + nombreFile + ".pdf");
                     document.Save(ruta);
 
                     Response.ContentType = "application/pdf";
-                    Response.AppendHeader("Content-Disposition", "attachment; filename=boleta.pdf");
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=" + nombreFile + ".pdf");
                     Response.TransmitFile(ruta);
                     Response.End();
                 }
@@ -211,7 +212,7 @@ namespace gestionescolar.Presentation
 
             // TABLA DATOS DEL ALUMNO
             int tableX = 40;
-            int tableWidth = (int)page.Width - 80;
+            int tableWidth = Convert.ToInt16(page.Width - 80);
             int rowHeight = 25;
             gfx.DrawString("DATOS DEL ALUMNO", subFont, XBrushes.Black, tableX, y - 5);
             gfx.DrawRectangle(XPens.Black, tableX, y, tableWidth, rowHeight * 3);

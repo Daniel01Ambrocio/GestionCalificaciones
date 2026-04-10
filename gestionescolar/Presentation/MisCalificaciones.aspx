@@ -13,7 +13,7 @@
             <!-- Contenedor principal del formulario y lista -->
             <div id="contform">
 
-                <!-- Lista de grupos -->
+                <!-- Lista de calificación -->
                 <div class="col-md-11">
                     <div class="card">
                         <div class="card-header bg-primary text-white">
