@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\gestioncalificaciones\\gestionescolar\\presentation\\bienvenidalogeado.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\bienvenidalogeado.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\gestioncalificaciones\\gestionescolar\\presentation\\menu.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\menu.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\gestioncalificaciones\\gestionescolar\\presentation\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\gestioncalificaciones\\gestionescolar\\presentation\\principal.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\principal.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\gestioncalificaciones\\gestionescolar\\styles\\animaciones.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\styles\\animaciones.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,53 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "BienvenidaLogeado.aspx",
-              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\BienvenidaLogeado.aspx",
-              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\BienvenidaLogeado.aspx",
-              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\BienvenidaLogeado.aspx",
-              "RelativeToolTip": "gestionescolar\\Presentation\\BienvenidaLogeado.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-04-14T17:50:08.153Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "menu.Master",
-              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\menu.Master",
-              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\menu.Master",
-              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\menu.Master",
-              "RelativeToolTip": "gestionescolar\\Presentation\\menu.Master",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-04-14T17:49:15.721Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Login.aspx",
-              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\Login.aspx",
-              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\Login.aspx",
-              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\Login.aspx",
-              "RelativeToolTip": "gestionescolar\\Presentation\\Login.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-04-14T17:49:06.057Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Principal.Master",
-              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\Principal.Master",
-              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\Principal.Master",
-              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\Principal.Master",
-              "RelativeToolTip": "gestionescolar\\Presentation\\Principal.Master",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-04-14T17:48:17.473Z",
+              "Title": "Animaciones.css",
+              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Styles\\Animaciones.css",
+              "RelativeDocumentMoniker": "gestionescolar\\Styles\\Animaciones.css",
+              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Styles\\Animaciones.css",
+              "RelativeToolTip": "gestionescolar\\Styles\\Animaciones.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-04-14T20:57:10.919Z",
               "EditorCaption": ""
             }
           ]
