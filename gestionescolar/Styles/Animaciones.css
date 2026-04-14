@@ -11,3 +11,11 @@
         opacity: 1;
         transform: translateY(0);
     }
+
+.fondo-personalizado {
+    background-image: url('../Content/Sistema/logoAcadem.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    max-width: 60%;
+}

@@ -174,6 +174,7 @@
     <Content Include="Content\Icons\iconoHisMisSolicitudes.png" />
     <Content Include="Content\logo.png" />
     <Content Include="Content\logoEscuela.png" />
+    <Content Include="Content\Sistema\logoAcadem.png" />
     <Content Include="Presentation\AprobarSolicitudes.aspx" />
     <Content Include="Presentation\AsignarCalificacion.aspx" />
     <Content Include="Presentation\Bienvenida.aspx" />

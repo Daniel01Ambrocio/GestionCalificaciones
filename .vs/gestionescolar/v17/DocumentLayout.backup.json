@@ -1,14 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\",
+  "WorkspaceRootPath": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\crud\\gestioncalificaciones\\gestionescolar\\presentation\\imprimirboleta.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\imprimirboleta.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\gestioncalificaciones\\gestionescolar\\presentation\\bienvenidalogeado.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\bienvenidalogeado.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\presentation\\datosescuela.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\datosescuela.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\gestioncalificaciones\\gestionescolar\\presentation\\menu.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\menu.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\gestioncalificaciones\\gestionescolar\\presentation\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\gestioncalificaciones\\gestionescolar\\presentation\\principal.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\principal.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,31 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DatosEscuela.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\Presentation\\DatosEscuela.aspx.cs",
-              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\DatosEscuela.aspx.cs",
-              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\Presentation\\DatosEscuela.aspx.cs",
-              "RelativeToolTip": "gestionescolar\\Presentation\\DatosEscuela.aspx.cs",
-              "ViewState": "AgIAAGoAAAAAAAAAAAAcwHwAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T22:07:56.494Z"
+              "DocumentIndex": 0,
+              "Title": "BienvenidaLogeado.aspx",
+              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\BienvenidaLogeado.aspx",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\BienvenidaLogeado.aspx",
+              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\BienvenidaLogeado.aspx",
+              "RelativeToolTip": "gestionescolar\\Presentation\\BienvenidaLogeado.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-04-14T17:50:08.153Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ImprimirBoleta.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\Presentation\\ImprimirBoleta.aspx.cs",
-              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\ImprimirBoleta.aspx.cs",
-              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\crud\\GestionCalificaciones\\gestionescolar\\Presentation\\ImprimirBoleta.aspx.cs",
-              "RelativeToolTip": "gestionescolar\\Presentation\\ImprimirBoleta.aspx.cs",
-              "ViewState": "AgIAAHYAAAAAAAAAAAAAAIgAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T22:06:19.652Z",
+              "DocumentIndex": 1,
+              "Title": "menu.Master",
+              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\menu.Master",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\menu.Master",
+              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\menu.Master",
+              "RelativeToolTip": "gestionescolar\\Presentation\\menu.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-04-14T17:49:15.721Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.aspx",
+              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\Login.aspx",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\Login.aspx",
+              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\Login.aspx",
+              "RelativeToolTip": "gestionescolar\\Presentation\\Login.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-04-14T17:49:06.057Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Principal.Master",
+              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\Principal.Master",
+              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\Principal.Master",
+              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\Principal.Master",
+              "RelativeToolTip": "gestionescolar\\Presentation\\Principal.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-04-14T17:48:17.473Z",
               "EditorCaption": ""
             }
           ]

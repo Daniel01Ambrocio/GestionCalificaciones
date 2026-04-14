@@ -7,7 +7,7 @@
         
         <div class="card shadow p-4 w-100 mx-2" style="max-width: 400px; border-radius: 15px;">
             
-            <h3 class="text-center mb-4 text-primary">Gestión Escolar</h3>
+            <h3 class="text-center mb-4 text-primary">AcadeM</h3>
 
             <div class="mb-3">
                 <label class="form-label">Usuario</label>
