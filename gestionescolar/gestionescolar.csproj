@@ -157,6 +157,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Icons\iconPeriodoEscolar.png" />
     <Content Include="Content\Icons\iconoListAdministrativos.png" />
     <Content Include="Content\Icons\iconoListAlumnos.png" />
     <Content Include="Content\Icons\iconoRegGrupos.png" />
@@ -181,6 +182,7 @@
     <Content Include="Presentation\BienvenidaLogeado.aspx" />
     <Content Include="Presentation\CambiarContrasena.aspx" />
     <Content Include="Presentation\DatosEscuela.aspx" />
+    <Content Include="Presentation\FinInicioPeriodo.aspx" />
     <Content Include="Presentation\HistorialMisSolicitudes.aspx" />
     <Content Include="Presentation\ImprimirBoleta.aspx" />
     <Content Include="Presentation\ListaAdministrativos.aspx" />
@@ -283,6 +285,13 @@
     </Compile>
     <Compile Include="Presentation\DatosEscuela.aspx.designer.cs">
       <DependentUpon>DatosEscuela.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\FinInicioPeriodo.aspx.cs">
+      <DependentUpon>FinInicioPeriodo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentation\FinInicioPeriodo.aspx.designer.cs">
+      <DependentUpon>FinInicioPeriodo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentation\HistorialMisSolicitudes.aspx.cs">
       <DependentUpon>HistorialMisSolicitudes.aspx</DependentUpon>

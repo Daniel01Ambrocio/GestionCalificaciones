@@ -132,6 +132,16 @@
                     Registrar/ver grupos
                 </asp:HyperLink>
                 <asp:HyperLink
+                    ID="FinInicioPeriodo"
+                    CssClass="nav-link"
+                    NavigateUrl="FinInicioPeriodo.aspx"
+                    runat="server">
+                    <img src="../Content/Icons/iconPeriodoEscolar.png" 
+                        alt="Escuela" 
+                        class="IconMenu" />
+                    Terminar/Comenzar periodo escolar
+                </asp:HyperLink>
+                <asp:HyperLink
                     ID="listaAlumnos"
                     CssClass="nav-link"
                     NavigateUrl="ListaEditAlumnos.aspx"

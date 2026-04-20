@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="row">
-                    <!-- Lista de grupos -->
+                    <!-- Lista de maestros -->
                     <div class="col-md-11">
                         <div class="card">
                             <div class="card-header bg-primary text-white">
