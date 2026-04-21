@@ -93,7 +93,7 @@ namespace gestionescolar.Presentation
                         int periodoNuevo = 0;
                         periodoActual = (DateTime.Now.Year)-1;
                         periodoNuevo = DateTime.Now.Year;
-                        btnTerminarComenzar.Text = "Terminar periodo " + periodoActual + " comenzar periodo " + periodoNuevo;
+                        btnTerminarComenzar.Text = "Terminar periodo " + periodoActual + ", comenzar periodo " + periodoNuevo;
                         MostrarGruposDelPeriodo();
                     }
 
@@ -148,7 +148,15 @@ namespace gestionescolar.Presentation
             periodoNuevo = DateTime.Now.Year;
             string mensaje = "";
             mensaje= grupoBLL.GenerarGruposNuevoPeriodo(periodoActual, periodoNuevo);
+            if(mensaje == "Actualización correcta.")
+            {
+                MostrarAlerta(mensaje +" se han generado nuevos grupos.", true);
+            }
+            else
+            {
+                MostrarAlerta(mensaje, false);
 
+            }
         }
     }
 }

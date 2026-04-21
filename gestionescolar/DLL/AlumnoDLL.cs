@@ -78,6 +78,43 @@ namespace gestionescolar.DLL
                 return "Error de registro";
             }
         }
+        public string ActualizarGrupoAlumno(Entalumno alumnoent)
+        {
+            string respuesta = "";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string query = "UPDATE Alumno SET IDGrupo = @IDGrupo WHERE Matricula = @Matricula";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@IDGrupo", alumnoent.IDGrupo);
+                        cmd.Parameters.AddWithValue("@Matricula", alumnoent.Matricula);
+
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+
+                        if (filasAfectadas > 0)
+                        {
+                            respuesta = "Actualización correcta.";
+                        }
+                        else
+                        {
+                            respuesta = "No se encontró el alumno.";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                respuesta = "Error.";
+            }
+
+            return respuesta;
+        }
         public int BuscarMatriculaByUsuario(EntUsuario entUsuario)
         {
             try

@@ -7,16 +7,8 @@
       "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\bll\\grupobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\gestioncalificaciones\\gestionescolar\\bll\\alumnobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\bll\\alumnobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\gestioncalificaciones\\gestionescolar\\presentation\\fininicioperiodo.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\fininicioperiodo.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\gestioncalificaciones\\gestionescolar\\presentation\\fininicioperiodo.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\presentation\\fininicioperiodo.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|c:\\users\\desarrollo\\documents\\react\\gestioncalificaciones\\gestionescolar\\dll\\grupodll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2732A5CB-3FAC-4962-ADAC-AE32E1D01F33}|gestionescolar\\gestionescolar.csproj|solutionrelative:gestionescolar\\dll\\grupodll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,14 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AlumnoBLL.cs",
-              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\BLL\\AlumnoBLL.cs",
-              "RelativeDocumentMoniker": "gestionescolar\\BLL\\AlumnoBLL.cs",
-              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\BLL\\AlumnoBLL.cs",
-              "RelativeToolTip": "gestionescolar\\BLL\\AlumnoBLL.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAgwC0AAAAvAAAAAAAAAA==",
+              "Title": "GrupoDLL.cs",
+              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\DLL\\GrupoDLL.cs",
+              "RelativeDocumentMoniker": "gestionescolar\\DLL\\GrupoDLL.cs",
+              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\DLL\\GrupoDLL.cs",
+              "RelativeToolTip": "gestionescolar\\DLL\\GrupoDLL.cs",
+              "ViewState": "AgIAABABAAAAAAAAAAAYwDEBAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T22:56:01.239Z",
+              "WhenOpened": "2026-04-21T18:05:02.779Z",
               "EditorCaption": ""
             },
             {
@@ -49,35 +41,9 @@
               "RelativeDocumentMoniker": "gestionescolar\\BLL\\GrupoBLL.cs",
               "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\BLL\\GrupoBLL.cs",
               "RelativeToolTip": "gestionescolar\\BLL\\GrupoBLL.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAYwD0AAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T22:18:56.247Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FinInicioPeriodo.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\FinInicioPeriodo.aspx.cs",
-              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\FinInicioPeriodo.aspx.cs",
-              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\FinInicioPeriodo.aspx.cs",
-              "RelativeToolTip": "gestionescolar\\Presentation\\FinInicioPeriodo.aspx.cs",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAgwJUAAABUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T21:50:16.799Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FinInicioPeriodo.aspx",
-              "DocumentMoniker": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\FinInicioPeriodo.aspx",
-              "RelativeDocumentMoniker": "gestionescolar\\Presentation\\FinInicioPeriodo.aspx",
-              "ToolTip": "C:\\Users\\desarrollo\\Documents\\React\\GestionCalificaciones\\gestionescolar\\Presentation\\FinInicioPeriodo.aspx",
-              "RelativeToolTip": "gestionescolar\\Presentation\\FinInicioPeriodo.aspx",
-              "LogicalView": "7651a702-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-04-20T21:21:21.823Z",
+              "WhenOpened": "2026-04-21T17:53:34.08Z",
               "EditorCaption": ""
             }
           ]

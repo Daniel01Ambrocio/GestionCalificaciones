@@ -89,7 +89,7 @@ namespace gestionescolar.DLL
             }
             catch (SqlException ex)
             {
-                // Puedes registrar el error aquí si tienes un sistema de logging
+                //0 = no hay
                 return 0;
             }
         }
@@ -267,6 +267,42 @@ namespace gestionescolar.DLL
             {
                 return false;
             }
+        }
+        public int BuscarExistenciaGrupo(Entgrupo entgrupo)
+        {
+            int idGrupo = 0;
+
+            string query = @"SELECT idGrupo 
+                     FROM Grupo 
+                     WHERE grado = @grado 
+                     AND grupo = @grupo 
+                     AND anio = @anio;";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.Add("@grado", SqlDbType.Int).Value = entgrupo.grado;
+                    cmd.Parameters.Add("@grupo", SqlDbType.VarChar).Value = entgrupo.grupo;
+                    cmd.Parameters.Add("@anio", SqlDbType.Int).Value = entgrupo.anio;
+
+                    conn.Open();
+
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        idGrupo = Convert.ToInt32(result);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                idGrupo=0; 
+            }
+
+            return idGrupo;
         }
     }
 }

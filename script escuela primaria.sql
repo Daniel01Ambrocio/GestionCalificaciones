@@ -1,7 +1,6 @@
 create database escuelaBD
-go 
-
-use  escuelaBD
+go  
+use escuelaBD
 go
 
 CREATE TABLE Escuela (
@@ -25,7 +24,6 @@ CREATE TABLE Grupo (
 	grupo varchar(3),
 	anio int
 )
-
 CREATE TABLE Estatus (
     IDStatus INT IDENTITY(1,1) PRIMARY KEY,
     descripcion VARCHAR(15)
@@ -247,6 +245,86 @@ BEGIN
 
 END;
 GO
+
+
+
+
+
+
+CREATE TRIGGER TR_InsertarAlumnoMateriaDespuesDeAlumno
+ON Alumno
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @AnioActual INT = YEAR(GETDATE());
+
+    DECLARE @NuevasRelaciones TABLE (
+        IDAlumnoMateria INT
+    );
+
+    INSERT INTO AlumnoMateria (Matricula, IDMateria)
+    OUTPUT INSERTED.IDAlumnoMateria INTO @NuevasRelaciones
+    SELECT 
+        I.Matricula,
+        M.IDMateria
+    FROM inserted I
+    INNER JOIN Grupo G 
+        ON I.IDGrupo = G.IDGrupo
+    INNER JOIN Materia M 
+        ON M.GradoEscolar = G.Grado
+    WHERE G.anio = @AnioActual
+      AND NOT EXISTS (
+          SELECT 1
+          FROM AlumnoMateria AM
+          WHERE AM.Matricula = I.Matricula
+            AND AM.IDMateria = M.IDMateria
+      );
+
+    INSERT INTO Calificacion (IDAlumnoMateria, Parcial1, Parcial2, Parcial3, Parcial4, Promedio)
+    SELECT IDAlumnoMateria, 0,0,0,0,0
+    FROM @NuevasRelaciones;
+END;
+go
+
+
+
+CREATE TRIGGER TR_InsertarAlumnoMateriaDespuesDeGrupo
+ON Grupo
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @NuevasRelaciones TABLE (
+        IDAlumnoMateria INT
+    );
+
+    INSERT INTO AlumnoMateria (Matricula, IDMateria)
+    OUTPUT INSERTED.IDAlumnoMateria INTO @NuevasRelaciones
+    SELECT 
+        A.Matricula,
+        M.IDMateria
+    FROM inserted I
+    INNER JOIN Alumno A 
+        ON A.IDGrupo = I.IDGrupo
+    INNER JOIN Materia M 
+        ON M.GradoEscolar = I.Grado
+       AND M.GradoEscolar = I.Grado
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM AlumnoMateria AM
+        WHERE AM.Matricula = A.Matricula
+          AND AM.IDMateria = M.IDMateria
+    );
+
+    INSERT INTO Calificacion (...)
+    SELECT ...
+END;
+
+go 
+
 
  SELECT*FROM AlumnoMateria
  SELECT*FROM Maestro
