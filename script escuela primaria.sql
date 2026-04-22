@@ -1,5 +1,6 @@
 create database escuelaBD
-go  
+go   
+  
 use escuelaBD
 go
 
@@ -43,8 +44,7 @@ CREATE TABLE Usuario (
     IDROL INT,
     FOREIGN KEY (IDROL) REFERENCES rol(IDROL),
 	FOREIGN KEY (IDStatus) REFERENCES estatus(IDStatus)
-);
-select*from Usuario
+); 
 
 CREATE TABLE Director (
     Iddirector INT IDENTITY(1,1) PRIMARY KEY,
@@ -91,7 +91,10 @@ CREATE TABLE AlumnoMateria (
     FOREIGN KEY (Matricula) REFERENCES Alumno(Matricula),
     FOREIGN KEY (IDMateria) REFERENCES Materia(IDMateria)
 );
-
+go
+ALTER TABLE AlumnoMateria
+ADD CONSTRAINT UQ_AlumnoMateria UNIQUE (Matricula, IDMateria);
+go
 
 CREATE TABLE Calificacion (
     IDCalificacion INT IDENTITY(1,1) PRIMARY KEY,
@@ -107,8 +110,9 @@ CREATE TABLE Calificacion (
 go
 ALTER TABLE Calificacion
 ADD CONSTRAINT UQ_Calificacion_IDAlumnoMateria UNIQUE (IDAlumnoMateria);
-
 go
+
+
 CREATE TABLE SolicitudBajas (
     IDSolicitudBajas INT IDENTITY(1,1) PRIMARY KEY,
     IDAdministrativo INT NOT NULL,
@@ -121,8 +125,60 @@ CREATE TABLE SolicitudBajas (
     FOREIGN KEY (IDUsuarioBaja) REFERENCES Usuario(IDUsuario)
 );
  
- 
+  
  go
+
+--triguer para cuando se inserta una nueva materia
+ CREATE TRIGGER TR_Materia_Insert
+ON Materia
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO AlumnoMateria (Matricula, IDMateria)
+    SELECT 
+        a.Matricula,
+        i.IDMateria
+    FROM inserted i
+    INNER JOIN Grupo g ON g.grado = i.GradoEscolar
+    INNER JOIN Alumno a ON a.IDGrupo = g.IDGrupo
+    WHERE g.anio = YEAR(GETDATE())
+    AND NOT EXISTS (
+        SELECT 1
+        FROM AlumnoMateria am
+        WHERE am.Matricula = a.Matricula
+        AND am.IDMateria = i.IDMateria
+    );
+END;
+
+go
+
+--triguer para cuando se inserta un nuevo alumno
+CREATE TRIGGER TR_Alumno_InsertUpdate
+ON Alumno
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO AlumnoMateria (Matricula, IDMateria)
+    SELECT 
+        i.Matricula,
+        m.IDMateria
+    FROM inserted i
+    INNER JOIN Grupo g ON i.IDGrupo = g.IDGrupo
+    INNER JOIN Materia m ON m.GradoEscolar = g.grado
+    WHERE g.anio = YEAR(GETDATE())
+    AND NOT EXISTS (
+        SELECT 1
+        FROM AlumnoMateria am
+        WHERE am.Matricula = i.Matricula
+        AND am.IDMateria = m.IDMateria
+    );
+END;
+
+go
 
 -- Insertar roles: Alumno, Maestro, Administrativo, Director
 INSERT INTO rol (nombreRol) VALUES ('Alumno'), ('Maestro'), ('Administrativo'), ('Director');
@@ -153,9 +209,9 @@ VALUES (
     'AD1',
     '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce', -- Idealmente esta contraseña debería estar hasheada
     '2025-10-01',
-    '2026-10-01', -- PeriodoFin NULL indica que sigue activo
-    1,    -- Suponiendo que 1 es "Activo" en la tabla estatus
-    3     -- IDROL para "Administrativo"
+    '2029-10-01', 
+    1, 
+    3  
 );
  
  go
@@ -164,18 +220,7 @@ INSERT INTO Administrativo (IDUsuario)
 VALUES (1);
  
  go
-
---Aasdfg@1
-UPDATE Usuario
-SET Contrasena = '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce';
- 
- go
-
-select*from Usuario
-SELECT*FROM Alumno 
- go
-
-
+  
 INSERT INTO Escuela 
 ( 
     NombreEscuela,
@@ -187,145 +232,76 @@ INSERT INTO Escuela
 )
 VALUES
 ( 
-    'Escuela Primaria 1',
+    'Escuela Primaria Lucila',
     'A123',
     'Calle 1',
     '555-1234',
     'logoEscuela',
     '2025-2026'
 );
- 
- go
-select*from Estatus
-select*from Usuario;
-select*from SolicitudBajas
-go
-
-
-CREATE TRIGGER TR_InsertarAlumnoMateria
-ON Materia
-AFTER INSERT
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    DECLARE @AnioActual INT;
-    SET @AnioActual = YEAR(GETDATE());
-
-    -- Tabla temporal para capturar IDs generados
-    DECLARE @NuevasRelaciones TABLE (
-        IDAlumnoMateria INT
-    );
-
-    -- Insert en AlumnoMateria capturando el ID generado
-    INSERT INTO AlumnoMateria (Matricula, IDMateria)
-    OUTPUT INSERTED.IDAlumnoMateria INTO @NuevasRelaciones
-    SELECT 
-        A.Matricula,
-        I.IDMateria
-    FROM inserted I
-    INNER JOIN Grupo G 
-        ON G.grado = I.GradoEscolar
-       AND G.anio = @AnioActual
-    INNER JOIN Alumno A 
-        ON A.IDGrupo = G.IDGrupo
-    WHERE NOT EXISTS (
-        SELECT 1 
-        FROM AlumnoMateria AM
-        WHERE AM.Matricula = A.Matricula
-          AND AM.IDMateria = I.IDMateria
-    );
-
-    -- Insert en Calificacion con valores en 0
-    INSERT INTO Calificacion (IDAlumnoMateria, Parcial1, Parcial2, Parcial3, Parcial4, Promedio)
-    SELECT 
-        IDAlumnoMateria,
-        0, 0, 0, 0, 0
-    FROM @NuevasRelaciones;
-
-END;
-GO
-
-
-
-
-
-
-CREATE TRIGGER TR_InsertarAlumnoMateriaDespuesDeAlumno
-ON Alumno
-AFTER INSERT
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    DECLARE @AnioActual INT = YEAR(GETDATE());
-
-    DECLARE @NuevasRelaciones TABLE (
-        IDAlumnoMateria INT
-    );
-
-    INSERT INTO AlumnoMateria (Matricula, IDMateria)
-    OUTPUT INSERTED.IDAlumnoMateria INTO @NuevasRelaciones
-    SELECT 
-        I.Matricula,
-        M.IDMateria
-    FROM inserted I
-    INNER JOIN Grupo G 
-        ON I.IDGrupo = G.IDGrupo
-    INNER JOIN Materia M 
-        ON M.GradoEscolar = G.Grado
-    WHERE G.anio = @AnioActual
-      AND NOT EXISTS (
-          SELECT 1
-          FROM AlumnoMateria AM
-          WHERE AM.Matricula = I.Matricula
-            AND AM.IDMateria = M.IDMateria
-      );
-
-    INSERT INTO Calificacion (IDAlumnoMateria, Parcial1, Parcial2, Parcial3, Parcial4, Promedio)
-    SELECT IDAlumnoMateria, 0,0,0,0,0
-    FROM @NuevasRelaciones;
-END;
-go
-
-
-
-CREATE TRIGGER TR_InsertarAlumnoMateriaDespuesDeGrupo
-ON Grupo
-AFTER INSERT
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    DECLARE @NuevasRelaciones TABLE (
-        IDAlumnoMateria INT
-    );
-
-    INSERT INTO AlumnoMateria (Matricula, IDMateria)
-    OUTPUT INSERTED.IDAlumnoMateria INTO @NuevasRelaciones
-    SELECT 
-        A.Matricula,
-        M.IDMateria
-    FROM inserted I
-    INNER JOIN Alumno A 
-        ON A.IDGrupo = I.IDGrupo
-    INNER JOIN Materia M 
-        ON M.GradoEscolar = I.Grado
-       AND M.GradoEscolar = I.Grado
-    WHERE NOT EXISTS (
-        SELECT 1
-        FROM AlumnoMateria AM
-        WHERE AM.Matricula = A.Matricula
-          AND AM.IDMateria = M.IDMateria
-    );
-
-    INSERT INTO Calificacion (...)
-    SELECT ...
-END;
-
+  
 go 
 
+ --insertamos grupos
 
- SELECT*FROM AlumnoMateria
- SELECT*FROM Maestro
- SELECT*FROM Calificacion
+INSERT INTO Grupo(grado, grupo, anio) VALUES (1, 'A', 2025);
+INSERT INTO Grupo(grado, grupo, anio) VALUES (1, 'A', 2026);
+INSERT INTO Grupo(grado, grupo, anio) VALUES (1, 'B', 2026);
+INSERT INTO Grupo(grado, grupo, anio) VALUES (1, 'C', 2026);
+go
+--INSERTAMOS MATERIAS
+INSERT INTO Materia(Nombre, GradoEscolar) VALUES ('Español', 1);
+INSERT INTO Materia(Nombre, GradoEscolar) VALUES ('Español', 2);
+INSERT INTO Materia(Nombre, GradoEscolar) VALUES ('Español', 3);
+INSERT INTO Materia(Nombre, GradoEscolar) VALUES ('Historia', 1);
+
+ go
+-- usuario de Alumnos
+INSERT INTO Usuario (Nombre, ApellidoPaterno, ApellidoMaterno, usuario, contrasena, PeriodoIngreso, PeriodoFin, IDStatus, IDROL)
+VALUES  
+('Juan', 'Perez', 'Lopez', 'AL1', 'AL1', '2024-01-01', '2030-01-01', 1, 1),
+('Maria', 'Gomez', 'Hernandez', 'AL2', 'AL2', '2024-01-01', '2030-01-01', 1, 1),
+('Luis', 'Ramirez', 'Torres', 'AL3', 'AL3', '2024-01-01', '2030-01-01', 1, 1),
+('Ana', 'Martinez', 'Diaz', 'AL4', 'AL4', '2024-01-01', '2030-01-01', 1, 1);
+
+--alumnos
+INSERT INTO Alumno(IDGrupo, IDUsuario)
+VALUES 
+(1,2),
+(2,3),
+(3,4),
+(3,5);
+go
+
+-- usuario de Maestros
+INSERT INTO Usuario (Nombre, ApellidoPaterno, ApellidoMaterno, usuario, contrasena, PeriodoIngreso, PeriodoFin, IDStatus, IDROL)
+VALUES
+('Carlos', 'Sanchez', 'Ruiz', 'MA1', 'MA1', '2024-01-01', '2030-01-01', 1, 2),
+('Laura', 'Fernandez', 'Castro', 'MA2', 'MA2', '2024-01-01', '2030-01-01', 1, 2);
+
+go 
+--maestro
+INSERT INTO Maestro(IDGrupo,cedulaprofesional, IDUsuario)
+VALUES 
+(2,'dfbgdb',6),
+(3,'dfgdfgdthgnb',7);
+
+
+go
+ -- usuario de directores
+INSERT INTO Usuario (Nombre, ApellidoPaterno, ApellidoMaterno, usuario, contrasena, PeriodoIngreso, PeriodoFin, IDStatus, IDROL)
+VALUES 
+('Daniel', 'Ambrocio', 'Reyes', 'DI1', 'DI1', '2024-01-01', '2030-01-01', 1, 1);
+go
+--directores
+INSERT INTO Director(IDUsuario)
+VALUES (8);
+
+go
+
+--Aasdfg@1
+UPDATE Usuario
+SET Contrasena = '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce';
+go
+
+select*from Usuario
