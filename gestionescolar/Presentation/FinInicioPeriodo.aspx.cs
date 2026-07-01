@@ -107,10 +107,18 @@ namespace gestionescolar.Presentation
         }
         public void MostrarGruposDelPeriodo()
         {
-            int periodoActual = 0;
-            periodoActual = (DateTime.Now.Year) - 1;
-            DataTable dataGrupos = new DataTable();
-            dataGrupos = grupoBLL.ObtenerGruposDelPeriodo(periodoActual);
+            //año actual
+            int periodoActual = DateTime.Now.Year;
+
+            DataTable dataGrupos = grupoBLL.ObtenerGruposDelPeriodo(periodoActual);
+            //Si o encuentra registros
+            if (dataGrupos.Rows.Count == 0)
+            {
+                //le resta 1 al año actual para buscart los grupos del año pasado
+                periodoActual--;
+                dataGrupos = grupoBLL.ObtenerGruposDelPeriodo(periodoActual);
+            }
+
             gvGrupos.DataSource = dataGrupos;
             gvGrupos.DataBind();
         }

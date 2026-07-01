@@ -78,6 +78,41 @@ namespace gestionescolar.DLL
                 return "Error de registro";
             }
         }
+        public string ObtenerAlumPorFullNamYGrupo(EntUsuario entUsuario, Entalumno entalumno)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    string query = @"
+                SELECT COUNT(*)
+                FROM Alumno a
+                INNER JOIN Usuario u ON u.IdUsuario = a.IDUsuario
+                WHERE u.Nombre = @Nombre
+                  AND u.ApellidoPaterno = @ApellidoPaterno
+                  AND u.ApellidoMaterno = @ApellidoMaterno
+                  AND a.IDGrupo = @IDGrupo";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Nombre", entUsuario.Nombre);
+                        cmd.Parameters.AddWithValue("@ApellidoPaterno", entUsuario.ApellidoPaterno);
+                        cmd.Parameters.AddWithValue("@ApellidoMaterno", entUsuario.ApellidoMaterno);
+                        cmd.Parameters.AddWithValue("@IDGrupo", entalumno.IDGrupo);
+
+                        conn.Open();
+
+                        int cantidad = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        return cantidad > 0 ? "Existe" : "No existe";
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                return "Error";
+            }
+        }
         public string ActualizarGrupoAlumno(Entalumno alumnoent)
         {
             string respuesta = "";

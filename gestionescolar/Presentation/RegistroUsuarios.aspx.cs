@@ -184,6 +184,15 @@ namespace gestionescolar.Presentation
                         {
                             mensaje = "";
                             mensaje = administrativoBLL.RegistrarAdministrativo(entUsuario);
+                            if (mensaje == "Registro exitoso.")
+                            {
+                                LimpiarFormulario();
+                                Session["mensaje"] = mensaje;
+                            }
+                            else
+                            {
+                                MostrarAlerta(mensaje, false);
+                            }
 
 
                         }
@@ -191,6 +200,15 @@ namespace gestionescolar.Presentation
                         {
                             mensaje = "";
                             mensaje = directorBLL.RegistrarDirector(entUsuario);
+                            if (mensaje == "Registro exitoso.")
+                            {
+                                LimpiarFormulario();
+                                Session["mensaje"] = mensaje;
+                            }
+                            else
+                            {
+                                MostrarAlerta(mensaje, false);
+                            }
 
                         }
                         else if (ddlRol.SelectedValue == "2") //Maestro
@@ -207,7 +225,15 @@ namespace gestionescolar.Presentation
                                 entmaestro.cedulaprofesional = txtCedula.Text;
                                 entmaestro.IDGrupo = Convert.ToInt16(ddlGrupo.SelectedValue);
                                 mensaje = maestroBLL.RegistrarMaestro(entUsuario, entmaestro);
-
+                                if (mensaje == "Registro exitoso.")
+                                {
+                                    LimpiarFormulario();
+                                    Session["mensaje"] = mensaje;
+                                }
+                                else
+                                {
+                                    MostrarAlerta(mensaje, false);
+                                }
                             }
 
                         }
@@ -221,75 +247,79 @@ namespace gestionescolar.Presentation
                             {
                                 mensaje = "";
                                 entalumno.IDGrupo = Convert.ToInt16(ddlGrupo.SelectedValue);
-                                mensaje = alumnoBLL.RegistrarAlumno(entUsuario, entalumno);
-                                if (mensaje == "Registro exitoso.")//Si fue exitoso, le asignamos las materias
+                                //Validamos que no exista el alumno en el mismo grupo con el mismo nombre
+                                mensaje = alumnoBLL.ObtenerAlumPorFullNamYGrupo(entUsuario, entalumno);
+                                if(mensaje == "No existe")
                                 {
-                                    //Tenemos el usuario.usuario
-                                    //obtenemos la matricula del alumno
-                                    entalumno.Matricula = alumnoBLL.BuscarMatriculaByUsuario(entUsuario);
-                                    if (entalumno.Matricula != 0)
+                                    mensaje = "";
+                                    mensaje = alumnoBLL.RegistrarAlumno(entUsuario, entalumno);
+                                    if (mensaje == "Registro exitoso.")//Si fue exitoso, le asignamos las materias
                                     {
-                                        //Obtenemos el grado del grupo
-                                        entgrupo.IDGrupo = entalumno.IDGrupo;
-                                        entgrupo.grado = GrupoBLL.ObtenerGradoPorIdGrupo(entgrupo);
-                                        List<int> listaIdMateria = new List<int>();
-                                        listaIdMateria = materiaBLL.ObtenerMateriasPorGrado(entgrupo);
-                                        if (listaIdMateria.Count > 0)
+                                        //Tenemos el usuario.usuario
+                                        //obtenemos la matricula del alumno
+                                        entalumno.Matricula = alumnoBLL.BuscarMatriculaByUsuario(entUsuario);
+                                        if (entalumno.Matricula != 0)
                                         {
-                                            //Validamos que la cantidad de alumnos sea igual o menor a 35
-                                            int cantidadAlmnos = 0;
-                                            cantidadAlmnos = alumnoBLL.CantidadAlumnosEngrupo(entgrupo);
-                                            if(cantidadAlmnos != 1000)
+                                            //Obtenemos el grado del grupo
+                                            entgrupo.IDGrupo = entalumno.IDGrupo;
+                                            entgrupo.grado = GrupoBLL.ObtenerGradoPorIdGrupo(entgrupo);
+                                            List<int> listaIdMateria = new List<int>();
+                                            listaIdMateria = materiaBLL.ObtenerMateriasPorGrado(entgrupo);
+                                            if (listaIdMateria.Count > 0)
                                             {
-                                                if (cantidadAlmnos <= 35)
+                                                //Validamos que la cantidad de alumnos sea igual o menor a 35
+                                                int cantidadAlmnos = 0;
+                                                cantidadAlmnos = alumnoBLL.CantidadAlumnosEngrupo(entgrupo);
+                                                if (cantidadAlmnos != 1000)
                                                 {
-                                                    //InsertamosAlumnoMateria
-                                                    string validaInsert = alumnoMateriaBLL.RegistrarAlumnoMateria(listaIdMateria, entalumno);
-                                                    if (validaInsert != "Registro exitoso.")
+                                                    if (cantidadAlmnos <= 35)
                                                     {
-                                                        MostrarAlerta(validaInsert, false);
+                                                        //InsertamosAlumnoMateria
+                                                        string validaInsert = alumnoMateriaBLL.RegistrarAlumnoMateria(listaIdMateria, entalumno);
+                                                        if (mensaje == "Registro exitoso.")
+                                                        {
+                                                            //Se llama el metodo para registrar un nuevo registro de AlumnoMateria
+                                                            LimpiarFormulario();
+                                                            Session["mensaje"] = mensaje;
+                                                        }
+                                                        else
+                                                        {
+                                                            MostrarAlerta(mensaje, false);
+                                                        }
                                                     }
-                                                    mensaje = validaInsert;
+                                                    else
+                                                    {
+                                                        MostrarAlerta("El grupo lleno. Asigne otro grupo al alumn@.", false);
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    MostrarAlerta("El grupo lleno. Asigne otro grupo al alumn@.", false);
+                                                    MostrarAlerta("No se logró encontrar el grupo. Intentelo más tarde.", false);
                                                 }
                                             }
                                             else
                                             {
-                                                MostrarAlerta("No se logró encontrar el grupo. Intentelo más tarde.", false);
+                                                MostrarAlerta("No se encontraron materias.", false);
                                             }
                                         }
                                         else
                                         {
-                                            MostrarAlerta("No se encontraron materias.", false);
+                                            MostrarAlerta("Matricula no encontrada.", false);
                                         }
                                     }
-                                    else
-                                    {
-                                        MostrarAlerta("Matricula no encontrada.", false);
-                                    }
                                 }
-                                
+                                else
+                                {
+                                    MostrarAlerta("El alumno ya existe en el grupo.", false);
+                                }
                             }
-
                         }
                         else
                         {
                             //opcion incorrecta
                             MostrarAlerta("Opción invalida", false);
                         }
-                        if (mensaje == "Registro exitoso.")
-                        {
-                            LimpiarFormulario();
-                            Session["mensaje"] = mensaje;
-                            Response.Redirect(Request.RawUrl);
-                        }
-                        else
-                        {
-                            MostrarAlerta(mensaje, false);
-                        }
+                        
                     }
                 }
                 else

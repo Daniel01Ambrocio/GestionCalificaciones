@@ -119,7 +119,11 @@ namespace gestionescolar.BLL
                                 alumnoent.Matricula = Convert.ToInt16(dtAlumnos.Rows[alumnosObtenido][1]);//matricula
                                 alumnoent.IDGrupo = idGrupoNuevo;
                                 mensaje = alumnoBLL.ActualizarGrupoAlumno(alumnoent);
-                                if (mensaje != "Actualización correcta.")
+                                if (mensaje == "Actualización correcta.")
+                                {
+                                    return mensaje;
+                                }
+                                else
                                 {
                                     return "Error al actualizar el grupo de los alumnos. Intentelo más tarde.";
                                 }

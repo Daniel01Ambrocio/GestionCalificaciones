@@ -1,6 +1,5 @@
 create database escuelaBD
 go   
-  
 use escuelaBD
 go
 
@@ -124,12 +123,11 @@ CREATE TABLE SolicitudBajas (
     Estado VARCHAR(10),
     FOREIGN KEY (IDUsuarioBaja) REFERENCES Usuario(IDUsuario)
 );
- 
   
  go
 
 --triguer para cuando se inserta una nueva materia
- CREATE TRIGGER TR_Materia_Insert
+CREATE TRIGGER TR_Materia_Insert
 ON Materia
 AFTER INSERT
 AS
@@ -162,23 +160,66 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
+    -- Si es un UPDATE y no cambió el grupo, salir.
+    IF EXISTS (SELECT 1 FROM deleted)
+    BEGIN
+        IF NOT UPDATE(IDGrupo)
+            RETURN;
+    END
+
     INSERT INTO AlumnoMateria (Matricula, IDMateria)
-    SELECT 
+    SELECT
         i.Matricula,
         m.IDMateria
     FROM inserted i
-    INNER JOIN Grupo g ON i.IDGrupo = g.IDGrupo
-    INNER JOIN Materia m ON m.GradoEscolar = g.grado
+    INNER JOIN Grupo g
+        ON g.IDGrupo = i.IDGrupo
+    INNER JOIN Materia m
+        ON m.GradoEscolar = g.grado
     WHERE g.anio = YEAR(GETDATE())
-    AND NOT EXISTS (
-        SELECT 1
-        FROM AlumnoMateria am
-        WHERE am.Matricula = i.Matricula
-        AND am.IDMateria = m.IDMateria
-    );
+      AND NOT EXISTS
+      (
+          SELECT 1
+          FROM AlumnoMateria am
+          WHERE am.Matricula = i.Matricula
+            AND am.IDMateria = m.IDMateria
+      );
 END;
+GO
 
 go
+--triguer para asignar una nueva calificacio al nuevo registro de AlumnoMateria
+CREATE TRIGGER TR_AlumnoMateria_Insert
+ON AlumnoMateria
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO Calificacion
+    (
+        IDAlumnoMateria,
+        Parcial1,
+        Parcial2,
+        Parcial3,
+        Parcial4,
+        Promedio
+    )
+    SELECT
+        i.IDAlumnoMateria,
+        0, -- Parcial1
+        0, -- Parcial2
+        0, -- Parcial3
+        0, -- Parcial4
+        0  -- Promedio
+    FROM inserted i
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM Calificacion c
+        WHERE c.IDAlumnoMateria = i.IDAlumnoMateria
+    );
+END;
+GO
 
 -- Insertar roles: Alumno, Maestro, Administrativo, Director
 INSERT INTO rol (nombreRol) VALUES ('Alumno'), ('Maestro'), ('Administrativo'), ('Director');
@@ -207,7 +248,7 @@ VALUES (
     'AdminApellidoP',
     'AdminApellidoM',
     'AD1',
-    '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce', -- Idealmente esta contraseña debería estar hasheada
+    '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce',
     '2025-10-01',
     '2029-10-01', 
     1, 
@@ -244,10 +285,10 @@ go
 
  --insertamos grupos
 
-INSERT INTO Grupo(grado, grupo, anio) VALUES (1, 'A', 2025);
 INSERT INTO Grupo(grado, grupo, anio) VALUES (1, 'A', 2026);
 INSERT INTO Grupo(grado, grupo, anio) VALUES (1, 'B', 2026);
 INSERT INTO Grupo(grado, grupo, anio) VALUES (1, 'C', 2026);
+INSERT INTO Grupo(grado, grupo, anio) VALUES (1, 'D', 2026);
 go
 --INSERTAMOS MATERIAS
 INSERT INTO Materia(Nombre, GradoEscolar) VALUES ('Español', 1);
@@ -259,10 +300,10 @@ INSERT INTO Materia(Nombre, GradoEscolar) VALUES ('Historia', 1);
 -- usuario de Alumnos
 INSERT INTO Usuario (Nombre, ApellidoPaterno, ApellidoMaterno, usuario, contrasena, PeriodoIngreso, PeriodoFin, IDStatus, IDROL)
 VALUES  
-('Juan', 'Perez', 'Lopez', 'AL1', 'AL1', '2024-01-01', '2030-01-01', 1, 1),
-('Maria', 'Gomez', 'Hernandez', 'AL2', 'AL2', '2024-01-01', '2030-01-01', 1, 1),
-('Luis', 'Ramirez', 'Torres', 'AL3', 'AL3', '2024-01-01', '2030-01-01', 1, 1),
-('Ana', 'Martinez', 'Diaz', 'AL4', 'AL4', '2024-01-01', '2030-01-01', 1, 1);
+('Juan', 'Perez', 'Lopez', 'AL1', '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce', '2026-01-01', '2030-01-01', 1, 1),
+('Maria', 'Gomez', 'Hernandez', 'AL2', '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce', '2026-01-01', '2030-01-01', 1, 1),
+('Luis', 'Ramirez', 'Torres', 'AL3', '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce', '2026-01-01', '2030-01-01', 1, 1),
+('Ana', 'Martinez', 'Diaz', 'AL4', '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce', '2026-01-01', '2030-01-01', 1, 1);
 
 --alumnos
 INSERT INTO Alumno(IDGrupo, IDUsuario)
@@ -276,26 +317,30 @@ go
 -- usuario de Maestros
 INSERT INTO Usuario (Nombre, ApellidoPaterno, ApellidoMaterno, usuario, contrasena, PeriodoIngreso, PeriodoFin, IDStatus, IDROL)
 VALUES
-('Carlos', 'Sanchez', 'Ruiz', 'MA1', 'MA1', '2024-01-01', '2030-01-01', 1, 2),
-('Laura', 'Fernandez', 'Castro', 'MA2', 'MA2', '2024-01-01', '2030-01-01', 1, 2);
+('Carlos', 'Sanchez', 'Ruiz', 'MA1', '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce', '2026-01-01', '2030-01-01', 1, 2),
+('Laura', 'Fernandez', 'Castro', 'MA2', '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce', '2026-01-01', '2030-01-01', 1, 2),
+('Maestro 3', 'Sanchez', 'Ruiz', 'MA3', '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce', '2026-01-01', '2030-01-01', 1, 2),
+('Maestro 4', 'Fernandez', 'Castro', 'MA4', '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce', '2026-01-01', '2030-01-01', 1, 2);
 
 go 
 --maestro
 INSERT INTO Maestro(IDGrupo,cedulaprofesional, IDUsuario)
 VALUES 
-(2,'dfbgdb',6),
-(3,'dfgdfgdthgnb',7);
+(1,'opkunsdfvkuhn66',9),
+(2,'dfbgdb879',6),
+(3,'humjgom6587',7),
+(4,'imuo345',8);
 
 
 go
  -- usuario de directores
 INSERT INTO Usuario (Nombre, ApellidoPaterno, ApellidoMaterno, usuario, contrasena, PeriodoIngreso, PeriodoFin, IDStatus, IDROL)
 VALUES 
-('Daniel', 'Ambrocio', 'Reyes', 'DI1', 'DI1', '2024-01-01', '2030-01-01', 1, 1);
+('Daniel', 'Ambrocio', 'Reyes', 'DI1', '0a801f0dd0190550ac0c90710f10c80120c60a605c08a0250e10f500e0f108f0d50330ea09302c00f00f09602b0310ce', '2024-01-01', '2030-01-01', 1, 1);
 go
 --directores
 INSERT INTO Director(IDUsuario)
-VALUES (8);
+VALUES (10);
 
 go
 
